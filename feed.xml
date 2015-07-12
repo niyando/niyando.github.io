@@ -2,13 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Nirav Gandhi's Blog</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2015-07-12T12:37:50+05:30</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="http://niyando.com/feed.xml" />
+<link rel="alternate" type="text/html" href="http://niyando.com" />
+<updated>2015-07-12T12:55:03+05:30</updated>
+<id>http://niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
-  <uri>/</uri>
+  <uri>http://niyando.com/</uri>
   <email>ndgandhi.88@gmail.com</email>
 </author>
 
@@ -17,13 +17,13 @@
 
 <entry>
   <title type="html"><![CDATA[Hello World]]></title>
-  <link rel="alternate" type="text/html" href="/random/hello-world/" />
-  <id>/random/hello-world</id>
+  <link rel="alternate" type="text/html" href="http://niyando.com/random/hello-world/" />
+  <id>http://niyando.com/random/hello-world</id>
   <published>2015-07-11T17:45:25+05:30</published>
   <updated>2015-07-11T17:45:25+05:30</updated>
   <author>
     <name>Nirav Gandhi</name>
-    <uri></uri>
+    <uri>http://niyando.com</uri>
     <email>ndgandhi.88@gmail.com</email>
   </author>
   <content type="html">
@@ -41,7 +41,7 @@
 Until then,&lt;br /&gt;
 Cheers!&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;/random/hello-world/&quot;&gt;Hello World&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on July 11, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://niyando.com/random/hello-world/&quot;&gt;Hello World&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on July 11, 2015.&lt;/p&gt;
   </content>
 </entry>
 
