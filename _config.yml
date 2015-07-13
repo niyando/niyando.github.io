@@ -2,7 +2,7 @@
 
 title:            Nirav Gandhi's Blog
 locale:           en_US
-url:              http://niyando.com
+url:
 
 
 # Jekyll configuration
@@ -30,7 +30,7 @@ owner:
   avatar: niravgandhi.jpg
   bio: "Codes, Creates, Cleans, Cooks, Cheers & Cares.<br><br>Senior Product Developer at F22 Labs, India"
   email: ndgandhi.88@gmail.com
-  disqus-shortname:
+  disqus-shortname: niyando
   twitter: niyando
   facebook: niyando
   google:

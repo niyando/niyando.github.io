@@ -1,9 +1,6 @@
 ---
 layout: home
 excerpt: "Nirav Gandhi blog home page with most recent blogs"
-tags: [Jekyll, theme, responsive, blog, template]
-image:
-  feature: sample-image-1.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
+tags: [nirav, gandhi, developer, blog, posts]
+
 ---

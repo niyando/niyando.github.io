@@ -1,12 +1,12 @@
 ---
 layout: page
 title: Something About Me
-tags: [about, nirav, gandhi, profile]
+tags: [about, nirav, gandhi, profile, developer, surat]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 share: false
 image:
-  feature: sample-image-2.jpg
+  feature: aboutcover.jpg
 ---
 
 An all round web aficionado with more than 3 years of commercial experience building and scaling apis and  applications. Full of energy, experience, hard work and enthusiasm; Works in the heart of the creative industry.
