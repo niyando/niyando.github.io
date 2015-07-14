@@ -11,7 +11,7 @@ image:
   thumb: giveback.jpg
 ---
 
-I have been working in the web development industry for quite a time now. Often are the times when I am working on some feature and I feel to read through related articles/blogs. They help me understand the pros and cons of doing things a certain way. I prefer to ascertain things before deep diving into the code. Such resources prove to be really helpful.
+I have been working in the web development industry for quite a time now. Often are the times when I am working on some feature and I feel the need to read through related tech articles or blogs. They help me understand the pros and cons of doing things a certain way. I prefer to ascertain things before deep diving into the code. Such resources prove to be really helpful.
 
 ### Its time to give back
 

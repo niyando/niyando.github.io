@@ -9,7 +9,7 @@ image:
   feature: aboutcover.jpg
 ---
 
-An all round web aficionado with more than 3 years of commercial experience building and scaling apis and  applications. Full of energy, experience, hard work and enthusiasm; Works in the heart of the creative industry.
+An all round web aficionado with more than 3 years of commercial experience building and scaling apis and web applications. Full of energy, experience, hard work and enthusiasm. Works in the heart of the creative industry.
 
 
 Sees technology as a way of facilitating and improving communication between people and understands that people come before technology.
