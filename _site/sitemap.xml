@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/random/hello-world/</loc>
-    <lastmod>2015-07-11T17:45:25+05:30</lastmod>
+    <loc>http://niyando.com/random/hello-world/</loc>
+    <lastmod>2015-07-11T00:00:00+05:30</lastmod>
   </url>
   <url>
-    <loc>/</loc>
-    <lastmod>2015-07-13T11:18:59+05:30</lastmod>
+    <loc>http://niyando.com/</loc>
+    <lastmod>2015-07-14T09:58:49+05:30</lastmod>
   </url>
   <url>
-    <loc>/theme-setup/</loc>
-    <lastmod>2015-07-13T11:18:59+05:30</lastmod>
+    <loc>http://niyando.com/theme-setup/</loc>
+    <lastmod>2015-07-14T09:58:49+05:30</lastmod>
   </url>
   <url>
-    <loc>/posts/</loc>
-    <lastmod>2015-07-13T11:18:59+05:30</lastmod>
+    <loc>http://niyando.com/posts/</loc>
+    <lastmod>2015-07-14T09:58:49+05:30</lastmod>
   </url>
   <url>
-    <loc>/about/</loc>
-    <lastmod>2015-07-13T11:18:59+05:30</lastmod>
+    <loc>http://niyando.com/about/</loc>
+    <lastmod>2015-07-14T09:58:49+05:30</lastmod>
   </url>
 </urlset>
