@@ -5,6 +5,7 @@ modified:
 categories: web
 excerpt: "Brief guide to kick start your career in web development."
 tags: ['web','development','career']
+comments: true
 image:
   feature: web-dev.jpg
 date: 2015-07-18T11:52:05+05:30
@@ -30,7 +31,7 @@ Learn some basic CSS. Know the difference between id and class. Know how to sele
 
 3) At this point, you should be pretty bored fiddling around your static web page. You've already learnt how to build a form in HTML but have no friggin idea what happens to it when you submit it.
 
-### Welcome to Server Side Scripting.
+#### Welcome to Server Side Scripting.
 
 a) Just to kick start and understand things, start with legacy PHP. You can move to a disciplined MVC framework like Laravel or Ruby on Rails once you get a hang of how web works. Download and install XAMPP. This will setup everything (install php, mysql database and start a apache server locally on your system) for you to get going. Meet your new friend-forever, localhost aka 127.0.0.1
 
@@ -47,10 +48,10 @@ c) HTTP is stateless. Each request is an independent entity. So it becomes impor
 
 4) At this stage, you have built a fully functional application that pretty much does some [CRUD](https://www.wikiwand.com/en/Create,_read,_update_and_delete){:target="_blank"}. Now what about the aesthetic appeal? Keep in mind, we live in web 2.0 where the world goes gaga over Seamless UI Apps.
 
-### Say hello to frontend scripting i.e Javascript
+#### Say hello to frontend scripting i.e Javascript
 
-a) Learn the basics. Its just another programming language. Once you get the syntax right, dive more into learning advance things such as events, objects, listeners, callbacks, dom, cookies and browser.
-b) Learn jQuery. Its not a replacement for Javascript but a library built on top of it. It will help you achieve things done in javascript elegantly. Learn how to traverse dom, use selectors and most importantly, making asynchronous requests (ajax).
+a) Learn the basics. Its just another programming language. Once you get the syntax right, dive more into learning advance things such as events, objects, listeners, callbacks, dom, cookies and browser.<br>
+b) Learn jQuery. Its not a replacement for Javascript but a library built on top of it. It will help you achieve things done in javascript elegantly. Learn how to traverse dom, use selectors and most importantly, making asynchronous requests (ajax).<br>
 c) Incorporate above concepts into your app. Start validating form fields client side. Try to animate something on hover. Try submitting your forms asynchronously using jquery ajax and show a success/error message.
 
 5) Move over to industry standards. Pick and learn a server side MVC framework  thoroughly (Rails, Laravel, CakePHP, Django).

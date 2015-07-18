@@ -174,7 +174,7 @@ Learn some basic CSS. Know the difference between id and class. Know how to sele
 
 <p>3) At this point, you should be pretty bored fiddling around your static web page. You’ve already learnt how to build a form in HTML but have no friggin idea what happens to it when you submit it.</p>
 
-<h3 id="welcome-to-server-side-scripting">Welcome to Server Side Scripting.</h3>
+<h4 id="welcome-to-server-side-scripting">Welcome to Server Side Scripting.</h4>
 
 <p>a) Just to kick start and understand things, start with legacy PHP. You can move to a disciplined MVC framework like Laravel or Ruby on Rails once you get a hang of how web works. Download and install XAMPP. This will setup everything (install php, mysql database and start a apache server locally on your system) for you to get going. Meet your new friend-forever, localhost aka 127.0.0.1</p>
 
@@ -191,10 +191,10 @@ Learn MySQL Database (tables, queries, relations, RDBMS concepts). Integrate it 
 
 <p>4) At this stage, you have built a fully functional application that pretty much does some <a href="https://www.wikiwand.com/en/Create,_read,_update_and_delete" target="_blank">CRUD</a>. Now what about the aesthetic appeal? Keep in mind, we live in web 2.0 where the world goes gaga over Seamless UI Apps.</p>
 
-<h3 id="say-hello-to-frontend-scripting-ie-javascript">Say hello to frontend scripting i.e Javascript</h3>
+<h4 id="say-hello-to-frontend-scripting-ie-javascript">Say hello to frontend scripting i.e Javascript</h4>
 
-<p>a) Learn the basics. Its just another programming language. Once you get the syntax right, dive more into learning advance things such as events, objects, listeners, callbacks, dom, cookies and browser.
-b) Learn jQuery. Its not a replacement for Javascript but a library built on top of it. It will help you achieve things done in javascript elegantly. Learn how to traverse dom, use selectors and most importantly, making asynchronous requests (ajax).
+<p>a) Learn the basics. Its just another programming language. Once you get the syntax right, dive more into learning advance things such as events, objects, listeners, callbacks, dom, cookies and browser.<br />
+b) Learn jQuery. Its not a replacement for Javascript but a library built on top of it. It will help you achieve things done in javascript elegantly. Learn how to traverse dom, use selectors and most importantly, making asynchronous requests (ajax).<br />
 c) Incorporate above concepts into your app. Start validating form fields client side. Try to animate something on hover. Try submitting your forms asynchronously using jquery ajax and show a success/error message.</p>
 
 <p>5) Move over to industry standards. Pick and learn a server side MVC framework  thoroughly (Rails, Laravel, CakePHP, Django).</p>
@@ -227,10 +227,10 @@ Subscribe yourself to some good blogs like <a href="http://code.tutsplus.com/" t
   <h4>Share on</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=http://niyando.com/web/plan-career-in-web-development/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=How should you plan your career in web development?&url=http://niyando.com/web/plan-career-in-web-development/&via=niyando" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://niyando.com/web/plan-career-in-web-development/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="javascript:void(0)" class="facebook" title="Share on Facebook" on-click="window.open('https://www.facebook.com/sharer/sharer.php?u=http://niyando.com/web/plan-career-in-web-development/', 'facebook_share', 'height=320, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
       <a href="https://plus.google.com/share?url=http://niyando.com/web/plan-career-in-web-development/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
@@ -240,6 +240,8 @@ Subscribe yourself to some good blogs like <a href="http://code.tutsplus.com/" t
         <p class="byline"><strong>How should you plan your career in web development?</strong> was published on <time datetime="2015-07-18T11:52:05+05:30">July 18, 2015</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
   
   </article>
 </div><!-- /#main -->
@@ -283,6 +285,30 @@ Subscribe yourself to some good blogs like <a href="http://code.tutsplus.com/" t
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'niyando'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	        
 
