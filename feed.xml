@@ -4,13 +4,97 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://niyando.com" />
-<updated>2015-07-14T20:04:03+05:30</updated>
+<updated>2015-07-18T14:04:14+05:30</updated>
 <id>http://niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
   <uri>http://niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[How should you plan your career in web development?]]></title>
+  <link rel="alternate" type="text/html" href="http://niyando.com/web/plan-career-in-web-development/" />
+  <id>http://niyando.com/web/plan-career-in-web-development</id>
+  <published>2015-07-18T11:52:05+05:30</published>
+  <updated>2015-07-18T11:52:05+05:30</updated>
+  <author>
+    <name>Nirav Gandhi</name>
+    <uri>http://niyando.com</uri>
+    <email>niyando@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; I have originally written this as an &lt;a href=&quot;http://qr.ae/xAAvv&quot;&gt;answer&lt;/a&gt; to a question on Quora. I am also posting it here to increase the visibility and reach wider audience.&lt;/p&gt;
+
+&lt;p&gt;Three years back when I decided to plunge into web development industry, I had no definite guide or roadmap to go about it. There was a lot of information available on web technologies and tutorials, but I always felt it hard to figure out the logical flow to learn things. “Should I start with HTML or PHP?”,”Should I learn legacy PHP or some framework”, “Do I really need to learn jQuery after Javascript?”,.. etc questions popped up often and resisted my natural flow of learning.&lt;/p&gt;
+
+&lt;p&gt;What I always wanted was an optimal path to learning. Step by step approach to enter this industry. This post is intended for audience who wants to kick start their career in web development. I have broken down the learning curve into logical flow of tasks. You can treat this as a &lt;strong&gt;todo&lt;/strong&gt; list. You learn by doing.&lt;/p&gt;
+
+&lt;p&gt;Vital thing is to get your hands dirty and code (I assume that you know the bare minimum of programming). So let’s get started.&lt;/p&gt;
+
+&lt;p&gt;Take one step at a time, get it right and move ahead.&lt;/p&gt;
+
+&lt;p&gt;1) Learn to build some static web pages.
+Jump over to &lt;a href=&quot;http://www.w3schools.com/&quot; target=&quot;_blank&quot;&gt;w3schools&lt;/a&gt; and learn some basic HTML. Acquaint yourself with elements like head, body, div, p, span, form etc and get the overall idea of the markup structure. Once you’re comfortable with building something like &lt;a href=&quot;http://motherfuckingwebsite.com/&quot; target=&quot;_blank&quot;&gt;Motherfucking&lt;/a&gt; Website, jump to the next step.&lt;/p&gt;
+
+&lt;p&gt;2) Learn beautifying your HTML page using CSS.
+Learn some basic CSS. Know the difference between id and class. Know how to select your HTML content &amp;amp; apply styling to it. Learn about different layouts. Try writing inline css; Try an internal stylesheet; Try writing an external stylesheet and include it in your HTML head. Learn why should you put it in head. When you can build something like this &lt;a href=&quot;https://css-tricks.com/examples/SuperSimpleTwoColumn/&quot; target=&quot;_blank&quot;&gt;template&lt;/a&gt; , take a step further.&lt;/p&gt;
+
+&lt;p&gt;3) At this point, you should be pretty bored fiddling around your static web page. You’ve already learnt how to build a form in HTML but have no friggin idea what happens to it when you submit it.&lt;/p&gt;
+
+&lt;h3 id=&quot;welcome-to-server-side-scripting&quot;&gt;Welcome to Server Side Scripting.&lt;/h3&gt;
+
+&lt;p&gt;a) Just to kick start and understand things, start with legacy PHP. You can move to a disciplined MVC framework like Laravel or Ruby on Rails once you get a hang of how web works. Download and install XAMPP. This will setup everything (install php, mysql database and start a apache server locally on your system) for you to get going. Meet your new friend-forever, localhost aka 127.0.0.1&lt;/p&gt;
+
+&lt;p&gt;Learn basics of server side coding.
+To start with, &lt;a href=&quot;https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/How_the_Web_works&quot; target=&quot;_blank&quot;&gt;learn how the web works&lt;/a&gt;.
+Start serving your static HTML page. Once set, go dynamic.
+Know how to send data through url query string/parameters and forms. Know the difference between a GET and a POST request. Know how to collect these data on your local server. Use these data to build response and render result. Start embedding some PHP in your HTML and make the response dynamic. Collect first_name and last_name in a form and show full name on submission. Incorporate some Template Engine (eg Mustache, Smarty) to separate view from your php logic.&lt;/p&gt;
+
+&lt;p&gt;b) Integrate MySQL with your application.
+You will need to persist data at some point in your application.
+Learn MySQL Database (tables, queries, relations, RDBMS concepts). Integrate it with your app locally and start storing/getting data.&lt;/p&gt;
+
+&lt;p&gt;c) HTTP is stateless. Each request is an independent entity. So it becomes important to attach some information about your user to each requests. John Doe should only see messages sent to him in his inbox. Learn about sessions and cookies. Know the difference between them. Design a login/signup flow and start registering users in your MySQL table.&lt;/p&gt;
+
+&lt;p&gt;4) At this stage, you have built a fully functional application that pretty much does some &lt;a href=&quot;https://www.wikiwand.com/en/Create,_read,_update_and_delete&quot; target=&quot;_blank&quot;&gt;CRUD&lt;/a&gt;. Now what about the aesthetic appeal? Keep in mind, we live in web 2.0 where the world goes gaga over Seamless UI Apps.&lt;/p&gt;
+
+&lt;h3 id=&quot;say-hello-to-frontend-scripting-ie-javascript&quot;&gt;Say hello to frontend scripting i.e Javascript&lt;/h3&gt;
+
+&lt;p&gt;a) Learn the basics. Its just another programming language. Once you get the syntax right, dive more into learning advance things such as events, objects, listeners, callbacks, dom, cookies and browser.
+b) Learn jQuery. Its not a replacement for Javascript but a library built on top of it. It will help you achieve things done in javascript elegantly. Learn how to traverse dom, use selectors and most importantly, making asynchronous requests (ajax).
+c) Incorporate above concepts into your app. Start validating form fields client side. Try to animate something on hover. Try submitting your forms asynchronously using jquery ajax and show a success/error message.&lt;/p&gt;
+
+&lt;p&gt;5) Move over to industry standards. Pick and learn a server side MVC framework  thoroughly (Rails, Laravel, CakePHP, Django).&lt;/p&gt;
+
+&lt;p&gt;Start using Bootstrap for building your app’s frontend. It takes care of most of the things (styling, layouts, validations, customisations, responsiveness etc) as per accepted industry standards.&lt;/p&gt;
+
+&lt;p&gt;6) Learn a version control system (svn/git). It tracks and provides control over changes to the source code. Something very important when you’re working in a team. Create a repository on Github and push your work there. Invite your friend to collaborate with you on this cool project.&lt;/p&gt;
+
+&lt;p&gt;If you’ve nailed everything so far, you can proudly update your Linkedin position as a Web Developer.&lt;/p&gt;
+
+&lt;p&gt;But, this is not everything. It is just enough to put you on the right track. Web industry is wide and limitless. Everyday, there are new kids in the block that turn things upside down. The key is to keep yourself updated on best practises and tools used. As Jeffrey Way rightly said &lt;a href=&quot;http://code.tutsplus.com/articles/this-damn-industry--net-17054&quot; target=&quot;_blank&quot;&gt;This Damn Industry&lt;/a&gt; demands constant learning.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We’re all in this together; We all feel behind the pack. But, then again, we stay the course because we love this damn industry.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;What I love about my job and this industry? I struggled all day…but conquered 90% of the problem. Tomorrow…we go again. &lt;a href=&quot;https://twitter.com/hashtag/bringit?src=hash&quot;&gt;#bringit&lt;/a&gt;&lt;/p&gt;&amp;mdash; David Walsh (@davidwalshblog) &lt;a href=&quot;https://twitter.com/davidwalshblog/status/621882063403159553&quot;&gt;July 17, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;br /&gt;
+Subscribe yourself to some good blogs like &lt;a href=&quot;http://code.tutsplus.com/&quot; target=&quot;_blank&quot;&gt;Tuts+&lt;/a&gt;. Make the most of online education presence such as &lt;a href=&quot;http://www.codecademy.com/&quot; target=&quot;_blank&quot;&gt;Codeacademy&lt;/a&gt;, &lt;a href=&quot;https://www.khanacademy.org/&quot; target=&quot;_blank&quot;&gt;Khan Academy&lt;/a&gt;, &lt;a href=&quot;https://www.codeschool.com/&quot; target=&quot;_blank&quot;&gt;Code School&lt;/a&gt;,  &lt;a href=&quot;https://www.udemy.com/&quot; target=&quot;_blank&quot;&gt;Udemy&lt;/a&gt; etc. Follow industry veterans on Twitter and read their blogs. Attend tech conferences and build solid networks.&lt;/p&gt;
+
+&lt;p&gt;Yes, the journey is long.&lt;br /&gt;But, you will enjoy every bit of it.&lt;/p&gt;
+
+&lt;p&gt;Bon Voyage.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://niyando.com/web/plan-career-in-web-development/&quot;&gt;How should you plan your career in web development?&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on July 18, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
