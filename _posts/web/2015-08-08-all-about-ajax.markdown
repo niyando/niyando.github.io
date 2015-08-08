@@ -16,7 +16,7 @@ date: 2015-08-08T12:12:29+05:30
 
 ##Excuse me?
 
-Open up twitter on your browser, compose a 40 chars message and tweet it. Did you notice how it tweets your message without reloading the whole page? Did you ever notice same happening when you comment on your friend's facebook post? Welcome to the asynchronous web.
+Open up twitter on your browser, compose a 140 chars message and tweet it. Did you notice how it tweets your message without reloading the whole page? Did you ever notice same happening when you comment on your friend's facebook post? Welcome to the asynchronous web.
 
 Technically, AJAX makes it possible to initiate a http request (get/post/put etc) as a background process without halting/blocking the current execution of js code. Its the backbone of single page applications.
 
