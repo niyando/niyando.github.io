@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://niyando.com/web/all-about-ajax/</loc>
+    <lastmod>2015-08-08T12:12:29+05:30</lastmod>
+  </url>
+  <url>
     <loc>http://niyando.com/web/plan-career-in-web-development/</loc>
     <lastmod>2015-07-18T11:52:05+05:30</lastmod>
   </url>
@@ -10,18 +14,18 @@
   </url>
   <url>
     <loc>http://niyando.com/</loc>
-    <lastmod>2015-07-18T15:49:13+05:30</lastmod>
+    <lastmod>2015-08-08T19:02:36+05:30</lastmod>
   </url>
   <url>
     <loc>http://niyando.com/theme-setup/</loc>
-    <lastmod>2015-07-18T15:49:13+05:30</lastmod>
+    <lastmod>2015-08-08T19:02:36+05:30</lastmod>
   </url>
   <url>
     <loc>http://niyando.com/posts/</loc>
-    <lastmod>2015-07-18T15:49:13+05:30</lastmod>
+    <lastmod>2015-08-08T19:02:36+05:30</lastmod>
   </url>
   <url>
     <loc>http://niyando.com/about/</loc>
-    <lastmod>2015-07-18T15:49:13+05:30</lastmod>
+    <lastmod>2015-08-08T19:02:36+05:30</lastmod>
   </url>
 </urlset>

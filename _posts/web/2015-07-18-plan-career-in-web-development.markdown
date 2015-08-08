@@ -11,7 +11,7 @@ image:
 date: 2015-07-18T11:52:05+05:30
 ---
 
-**Note:** I have originally written this as an [answer](http://qr.ae/xAAvv) to a question on Quora. I am also posting it here to increase the visibility and reach wider audience.
+**Note:** I have originally written this as an [answer](http://qr.ae/xAAvv){:target="_blank"} to a question on Quora. I am also posting it here to increase the visibility and reach wider audience.
 {: .notice}
 
 Three years back when I decided to plunge into web development industry, I had no definite guide or roadmap to go about it. There was a lot of information available on web technologies and tutorials, but I always felt it hard to figure out the logical flow to learn things. "Should I start with HTML or PHP?","Should I learn legacy PHP or some framework", "Do I really need to learn jQuery after Javascript?",.. etc questions popped up often and resisted my natural flow of learning.
