@@ -1,0 +1,445 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>All About AJAX &#8211; Nirav Gandhi's Blog</title>
+<meta name="description" content="Understanding AJAX and its evolution. ">
+<meta name="keywords" content="web, ajax, asynchonous, jsonp, cors, javascript">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="All About AJAX">
+<meta name="twitter:description" content="Understanding AJAX and its evolution. ">
+<meta name="twitter:site" content="@niyando">
+<meta name="twitter:creator" content="@niyando">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://niyando.com/images/ajax.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="All About AJAX">
+<meta property="og:description" content="Understanding AJAX and its evolution. ">
+<meta property="og:url" content="http://niyando.com/web/all-about-ajax/">
+<meta property="og:site_name" content="Nirav Gandhi's Blog">
+
+<meta property="og:image" content="http://niyando.com/images/ajax.png">
+
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="zozIVtn1UVNoswQAPQ6o-Knn7JczifrmrTLXZS3KNMk">
+
+
+
+<link rel="canonical" href="http://niyando.com/web/all-about-ajax/">
+<link href="http://niyando.com/feed.xml" type="application/atom+xml" rel="alternate" title="Nirav Gandhi's Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://niyando.com/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://niyando.com/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://niyando.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://niyando.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://niyando.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://niyando.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://niyando.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://niyando.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://niyando.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://niyando.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://niyando.com/">Nirav Gandhi's Blog</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				        
+				    
+				    <li><a href="http://niyando.com/about/" >About</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://niyando.com/posts/" >All Posts</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://niyando.com/images/niravgandhi.jpg" class="bio-photo" alt="Nirav Gandhi bio photo">
+
+
+  <h3 itemprop="name">Nirav Gandhi</h3>
+  <p>Codes, Creates, Cleans, Cooks, Cheers & Cares.<br><br>Senior Product Developer at F22 Labs, India</p>
+  <a href="mailto:niyando@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  <a href="http://twitter.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  <a href="http://facebook.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-facebook-square"></i> Facebook</a>
+  
+  <a href="http://linkedin.com/in/ndgandhi" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a>
+  
+  <a href="http://instagram.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
+  
+  <a href="http://github.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  <a href="http://stackoverflow.com/users/1278007" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://niyando.com/web/all-about-ajax/" rel="bookmark" title="All About AJAX">All About AJAX</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <blockquote>
+  <p>Ajax (also AJAX; /ˈeɪdʒæks/; short for asynchronous JavaScript and XML) is a group of interrelated Web development techniques used on the client-side to create asynchronous Web applications.</p>
+</blockquote>
+
+<h2 id="excuse-me">Excuse me?</h2>
+
+<p>Open up twitter on your browser, compose a 40 chars message and tweet it. Did you notice how it tweets your message without reloading the whole page? Did you ever notice same happening when you comment on your friend’s facebook post? Welcome to the asynchronous web.</p>
+
+<p>Technically, AJAX makes it possible to initiate a http request (get/post/put etc) as a background process without halting/blocking the current execution of js code. Its the backbone of single page applications.</p>
+
+<h2 id="synchronous-vs-asynchronous-execution">Synchronous vs asynchronous execution</h2>
+
+<p>When you execute something synchronously, you wait for it to finish before moving on to another task. When you execute something asynchronously, you can move on to another task before it finishes.</p>
+
+<p>For a real life example, lets say you call up your friend to check if he has your book.</p>
+
+<p class="notice"><b>you:</b> hey dude! did i by any chance forgot my book at your place?<br />
+<b>friend:</b> I am not sure. Could you please hold the phone while I check it.<br />
+(after couple of minutes)<br />
+<b>friend:</b> Hey, sorry to keep you on hold but I couldn’t find the book here.May be you should check with John Doe. I saw it last there.<br />
+<b>you:</b> ok thnx. will check with him.<br /></p>
+
+<p class="notice"><b>you:</b> hey dude! did i by any chance forgot my book at your place?<br />
+<b>friend:</b> I am not sure. Let me find it and I’ll call u back?<br />
+<b>you:</b> cool<br />
+(now you’re free to find the book somewhere else / do something else)<br />
+(after couple of minutes)<br />
+<b>friend:</b> I couldn’t find the book here. May be you should check with John Doe. I saw it last there.<br />
+<b>you:</b> Never mind. I found it in my garage. Thanks dude!<br /></p>
+
+<h2 id="asynchronous-javascript">Asynchronous Javascript</h2>
+
+<p>If you’ve done some scripting in javascript, you should have come across popular js function called setTimeout. Using this you can do something after a specified delay. Fire up your browser’s dev console and copy paste following code.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">consoleOne</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">consoleOne</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;I aint blocked&#39;</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span></code></pre></div>
+
+<p>If you noticed the order of logs, you will see that our setTimeout doesn’t block the further execution of our code. It demands a function name that it invokes once its done waiting for the specified delay.</p>
+
+<p>AJAX works on a similar principle. You can initiate a background http request providing a function (callback function) as an argument and this function will be invoked once the server responds with the data (XML/JSON/HTML/txt/etc). You can have access to resultant data inside the scope of this callback function.</p>
+
+<p>Deep down javascript, it works under Event Loop. JS has a message queue that stores list of things to be processed and their respective callback functions to be invoked. When a message is encountered and processed, the associated callback function is called. You can learn more about <a href="http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/" target="_blank">Event Loop Explained</a></p>
+
+<h2 id="ajax-before-jquery">AJAX before jQuery</h2>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">loadSomeInfo</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">xmlhttp</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">)</span>
+    <span class="p">{</span><span class="c1">// code for IE7+, Firefox, Chrome, Opera, Safari</span>
+      <span class="nx">xmlhttp</span><span class="o">=</span><span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="p">{</span><span class="c1">// code for IE6, IE5</span>
+      <span class="nx">xmlhttp</span><span class="o">=</span><span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">status</span><span class="o">==</span><span class="mi">200</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myDiv&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="o">=</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="s2">&quot;some_info.txt&quot;</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+  <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
+
+<figure>
+  <img width="310px" src="/images/ajax1.jpg" />
+</figure>
+
+<p>I know. Not very pretty.</p>
+
+<h2 id="ajax-post-jquery">AJAX post jQuery</h2>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;some_info.txt&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+  <span class="c1">// do something with response</span>
+<span class="p">});</span></code></pre></div>
+
+<figure>
+  <img src="/images/ajax2.gif" />
+</figure>
+
+<p>Apart from a great DOM manipulation api, jQuery brought in few nifty ajax apis (ajax, get, post, load, getJson). At its root, jQuery.ajax() rules it all.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="nx">success</span>
+<span class="p">});</span></code></pre></div>
+
+<p>Ajaxing became breeze and people started hammering it everywhere applicable. Learn more about deferred objects, promises, callbacks to master the art of writing asynchronous javascript.</p>
+
+<h2 id="same-origin-restriction">Same Origin Restriction</h2>
+
+<p>Go to www.stackoverflow.com, open up your browser console and run following command</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/&#39;</span><span class="p">)</span></code></pre></div>
+
+<p>It doesn’t work. Why?</p>
+
+<blockquote>
+  <p>Cross-domain AJAX requests are forbidden by default because of their ability to perform advanced requests (POST, PUT, DELETE and other types of HTTP requests, along with specifying custom HTTP headers) that introduce many cross-site scripting security issues.</p>
+</blockquote>
+
+<p>Domain A can only request some information hosted on Domain A’s server.</p>
+
+<h2 id="why-is-cross-domain-ajax-a-bad-idea">Why is Cross Domain AJAX a bad idea?</h2>
+
+<p>Lets say that you’re logged into your facebook and checking your news feed. Now whenever you browse through fb in logged in state, browser sends related cookies to fb’s server to verify your authenticity.</p>
+
+<p>Now lets say that you get a random email with subject “Hi, Wanna have fun tonight? Click here”. You click the link and it takes you to some fishy page monkeydonkey.com. It has nothing but some flashy content and images.</p>
+
+<p>If Cross Domain AJAX were allowed, this monkeydonkey site could make a AJAX request to facebook.com to post a status message “I am an idiot” or post some random marketing content or send spam messages to your friends. Since you are already logged in some other tab, http request made my monkeydonkey will carry all required information in the headers to allow such actions. Same can also be applied to your net banking websites where consequences could be more serious.</p>
+
+<p>Yes, you can avoid this at server level using CSRF tokens and other checks. But it sounds best to prevent it at the browser level.</p>
+
+<h2 id="solutions-to-achieve-cross-domain-ajax">Solutions to achieve Cross Domain AJAX</h2>
+
+<p>Lets say that you have two applications running on domain.com and anotherdomain.com  respectively. You want both of these applications to communicate with each other to share common data. Given that you’re owner of both the domains, you can do cross domain AJAX using following solutions</p>
+
+<h3 id="jsonp">1) JSONP</h3>
+
+<p>More than a solution, its a caveat and used as a hack by developers to achieve cross domain ajax. If you read through, <a href="https://www.wikiwand.com/en/Cross-origin_resource_sharing" target="_blank">CORS wiki page</a> you will find that there are few resources such as stylesheets, scripts, images, fonts etc that are exempted from same origin policy. What it means that you can load all these resources from random thirdparty domains without any restrictions.</p>
+
+<p>JSONP (JSON with padding) is a way to get around the same origin policy in browsers and access resources on another domain. JSONP does this by injecting a script tag into the dom, since the script tag is not restricted by the same origin policy.</p>
+
+<p>So you can just do</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s2">&quot;http://www.anotherdomain.com/?callback=?&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<p>Using getJSON with ‘callback=?’ will create a javascript tag and insert it into the dom:</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s1">&#39;text/javascript&#39;</span> <span class="nx">src</span><span class="o">=</span><span class="s1">&#39;http://www.anotherdomain.com/?callback=callback1234&#39;</span><span class="o">&gt;</span></code></pre></div>
+
+<p>and on rails server</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">SomeController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">some_action</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;Apple iPhone 6&quot;</span><span class="p">,</span> <span class="ss">:price</span> <span class="o">=&gt;</span> <span class="s2">&quot;$900&quot;</span><span class="p">}</span>
+    <span class="n">render</span> <span class="ss">:json</span> <span class="o">=&gt;</span> <span class="n">data</span><span class="p">,</span> <span class="ss">:callback</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="o">[</span><span class="ss">:callback</span><span class="o">]</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>which yould generate a response as follows</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s1">&#39;text/javascript&#39;</span> <span class="nx">src</span><span class="o">=</span><span class="s1">&#39;http://www.anotherdomain.com/?callback=callback1234&#39;</span><span class="o">&gt;</span>
+  <span class="nx">callback1234</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="s1">&#39;Apple iPhone 6&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="o">:</span><span class="s1">&#39;$900&#39;</span><span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span></code></pre></div>
+
+<p>When this script evaluates it results in the the JSONP script tag being removed from the dom and our getJSON callback being called with the data.</p>
+
+<p>JSONP is a pretty neat approach to expose your services client side across domains. However given the use of the script tag it does present a non trivial security vulnerability for the site using it.</p>
+
+<h3 id="custom-proxy">2) Custom Proxy</h3>
+
+<figure>
+  <img src="/images/proxy.png" />
+</figure>
+
+<p>Lets say that you are developing js plugins for my website. You need some data from accu weather’s api. But you can’t make a cross domain ajax to accu whether. I can provide you a endpoint where you can ask me to request accu whether on your behalf and give you the data.</p>
+
+<p>So my website’s endpoint will behave as a proxy for you.</p>
+
+<p>You can setup your own proxy server to make such requests.</p>
+
+<h3 id="cors">3) CORS</h3>
+
+<blockquote>
+  <p>Cross-Origin Resource Sharing (CORS) is a W3C spec that allows cross-domain communication from the browser. By building on top of the XMLHttpRequest object, CORS allows developers to work with the same idioms as same-domain requests.</p>
+</blockquote>
+
+<p>CORS support requires coordination between both the server and client. You need to allow origins and resources at server level before you could make such requests. Its not supported by old browsers. For the complete list you can refer <a href="http://caniuse.com/#search=cors" target="_blank">CanIUse</a></p>
+
+<p>CORS is much more friendly to the client and easier to implement. Can be somewhat tricky to impelment on your server-side depending on what technology you’re using. But, its a more modern approach than JSONP.</p>
+
+<p>That is it folks. Hope you guys had good time reading this post. If you have any questions/concerns/correction, shoot in the comments. Would be happy to help.</p>
+
+<p>Happy Ajaxing!</p>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=All About AJAX&url=http://niyando.com/web/all-about-ajax/&via=niyando" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://niyando.com/web/all-about-ajax/" class="facebook" title="Share on Facebook" onClick="return fbs_click(600, 300)" target="_blank"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://niyando.com/web/all-about-ajax/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+<script type="text/javascript">
+function fbs_click(width, height) {
+    var leftPosition, topPosition;
+    //Allow for borders.
+    leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+    //Allow for title and status bars.
+    topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+    var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+    u=location.href;
+    t=document.title;
+    window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer', windowFeatures);
+    return false;
+}
+</script>
+        <p class="byline"><strong>All About AJAX</strong> was published on <time datetime="2015-08-08T12:12:29+05:30">August 08, 2015</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://niyando.com/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://niyando.com/web/plan-career-in-web-development/" title="How should you plan your career in web development?">How should you plan your career in web development?</a></li>
+    
+      <li><a href="http://niyando.com/random/hello-world/" title="Hello World">Hello World</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+
+<span>&copy; 2015 Nirav Gandhi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://niyando.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://niyando.com/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-65105340-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'niyando'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+	        
+
+</body>
+</html>

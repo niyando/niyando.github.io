@@ -4,13 +4,218 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://niyando.com" />
-<updated>2015-07-18T15:49:13+05:30</updated>
+<updated>2015-08-08T19:02:36+05:30</updated>
 <id>http://niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
   <uri>http://niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[All About AJAX]]></title>
+  <link rel="alternate" type="text/html" href="http://niyando.com/web/all-about-ajax/" />
+  <id>http://niyando.com/web/all-about-ajax</id>
+  <published>2015-08-08T12:12:29+05:30</published>
+  <updated>2015-08-08T12:12:29+05:30</updated>
+  <author>
+    <name>Nirav Gandhi</name>
+    <uri>http://niyando.com</uri>
+    <email>niyando@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;blockquote&gt;
+  &lt;p&gt;Ajax (also AJAX; /ˈeɪdʒæks/; short for asynchronous JavaScript and XML) is a group of interrelated Web development techniques used on the client-side to create asynchronous Web applications.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;excuse-me&quot;&gt;Excuse me?&lt;/h2&gt;
+
+&lt;p&gt;Open up twitter on your browser, compose a 40 chars message and tweet it. Did you notice how it tweets your message without reloading the whole page? Did you ever notice same happening when you comment on your friend’s facebook post? Welcome to the asynchronous web.&lt;/p&gt;
+
+&lt;p&gt;Technically, AJAX makes it possible to initiate a http request (get/post/put etc) as a background process without halting/blocking the current execution of js code. Its the backbone of single page applications.&lt;/p&gt;
+
+&lt;h2 id=&quot;synchronous-vs-asynchronous-execution&quot;&gt;Synchronous vs asynchronous execution&lt;/h2&gt;
+
+&lt;p&gt;When you execute something synchronously, you wait for it to finish before moving on to another task. When you execute something asynchronously, you can move on to another task before it finishes.&lt;/p&gt;
+
+&lt;p&gt;For a real life example, lets say you call up your friend to check if he has your book.&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;&lt;b&gt;you:&lt;/b&gt; hey dude! did i by any chance forgot my book at your place?&lt;br /&gt;
+&lt;b&gt;friend:&lt;/b&gt; I am not sure. Could you please hold the phone while I check it.&lt;br /&gt;
+(after couple of minutes)&lt;br /&gt;
+&lt;b&gt;friend:&lt;/b&gt; Hey, sorry to keep you on hold but I couldn’t find the book here.May be you should check with John Doe. I saw it last there.&lt;br /&gt;
+&lt;b&gt;you:&lt;/b&gt; ok thnx. will check with him.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;&lt;b&gt;you:&lt;/b&gt; hey dude! did i by any chance forgot my book at your place?&lt;br /&gt;
+&lt;b&gt;friend:&lt;/b&gt; I am not sure. Let me find it and I’ll call u back?&lt;br /&gt;
+&lt;b&gt;you:&lt;/b&gt; cool&lt;br /&gt;
+(now you’re free to find the book somewhere else / do something else)&lt;br /&gt;
+(after couple of minutes)&lt;br /&gt;
+&lt;b&gt;friend:&lt;/b&gt; I couldn’t find the book here. May be you should check with John Doe. I saw it last there.&lt;br /&gt;
+&lt;b&gt;you:&lt;/b&gt; Never mind. I found it in my garage. Thanks dude!&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;asynchronous-javascript&quot;&gt;Asynchronous Javascript&lt;/h2&gt;
+
+&lt;p&gt;If you’ve done some scripting in javascript, you should have come across popular js function called setTimeout. Using this you can do something after a specified delay. Fire up your browser’s dev console and copy paste following code.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;consoleOne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;consoleOne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;I aint blocked&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you noticed the order of logs, you will see that our setTimeout doesn’t block the further execution of our code. It demands a function name that it invokes once its done waiting for the specified delay.&lt;/p&gt;
+
+&lt;p&gt;AJAX works on a similar principle. You can initiate a background http request providing a function (callback function) as an argument and this function will be invoked once the server responds with the data (XML/JSON/HTML/txt/etc). You can have access to resultant data inside the scope of this callback function.&lt;/p&gt;
+
+&lt;p&gt;Deep down javascript, it works under Event Loop. JS has a message queue that stores list of things to be processed and their respective callback functions to be invoked. When a message is encountered and processed, the associated callback function is called. You can learn more about &lt;a href=&quot;http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/&quot; target=&quot;_blank&quot;&gt;Event Loop Explained&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ajax-before-jquery&quot;&gt;AJAX before jQuery&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loadSomeInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;XMLHttpRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// code for IE7+, Firefox, Chrome, Opera, Safari&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XMLHttpRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// code for IE6, IE5&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActiveXObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Microsoft.XMLHTTP&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onreadystatechange&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readyState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myDiv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;responseText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;some_info.txt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;xmlhttp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;figure&gt;
+  &lt;img width=&quot;310px&quot; src=&quot;/images/ajax1.jpg&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I know. Not very pretty.&lt;/p&gt;
+
+&lt;h2 id=&quot;ajax-post-jquery&quot;&gt;AJAX post jQuery&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;some_info.txt&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// do something with response&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/images/ajax2.gif&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Apart from a great DOM manipulation api, jQuery brought in few nifty ajax apis (ajax, get, post, load, getJson). At its root, jQuery.ajax() rules it all.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;dataType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;json&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ajaxing became breeze and people started hammering it everywhere applicable. Learn more about deferred objects, promises, callbacks to master the art of writing asynchronous javascript.&lt;/p&gt;
+
+&lt;h2 id=&quot;same-origin-restriction&quot;&gt;Same Origin Restriction&lt;/h2&gt;
+
+&lt;p&gt;Go to www.stackoverflow.com, open up your browser console and run following command&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://www.google.com/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It doesn’t work. Why?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cross-domain AJAX requests are forbidden by default because of their ability to perform advanced requests (POST, PUT, DELETE and other types of HTTP requests, along with specifying custom HTTP headers) that introduce many cross-site scripting security issues.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Domain A can only request some information hosted on Domain A’s server.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-is-cross-domain-ajax-a-bad-idea&quot;&gt;Why is Cross Domain AJAX a bad idea?&lt;/h2&gt;
+
+&lt;p&gt;Lets say that you’re logged into your facebook and checking your news feed. Now whenever you browse through fb in logged in state, browser sends related cookies to fb’s server to verify your authenticity.&lt;/p&gt;
+
+&lt;p&gt;Now lets say that you get a random email with subject “Hi, Wanna have fun tonight? Click here”. You click the link and it takes you to some fishy page monkeydonkey.com. It has nothing but some flashy content and images.&lt;/p&gt;
+
+&lt;p&gt;If Cross Domain AJAX were allowed, this monkeydonkey site could make a AJAX request to facebook.com to post a status message “I am an idiot” or post some random marketing content or send spam messages to your friends. Since you are already logged in some other tab, http request made my monkeydonkey will carry all required information in the headers to allow such actions. Same can also be applied to your net banking websites where consequences could be more serious.&lt;/p&gt;
+
+&lt;p&gt;Yes, you can avoid this at server level using CSRF tokens and other checks. But it sounds best to prevent it at the browser level.&lt;/p&gt;
+
+&lt;h2 id=&quot;solutions-to-achieve-cross-domain-ajax&quot;&gt;Solutions to achieve Cross Domain AJAX&lt;/h2&gt;
+
+&lt;p&gt;Lets say that you have two applications running on domain.com and anotherdomain.com  respectively. You want both of these applications to communicate with each other to share common data. Given that you’re owner of both the domains, you can do cross domain AJAX using following solutions&lt;/p&gt;
+
+&lt;h3 id=&quot;jsonp&quot;&gt;1) JSONP&lt;/h3&gt;
+
+&lt;p&gt;More than a solution, its a caveat and used as a hack by developers to achieve cross domain ajax. If you read through, &lt;a href=&quot;https://www.wikiwand.com/en/Cross-origin_resource_sharing&quot; target=&quot;_blank&quot;&gt;CORS wiki page&lt;/a&gt; you will find that there are few resources such as stylesheets, scripts, images, fonts etc that are exempted from same origin policy. What it means that you can load all these resources from random thirdparty domains without any restrictions.&lt;/p&gt;
+
+&lt;p&gt;JSONP (JSON with padding) is a way to get around the same origin policy in browsers and access resources on another domain. JSONP does this by injecting a script tag into the dom, since the script tag is not restricted by the same origin policy.&lt;/p&gt;
+
+&lt;p&gt;So you can just do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;http://www.anotherdomain.com/?callback=?&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Using getJSON with ‘callback=?’ will create a javascript tag and insert it into the dom:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;text/javascript&amp;#39;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://www.anotherdomain.com/?callback=callback1234&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and on rails server&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;some_action&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Apple iPhone 6&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$900&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:callback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;which yould generate a response as follows&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;text/javascript&amp;#39;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://www.anotherdomain.com/?callback=callback1234&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;callback1234&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Apple iPhone 6&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;price&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$900&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When this script evaluates it results in the the JSONP script tag being removed from the dom and our getJSON callback being called with the data.&lt;/p&gt;
+
+&lt;p&gt;JSONP is a pretty neat approach to expose your services client side across domains. However given the use of the script tag it does present a non trivial security vulnerability for the site using it.&lt;/p&gt;
+
+&lt;h3 id=&quot;custom-proxy&quot;&gt;2) Custom Proxy&lt;/h3&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/images/proxy.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Lets say that you are developing js plugins for my website. You need some data from accu weather’s api. But you can’t make a cross domain ajax to accu whether. I can provide you a endpoint where you can ask me to request accu whether on your behalf and give you the data.&lt;/p&gt;
+
+&lt;p&gt;So my website’s endpoint will behave as a proxy for you.&lt;/p&gt;
+
+&lt;p&gt;You can setup your own proxy server to make such requests.&lt;/p&gt;
+
+&lt;h3 id=&quot;cors&quot;&gt;3) CORS&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cross-Origin Resource Sharing (CORS) is a W3C spec that allows cross-domain communication from the browser. By building on top of the XMLHttpRequest object, CORS allows developers to work with the same idioms as same-domain requests.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;CORS support requires coordination between both the server and client. You need to allow origins and resources at server level before you could make such requests. Its not supported by old browsers. For the complete list you can refer &lt;a href=&quot;http://caniuse.com/#search=cors&quot; target=&quot;_blank&quot;&gt;CanIUse&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;CORS is much more friendly to the client and easier to implement. Can be somewhat tricky to impelment on your server-side depending on what technology you’re using. But, its a more modern approach than JSONP.&lt;/p&gt;
+
+&lt;p&gt;That is it folks. Hope you guys had good time reading this post. If you have any questions/concerns/correction, shoot in the comments. Would be happy to help.&lt;/p&gt;
+
+&lt;p&gt;Happy Ajaxing!&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://niyando.com/web/all-about-ajax/&quot;&gt;All About AJAX&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on August 08, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
@@ -27,7 +232,7 @@
     <email>niyando@gmail.com</email>
   </author>
   <content type="html">
-    &lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; I have originally written this as an &lt;a href=&quot;http://qr.ae/xAAvv&quot;&gt;answer&lt;/a&gt; to a question on Quora. I am also posting it here to increase the visibility and reach wider audience.&lt;/p&gt;
+    &lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; I have originally written this as an &lt;a href=&quot;http://qr.ae/xAAvv&quot; target=&quot;_blank&quot;&gt;answer&lt;/a&gt; to a question on Quora. I am also posting it here to increase the visibility and reach wider audience.&lt;/p&gt;
 
 &lt;p&gt;Three years back when I decided to plunge into web development industry, I had no definite guide or roadmap to go about it. There was a lot of information available on web technologies and tutorials, but I always felt it hard to figure out the logical flow to learn things. “Should I start with HTML or PHP?”,”Should I learn legacy PHP or some framework”, “Do I really need to learn jQuery after Javascript?”,.. etc questions popped up often and resisted my natural flow of learning.&lt;/p&gt;
 
