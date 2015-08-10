@@ -163,18 +163,18 @@
 
 <p>For a real life example, lets say you call up your friend to check if he has your book.</p>
 
-<p class="notice"><b>you:</b> hey dude! did i by any chance forgot my book at your place?<br />
+<p class="notice"><b>you:</b> hey dude! did i by any chance forget my book at your place?<br />
 <b>friend:</b> I am not sure. Could you please hold the phone while I check it.<br />
 (after couple of minutes)<br />
-<b>friend:</b> Hey, sorry to keep you on hold but I couldn’t find the book here.May be you should check with John Doe. I saw it last there.<br />
+<b>friend:</b> Hey, sorry to keep you on hold but I couldn’t find the book here.May be you should check with John. I saw it last there.<br />
 <b>you:</b> ok thnx. will check with him.<br /></p>
 
-<p class="notice"><b>you:</b> hey dude! did i by any chance forgot my book at your place?<br />
+<p class="notice"><b>you:</b> hey dude! did i by any chance forget my book at your place?<br />
 <b>friend:</b> I am not sure. Let me find it and I’ll call u back?<br />
 <b>you:</b> cool<br />
 (now you’re free to find the book somewhere else / do something else)<br />
 (after couple of minutes)<br />
-<b>friend:</b> I couldn’t find the book here. May be you should check with John Doe. I saw it last there.<br />
+<b>friend:</b> I couldn’t find the book here. May be you should check with John. I saw it last there.<br />
 <b>you:</b> Never mind. I found it in my garage. Thanks dude!<br /></p>
 
 <h2 id="asynchronous-javascript">Asynchronous Javascript</h2>
@@ -226,7 +226,7 @@
 <h2 id="ajax-post-jquery">AJAX post jQuery</h2>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;some_info.txt&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
-  <span class="c1">// do something with response</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myDiv&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
 <span class="p">});</span></code></pre></div>
 
 <figure>
@@ -297,7 +297,7 @@
   <span class="k">end</span>
 <span class="k">end</span></code></pre></div>
 
-<p>which yould generate a response as follows</p>
+<p>which would generate a response as follows</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s1">&#39;text/javascript&#39;</span> <span class="nx">src</span><span class="o">=</span><span class="s1">&#39;http://www.anotherdomain.com/?callback=callback1234&#39;</span><span class="o">&gt;</span>
   <span class="nx">callback1234</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="s1">&#39;Apple iPhone 6&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="o">:</span><span class="s1">&#39;$900&#39;</span><span class="p">});</span>
@@ -364,7 +364,7 @@ function fbs_click(width, height) {
     return false;
 }
 </script>
-        <p class="byline"><strong>All About AJAX</strong> was published on <time datetime="2015-08-08T12:12:29+05:30">August 08, 2015</time>.</p>
+        <p class="byline"><strong>All About AJAX</strong> was published on <time datetime="2015-08-08T12:12:29+05:30">August 08, 2015</time> and last modified on <time datetime="2015-08-10">August 10, 2015</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
