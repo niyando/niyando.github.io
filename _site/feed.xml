@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://niyando.com" />
-<updated>2015-08-08T19:12:58+05:30</updated>
+<updated>2015-08-10T10:12:51+05:30</updated>
 <id>http://niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -19,8 +19,9 @@
   <title type="html"><![CDATA[All About AJAX]]></title>
   <link rel="alternate" type="text/html" href="http://niyando.com/web/all-about-ajax/" />
   <id>http://niyando.com/web/all-about-ajax</id>
+  <updated>2015-08-10 10:08:29 +0530T00:00:00-00:00</updated>
   <published>2015-08-08T12:12:29+05:30</published>
-  <updated>2015-08-08T12:12:29+05:30</updated>
+  
   <author>
     <name>Nirav Gandhi</name>
     <uri>http://niyando.com</uri>
@@ -43,18 +44,18 @@
 
 &lt;p&gt;For a real life example, lets say you call up your friend to check if he has your book.&lt;/p&gt;
 
-&lt;p class=&quot;notice&quot;&gt;&lt;b&gt;you:&lt;/b&gt; hey dude! did i by any chance forgot my book at your place?&lt;br /&gt;
+&lt;p class=&quot;notice&quot;&gt;&lt;b&gt;you:&lt;/b&gt; hey dude! did i by any chance forget my book at your place?&lt;br /&gt;
 &lt;b&gt;friend:&lt;/b&gt; I am not sure. Could you please hold the phone while I check it.&lt;br /&gt;
 (after couple of minutes)&lt;br /&gt;
-&lt;b&gt;friend:&lt;/b&gt; Hey, sorry to keep you on hold but I couldn’t find the book here.May be you should check with John Doe. I saw it last there.&lt;br /&gt;
+&lt;b&gt;friend:&lt;/b&gt; Hey, sorry to keep you on hold but I couldn’t find the book here.May be you should check with John. I saw it last there.&lt;br /&gt;
 &lt;b&gt;you:&lt;/b&gt; ok thnx. will check with him.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p class=&quot;notice&quot;&gt;&lt;b&gt;you:&lt;/b&gt; hey dude! did i by any chance forgot my book at your place?&lt;br /&gt;
+&lt;p class=&quot;notice&quot;&gt;&lt;b&gt;you:&lt;/b&gt; hey dude! did i by any chance forget my book at your place?&lt;br /&gt;
 &lt;b&gt;friend:&lt;/b&gt; I am not sure. Let me find it and I’ll call u back?&lt;br /&gt;
 &lt;b&gt;you:&lt;/b&gt; cool&lt;br /&gt;
 (now you’re free to find the book somewhere else / do something else)&lt;br /&gt;
 (after couple of minutes)&lt;br /&gt;
-&lt;b&gt;friend:&lt;/b&gt; I couldn’t find the book here. May be you should check with John Doe. I saw it last there.&lt;br /&gt;
+&lt;b&gt;friend:&lt;/b&gt; I couldn’t find the book here. May be you should check with John. I saw it last there.&lt;br /&gt;
 &lt;b&gt;you:&lt;/b&gt; Never mind. I found it in my garage. Thanks dude!&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;asynchronous-javascript&quot;&gt;Asynchronous Javascript&lt;/h2&gt;
@@ -106,7 +107,7 @@
 &lt;h2 id=&quot;ajax-post-jquery&quot;&gt;AJAX post jQuery&lt;/h2&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;some_info.txt&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// do something with response&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;#myDiv&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;figure&gt;
@@ -177,7 +178,7 @@
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;which yould generate a response as follows&lt;/p&gt;
+&lt;p&gt;which would generate a response as follows&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;text/javascript&amp;#39;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://www.anotherdomain.com/?callback=callback1234&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;callback1234&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Apple iPhone 6&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;price&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$900&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;

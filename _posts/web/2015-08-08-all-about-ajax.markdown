@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "All About AJAX"
-modified:
+modified: 2015-08-10T10:08:29+05:30
 categories: web
 excerpt: "Understanding AJAX and its evolution. "
 tags: ['web','ajax','asynchonous','jsonp','cors','javascript']
@@ -26,19 +26,19 @@ When you execute something synchronously, you wait for it to finish before movin
 
 For a real life example, lets say you call up your friend to check if he has your book.
 
-<b>you:</b> hey dude! did i by any chance forgot my book at your place?<br>
+<b>you:</b> hey dude! did i by any chance forget my book at your place?<br>
 <b>friend:</b> I am not sure. Could you please hold the phone while I check it.<br>
 (after couple of minutes)<br>
-<b>friend:</b> Hey, sorry to keep you on hold but I couldn't find the book here.May be you should check with John Doe. I saw it last there.<br>
+<b>friend:</b> Hey, sorry to keep you on hold but I couldn't find the book here.May be you should check with John. I saw it last there.<br>
 <b>you:</b> ok thnx. will check with him.<br>
 {: .notice}
 
-<b>you:</b> hey dude! did i by any chance forgot my book at your place?<br>
+<b>you:</b> hey dude! did i by any chance forget my book at your place?<br>
 <b>friend:</b> I am not sure. Let me find it and I'll call u back?<br>
 <b>you:</b> cool<br>
 (now you're free to find the book somewhere else / do something else)<br>
 (after couple of minutes)<br>
-<b>friend:</b> I couldn't find the book here. May be you should check with John Doe. I saw it last there.<br>
+<b>friend:</b> I couldn't find the book here. May be you should check with John. I saw it last there.<br>
 <b>you:</b> Never mind. I found it in my garage. Thanks dude!<br>
 {: .notice}
 
@@ -96,7 +96,7 @@ I know. Not very pretty.
 
 {% highlight js %}
 $.get('some_info.txt', function(response){
-  // do something with response
+  $('#myDiv').html(response.data);
 });
 {% endhighlight %}
 
@@ -177,7 +177,7 @@ class SomeController < ApplicationController
 end
 {% endhighlight %}
 
-which yould generate a response as follows
+which would generate a response as follows
 
 {% highlight js %}
 <script type='text/javascript' src='http://www.anotherdomain.com/?callback=callback1234'>
