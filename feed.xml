@@ -4,13 +4,97 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://niyando.com" />
-<updated>2015-08-12T10:43:46+05:30</updated>
+<updated>2015-09-26T19:22:12+05:30</updated>
 <id>http://niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
   <uri>http://niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Using Angular Js With Rails]]></title>
+  <link rel="alternate" type="text/html" href="http://niyando.com/web/using-angular-js-with-rails/" />
+  <id>http://niyando.com/web/using-angular-js-with-rails</id>
+  <published>2015-09-26T16:23:45+05:30</published>
+  <updated>2015-09-26T16:23:45+05:30</updated>
+  <author>
+    <name>Nirav Gandhi</name>
+    <uri>http://niyando.com</uri>
+    <email>niyando@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Using Angular.js with Rails&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;AngularJS (commonly referred to as “Angular”) is an open-source web application framework maintained by Google and by a community of individual developers and corporations to address many of the challenges encountered in developing single-page applications.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;why-single-page-applications-spa&quot;&gt;Why single page applications (SPA)?&lt;/h2&gt;
+
+&lt;p&gt;We live in an era where user experience (UX) of your application really matters. It can become your unique selling point when marketing your application to your customers. Everyone loves less page reloads and more fluid experience.&lt;/p&gt;
+
+&lt;p&gt;If you’ve worked with Rails 4.0 or &amp;gt;, you should have come across Turbolinks. This awesome introduction by Rails team gives your rails app a SPA feel. When you navigate through different pages of your apps, instead of reloading the browser, it just changes the content of your page. It also updates the url of your page using HTML5 APIs to make sure that your app remains url friendly and SEO could be factored in. Using your app becomes snappier.&lt;/p&gt;
+
+&lt;p&gt;With introduction of Turbolinks 3 in rails 5, we will have partial replacement feature. Developers will have more control on the page elements. From the client side, we will be able to tell Turbolinks what content do we need to change/replace and what we don’t.&lt;/p&gt;
+
+&lt;h2 id=&quot;so-why-should-i-use-anything-else-to-build-spa-when-i-have-turbolink-in-rails&quot;&gt;So why should I use anything else to build SPA when I have turbolink in Rails?&lt;/h2&gt;
+
+&lt;p&gt;Turbolinks as well as AnguluarJS can both be used to make a web application respond faster, in the sense that in response to a user interaction something happens on the web page without reloading and rerendering the whole page.&lt;/p&gt;
+
+&lt;p&gt;AngularJS helps you to build a rich client-side application, where you write a lot of JavaScript code that runs on the client machine. This code makes the site interactive to the user. It communicates with the server-side backend, i.e. with the Rails app, using a JSON API.&lt;/p&gt;
+
+&lt;p&gt;Turbolinks, on the other hand, helps to to make the site interactive without requiring you to code JavaScript. It allows you to stick to the Ruby/Rails conventions and code run on the server-side and still, “magically”, use AJAX to replace, and therefore rerender, only the parts/partials of the page that have changed.&lt;/p&gt;
+
+&lt;p&gt;But, as your application grows, it makes more sense to have a client side js framework such as angular js. This framework would just consume raw json data using backend APIs and offload all client-side/view logic from the server. It helps to structure your js code in separate and reusable components (controllers, directives, factories, templates etc).&lt;/p&gt;
+
+&lt;p&gt;Also and most important, you could make the most of powerful angular’s data bindings. It saves you from writing tedious DOM manipulations and you would just need to focus on data. The views will be updated as you alter the data.&lt;/p&gt;
+
+&lt;h2 id=&quot;integrating-angularjs-with-your-backend-rails&quot;&gt;Integrating Angularjs with your backend (Rails)&lt;/h2&gt;
+
+&lt;p&gt;While you can integrate an angular app inside your existing rails app repo, it makes more sense to separate rails and angular as standalone apps.&lt;/p&gt;
+
+&lt;p&gt;There are many advantages of separating frontend components out of your api service. As we do for ios/android apps, angular client can live on its own as a separate entity. It will be a static website that can be deployed on s3 or any static website host. It just needs to communicate with your api service. You could setup CORS (cross origin resource sharing) to make it possible.&lt;/p&gt;
+
+&lt;h2 id=&quot;some-advantages-of-this-workflow&quot;&gt;Some advantages of this workflow&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;You could use &lt;a href=&quot;https://github.com/rails-api/rails-api&quot; target=&quot;_blank&quot;&gt;rails-api&lt;/a&gt;, which is a subset of rails application. If you are just going to use rails to build apis, it doesn’t make sense to have all functionality that a complete rails app provides. Its lightweight, faster and inclined more towards building API first architecture than a MVC architecture. While its a gem right now, it will be a core part of Rails 5 release.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You could use yeoman angular-generator to generate an angular app and make the most of grunt &amp;amp; bower ecosystem to manage project build (concat,uglify,cdnify etc) and dependencies (angular modules).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Deployments will become flexible. You won’t need to depend on one to push the other.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you ever plan to change your backend stack (eg rails to play/revel), you would not need to worry about your client components. You would just need to maintain the API design.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;By splitting the development of client and backend you could distribute the work over two development teams and keep the application as a whole very extensible.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Personally, this approach seems ‘less dependency and more productivity’ to me.&lt;/p&gt;
+
+&lt;h2 id=&quot;scaffolding-angular-app&quot;&gt;Scaffolding Angular App&lt;/h2&gt;
+
+&lt;p&gt;Yeoman is one of the most popular scaffolding tool for modern apps. It helps in kickstarting a new project with industry accepted standards and conventions. Name a client framework and chances are high that there is already a yeoman generator available for it. It has excellent documentations and includes support for linting, minification, testing etc.&lt;/p&gt;
+
+&lt;p&gt;It provides bower to manage project dependencies and grunt/gulp to build, preview &amp;amp; test your projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/yeoman/generator-angular&quot; target=&quot;_blank&quot;&gt;generator-angular&lt;/a&gt; is a popular generator to scaffold angular js applications. Get quickly started with it using this &lt;a href=&quot;http://yeoman.io/codelab/index.html&quot; target=&quot;_blank&quot;&gt;example&lt;/a&gt; on the official yeoman site.&lt;/p&gt;
+
+&lt;p&gt;We will learn more about this approach and angularjs in upcoming posts.
+Keep building!&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://niyando.com/web/using-angular-js-with-rails/&quot;&gt;Using Angular Js With Rails&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on September 26, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
