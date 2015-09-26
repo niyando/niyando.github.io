@@ -3,10 +3,11 @@ layout: post
 title: "Using Angular Js With Rails"
 modified:
 categories: web
-excerpt: "Using Angular.js with Rails"
+excerpt: "Building standalone angular app with rails backend."
 tags: ['rails','angularjs','yeoman']
 image:
   thumb: rails_angular.jpeg
+comments: true
 date: 2015-09-26T16:23:45+05:30
 ---
 
@@ -39,6 +40,10 @@ Also and most important, you could make the most of powerful angular's data bind
 While you can integrate an angular app inside your existing rails app repo, it makes more sense to separate rails and angular as standalone apps.
 
 There are many advantages of separating frontend components out of your api service. As we do for ios/android apps, angular client can live on its own as a separate entity. It will be a static website that can be deployed on s3 or any static website host. It just needs to communicate with your api service. You could setup CORS (cross origin resource sharing) to make it possible.
+
+<figure>
+  <img width="600px" src="/images/standalone.png">
+</figure>
 
 ##Some advantages of this workflow
 
