@@ -6,7 +6,7 @@ categories: web
 excerpt: "Building standalone angular app with rails backend."
 tags: ['rails','angularjs','yeoman']
 image:
-  thumb: railsangular.jpg
+  thumb: rails-angular.jpg
 comments: true
 date: 2015-09-26T16:23:45+05:30
 ---
