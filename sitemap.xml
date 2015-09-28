@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://niyando.com/web/using-angular-js-with-rails/</loc>
+    <loc>http://www.niyando.com/web/using-angular-js-with-rails/</loc>
     <lastmod>2015-09-26T16:23:45+05:30</lastmod>
   </url>
   <url>
-    <loc>http://niyando.com/web/all-about-ajax/</loc>
+    <loc>http://www.niyando.com/web/all-about-ajax/</loc>
     <lastmod>2015-08-08T12:12:29+05:30</lastmod>
   </url>
   <url>
-    <loc>http://niyando.com/web/plan-career-in-web-development/</loc>
+    <loc>http://www.niyando.com/web/plan-career-in-web-development/</loc>
     <lastmod>2015-07-18T11:52:05+05:30</lastmod>
   </url>
   <url>
-    <loc>http://niyando.com/random/hello-world/</loc>
+    <loc>http://www.niyando.com/random/hello-world/</loc>
     <lastmod>2015-07-11T00:00:00+05:30</lastmod>
   </url>
   <url>
-    <loc>http://niyando.com/</loc>
-    <lastmod>2015-09-28T13:54:20+05:30</lastmod>
+    <loc>http://www.niyando.com/</loc>
+    <lastmod>2015-09-28T13:56:55+05:30</lastmod>
   </url>
   <url>
-    <loc>http://niyando.com/theme-setup/</loc>
-    <lastmod>2015-09-28T13:54:20+05:30</lastmod>
+    <loc>http://www.niyando.com/theme-setup/</loc>
+    <lastmod>2015-09-28T13:56:55+05:30</lastmod>
   </url>
   <url>
-    <loc>http://niyando.com/posts/</loc>
-    <lastmod>2015-09-28T13:54:20+05:30</lastmod>
+    <loc>http://www.niyando.com/posts/</loc>
+    <lastmod>2015-09-28T13:56:55+05:30</lastmod>
   </url>
   <url>
-    <loc>http://niyando.com/about/</loc>
-    <lastmod>2015-09-28T13:54:20+05:30</lastmod>
+    <loc>http://www.niyando.com/about/</loc>
+    <lastmod>2015-09-28T13:56:55+05:30</lastmod>
   </url>
 </urlset>
