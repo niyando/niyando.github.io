@@ -2,13 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Nirav Gandhi's Blog</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://niyando.com/feed.xml" />
-<link rel="alternate" type="text/html" href="http://niyando.com" />
-<updated>2015-09-28T13:54:20+05:30</updated>
-<id>http://niyando.com/</id>
+<link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
+<link rel="alternate" type="text/html" href="http://www.niyando.com" />
+<updated>2015-09-28T13:56:55+05:30</updated>
+<id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
-  <uri>http://niyando.com/</uri>
+  <uri>http://www.niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
 
@@ -17,13 +17,13 @@
 
 <entry>
   <title type="html"><![CDATA[Using Angular Js With Rails]]></title>
-  <link rel="alternate" type="text/html" href="http://niyando.com/web/using-angular-js-with-rails/" />
-  <id>http://niyando.com/web/using-angular-js-with-rails</id>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/web/using-angular-js-with-rails/" />
+  <id>http://www.niyando.com/web/using-angular-js-with-rails</id>
   <published>2015-09-26T16:23:45+05:30</published>
   <updated>2015-09-26T16:23:45+05:30</updated>
   <author>
     <name>Nirav Gandhi</name>
-    <uri>http://niyando.com</uri>
+    <uri>http://www.niyando.com</uri>
     <email>niyando@gmail.com</email>
   </author>
   <content type="html">
@@ -96,7 +96,7 @@
 &lt;p&gt;We will learn more about this approach and angularjs in upcoming posts.
 Keep building!&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://niyando.com/web/using-angular-js-with-rails/&quot;&gt;Using Angular Js With Rails&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on September 26, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/web/using-angular-js-with-rails/&quot;&gt;Using Angular Js With Rails&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on September 26, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -105,14 +105,14 @@ Keep building!&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[All About AJAX]]></title>
-  <link rel="alternate" type="text/html" href="http://niyando.com/web/all-about-ajax/" />
-  <id>http://niyando.com/web/all-about-ajax</id>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/web/all-about-ajax/" />
+  <id>http://www.niyando.com/web/all-about-ajax</id>
   <updated>2015-08-10 10:08:29 +0530T00:00:00-00:00</updated>
   <published>2015-08-08T12:12:29+05:30</published>
   
   <author>
     <name>Nirav Gandhi</name>
-    <uri>http://niyando.com</uri>
+    <uri>http://www.niyando.com</uri>
     <email>niyando@gmail.com</email>
   </author>
   <content type="html">
@@ -302,7 +302,7 @@ Keep building!&lt;/p&gt;
 
 &lt;p&gt;Happy Ajaxing!&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://niyando.com/web/all-about-ajax/&quot;&gt;All About AJAX&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on August 08, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/web/all-about-ajax/&quot;&gt;All About AJAX&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on August 08, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -311,13 +311,13 @@ Keep building!&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[How should you plan your career in web development?]]></title>
-  <link rel="alternate" type="text/html" href="http://niyando.com/web/plan-career-in-web-development/" />
-  <id>http://niyando.com/web/plan-career-in-web-development</id>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/web/plan-career-in-web-development/" />
+  <id>http://www.niyando.com/web/plan-career-in-web-development</id>
   <published>2015-07-18T11:52:05+05:30</published>
   <updated>2015-07-18T11:52:05+05:30</updated>
   <author>
     <name>Nirav Gandhi</name>
-    <uri>http://niyando.com</uri>
+    <uri>http://www.niyando.com</uri>
     <email>niyando@gmail.com</email>
   </author>
   <content type="html">
@@ -386,7 +386,7 @@ Subscribe yourself to some good blogs like &lt;a href=&quot;http://code.tutsplus
 
 &lt;p&gt;Bon Voyage.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://niyando.com/web/plan-career-in-web-development/&quot;&gt;How should you plan your career in web development?&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on July 18, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/web/plan-career-in-web-development/&quot;&gt;How should you plan your career in web development?&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on July 18, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -395,13 +395,13 @@ Subscribe yourself to some good blogs like &lt;a href=&quot;http://code.tutsplus
 
 <entry>
   <title type="html"><![CDATA[Hello World]]></title>
-  <link rel="alternate" type="text/html" href="http://niyando.com/random/hello-world/" />
-  <id>http://niyando.com/random/hello-world</id>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/random/hello-world/" />
+  <id>http://www.niyando.com/random/hello-world</id>
   <published>2015-07-11T00:00:00+05:30</published>
   <updated>2015-07-11T00:00:00+05:30</updated>
   <author>
     <name>Nirav Gandhi</name>
-    <uri>http://niyando.com</uri>
+    <uri>http://www.niyando.com</uri>
     <email>niyando@gmail.com</email>
   </author>
   <content type="html">
@@ -419,7 +419,7 @@ Subscribe yourself to some good blogs like &lt;a href=&quot;http://code.tutsplus
 Until then,&lt;br /&gt;
 Cheers!&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://niyando.com/random/hello-world/&quot;&gt;Hello World&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on July 11, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/random/hello-world/&quot;&gt;Hello World&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on July 11, 2015.&lt;/p&gt;
   </content>
 </entry>
 
