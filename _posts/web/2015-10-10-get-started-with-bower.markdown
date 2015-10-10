@@ -7,6 +7,7 @@ excerpt: "Essentials to get started with Bower"
 tags: ['bower','dependencies','frontend','package']
 image:
   thumb: bower-logo.png
+comments: true
 date: 2015-10-10T15:04:43+05:30
 ---
 
