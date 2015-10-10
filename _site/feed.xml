@@ -4,13 +4,175 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-09-28T13:56:55+05:30</updated>
+<updated>2015-10-10T15:14:14+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
   <uri>http://www.niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Get Started With Bower]]></title>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/web/get-started-with-bower/" />
+  <id>http://www.niyando.com/web/get-started-with-bower</id>
+  <published>2015-10-10T15:04:43+05:30</published>
+  <updated>2015-10-10T15:04:43+05:30</updated>
+  <author>
+    <name>Nirav Gandhi</name>
+    <uri>http://www.niyando.com</uri>
+    <email>niyando@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Get Started with Bower&lt;/p&gt;
+
+&lt;p&gt;We use lot of thirdy party libraries while building a project. It makes sense not to reinvent the wheel and integrate industry accepted standard solutions. Given the active community behind them, they are less prone to bugs.&lt;/p&gt;
+
+&lt;p&gt;We use gems in ruby projects, modules in node projects and frontend libraries (jquery, bootstrap, angular, etc) in client side projects.&lt;/p&gt;
+
+&lt;p&gt;Imagine you have a big frontend project where you use lot of such libraries. Some of these libraries are not standalone and they require one to be loaded before loading itself to function as expected. For instance, jquery needs to be loaded if you want to use bootstrap javascript plugins. And sometimes such libraries are tightly dependent on versions. eg bootstrap x.x might not work with jquery y.y. It becomes a nightmare to update libraries when you want to update a particular library which is tightly dependent on other libraries.&lt;/p&gt;
+
+&lt;h2 id=&quot;bower-to-rescue&quot;&gt;Bower to rescue&lt;/h2&gt;
+
+&lt;p&gt;Bower makes it a cakewalk to manage your frontend dependencies. You can relate it to bundler if you have worked with ruby frameworks. You can list all your gems in one file and &lt;code&gt;bundle install&lt;/code&gt; will install all such gems required in your project. You do not need to check-in source code of such libraries to your version control. Your colleagues can use to same gemfile to setup the project with exact defined dependencies.&lt;/p&gt;
+
+&lt;p&gt;Bower works in a similar fashion. You can search for libraries, install them locally and register new libraries for others to use using Bower.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-bower&quot;&gt;Installing Bower&lt;/h2&gt;
+
+&lt;p&gt;From the docs …&lt;/p&gt;
+
+&lt;p&gt;Bower is a command line utility. Install it with npm.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g bower&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bower requires node, npm and git.&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-go-through-some-basic-bower-commands&quot;&gt;Lets go through some basic Bower commands&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower search jquery&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;will list all bower registries based on your keyword ‘jquery’.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower install jquery-placeholder&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;will create a folder called bower_components in your project and install jquery-placeholder library inside it. You will also notice jquery installed in this folder as jquery-placeholder depends on it.&lt;/p&gt;
+
+&lt;p&gt;Its ok to git ignore this folder bower_components. This practice is subjective and it has its pros and cons. Check this stackoverflow &lt;a href=&quot;http://stackoverflow.com/questions/22327758/should-bower-components-be-gitignored&quot; target=&quot;_blank&quot;&gt;question&lt;/a&gt; to understand more about it.&lt;/p&gt;
+
+&lt;p&gt;You will still need to reference (&lt;script&gt;) the file in your project to use the library.&lt;/script&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;will interactively create a file called bower.json. It will collect all the information about your project and its dependencies.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// bower.json&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;sideproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0.0.0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;authors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;Nirav &amp;lt;niyando@gmail.com&amp;gt;&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;my weekend project to build bla bla&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;MIT&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ignore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;**/.*&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;node_modules&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;bower_components&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;tests&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;jquery-placeholder&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;~2.1.3&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lets just focus on dependencies for now. Other fields are only used when you wish to register your library on bower for distribution. Dependecies object contains information about currently installed libraries and their versions.&lt;/p&gt;
+
+&lt;p&gt;Now you can install new dependencies with flag –save to update the bower file. Bower is smart enough to download the version that works with your existing dependencies. Incase of a conflict or multiple options, it will prompt you with available options.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower uninstall package_name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;will uninstall package and delete required files from bower_components. Use flag –save to update the bower file.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;will show your dependencies. Bower also does a check to see if a newer version of each of the packages is available.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower update package_name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;as it says, will update the package. It will take care of prompting the conflicts if any.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-bower-package&quot;&gt;Creating Bower Package&lt;/h2&gt;
+
+&lt;p&gt;Lets say that you did not find any bower package that can generates a carousel that slides cats pictures vertically and you ended up writing your own solution. You believe in giving back to the community and decide to distribute your library using bower.&lt;/p&gt;
+
+&lt;p&gt;Here is how you should do it.&lt;/p&gt;
+
+&lt;p&gt;First thing ..you cannot distribute your package without hosting it at some git endpoint (github, bitbucker, your own gitlab). You will need to point your bower package to a remote repository where it can consume contents of your package.&lt;/p&gt;
+
+&lt;p&gt;We will use Github for our reference. Push your library on Github&lt;/p&gt;
+
+&lt;p&gt;Now you need to configure your project. Its as simple as adding a bower.json file. Minimally, you need following&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vertical-cat-slider&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.0.1&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Names of bower packages are unique and it will show conflict when you try to register your package using an existing package name.&lt;/p&gt;
+
+&lt;p&gt;Next is version. Git tags are your package versions. While consuming your package, consumers will be able to download/update the source as per tags available. It helps you in managing your releases.&lt;/p&gt;
+
+&lt;p&gt;So before registering your package its important to tag your repo with a version number and push it using –tags flag&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git tag 0.0.1
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push --tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Its also a good idea to ignore some files in your source as it wont be really useful to your end user and they would be endup downloading the entire project. For eg, test suites, development dependencies etc. To ignore such things, you can use ignore key in bower.json&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;ignore&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;**/.*&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;node_modules&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;bower_components&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;tests&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Push your updated bower.json to remote and you are ready to register your package.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower register vertical-cat-slider git://github.com/flying_cat.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;to confirm it got registered, you can check&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower info vertical-cat-slider&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;upating-your-package&quot;&gt;Upating your package&lt;/h2&gt;
+
+&lt;p&gt;After a few days, you realized that you missed a rare case where your slider breaks. You know the fix and you have already pushed it to your git remote. Now you want to update your package. Here is how you should do.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower version &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;newversion&amp;gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; major &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; minor &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; patch&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;from the docs,
+&amp;gt;The newversion argument should be a valid semver string, or a valid second argument to semver.inc (one of “build”, “patch”, “minor”, or “major”). In the second case, the existing version will be incremented by 1 in the specified field. If run in a git repo, it will also create a version commit and tag, and fail if the repo is not clean.&lt;/p&gt;
+
+&lt;p&gt;You can read more about semver string &lt;a href=&quot;http://developer.telerik.com/featured/mystical-magical-semver-ranges-used-npm-bower/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For our purpose, we will do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower version patch -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;Fixes rare case when lazy cat image shows up&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This should increment your version to 0.0.2 in your bower file. Push the bower file to remote with flag –tags and you are done. The new version is available for your users to update.&lt;/p&gt;
+
+&lt;p&gt;This should be enough to get you started. There is more to bower and you can learn all about it on the &lt;a href=&quot;http://bower.io/docs/api/&quot; target=&quot;_blank&quot;&gt;official docs&lt;/a&gt;.
+Until next time, cya!&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/web/get-started-with-bower/&quot;&gt;Get Started With Bower&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on October 10, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
