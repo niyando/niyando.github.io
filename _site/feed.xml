@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-10-10T15:14:14+05:30</updated>
+<updated>2015-10-10T15:25:41+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -27,9 +27,7 @@
     <email>niyando@gmail.com</email>
   </author>
   <content type="html">
-    &lt;p&gt;Get Started with Bower&lt;/p&gt;
-
-&lt;p&gt;We use lot of thirdy party libraries while building a project. It makes sense not to reinvent the wheel and integrate industry accepted standard solutions. Given the active community behind them, they are less prone to bugs.&lt;/p&gt;
+    &lt;p&gt;We use lot of thirdy party libraries while building a project. It makes sense not to reinvent the wheel and integrate industry accepted standard solutions. Given the active community behind them, they are less prone to bugs.&lt;/p&gt;
 
 &lt;p&gt;We use gems in ruby projects, modules in node projects and frontend libraries (jquery, bootstrap, angular, etc) in client side projects.&lt;/p&gt;
 
@@ -43,9 +41,8 @@
 
 &lt;h2 id=&quot;installing-bower&quot;&gt;Installing Bower&lt;/h2&gt;
 
-&lt;p&gt;From the docs …&lt;/p&gt;
-
-&lt;p&gt;Bower is a command line utility. Install it with npm.&lt;/p&gt;
+&lt;p&gt;From the docs …
+Bower is a command line utility. Install it with npm.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g bower&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -63,7 +60,7 @@
 
 &lt;p&gt;Its ok to git ignore this folder bower_components. This practice is subjective and it has its pros and cons. Check this stackoverflow &lt;a href=&quot;http://stackoverflow.com/questions/22327758/should-bower-components-be-gitignored&quot; target=&quot;_blank&quot;&gt;question&lt;/a&gt; to understand more about it.&lt;/p&gt;
 
-&lt;p&gt;You will still need to reference (&lt;script&gt;) the file in your project to use the library.&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;You will still need to reference the file in your project to use the library.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -92,11 +89,11 @@
 
 &lt;p&gt;Lets just focus on dependencies for now. Other fields are only used when you wish to register your library on bower for distribution. Dependecies object contains information about currently installed libraries and their versions.&lt;/p&gt;
 
-&lt;p&gt;Now you can install new dependencies with flag –save to update the bower file. Bower is smart enough to download the version that works with your existing dependencies. Incase of a conflict or multiple options, it will prompt you with available options.&lt;/p&gt;
+&lt;p&gt;Now you can install new dependencies with flag &lt;code&gt;--save&lt;/code&gt; to update the bower file. Bower is smart enough to download the version that works with your existing dependencies. Incase of a conflict or multiple options, it will prompt you with available options.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower uninstall package_name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;will uninstall package and delete required files from bower_components. Use flag –save to update the bower file.&lt;/p&gt;
+&lt;p&gt;will uninstall package and delete required files from bower_components. Use flag &lt;code&gt;--save&lt;/code&gt; to update the bower file.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -112,9 +109,9 @@
 
 &lt;p&gt;Here is how you should do it.&lt;/p&gt;
 
-&lt;p&gt;First thing ..you cannot distribute your package without hosting it at some git endpoint (github, bitbucker, your own gitlab). You will need to point your bower package to a remote repository where it can consume contents of your package.&lt;/p&gt;
+&lt;p&gt;First thing .. You cannot distribute your package without hosting it at some git endpoint (github, bitbucker, your own gitlab). You will need to point your bower package to a remote repository where it can consume contents of your package.&lt;/p&gt;
 
-&lt;p&gt;We will use Github for our reference. Push your library on Github&lt;/p&gt;
+&lt;p&gt;We will use Github for our reference. Push your library to your Github repo.&lt;/p&gt;
 
 &lt;p&gt;Now you need to configure your project. Its as simple as adding a bower.json file. Minimally, you need following&lt;/p&gt;
 
@@ -125,14 +122,14 @@
 
 &lt;p&gt;Names of bower packages are unique and it will show conflict when you try to register your package using an existing package name.&lt;/p&gt;
 
-&lt;p&gt;Next is version. Git tags are your package versions. While consuming your package, consumers will be able to download/update the source as per tags available. It helps you in managing your releases.&lt;/p&gt;
+&lt;p&gt;Next is version. Git tags are your package versions. While consuming your package, consumers will be able to download/update the source as per tags available on your repo. It helps you in managing your releases.&lt;/p&gt;
 
-&lt;p&gt;So before registering your package its important to tag your repo with a version number and push it using –tags flag&lt;/p&gt;
+&lt;p&gt;So before registering your package its important to tag your repo with a version number and push it using &lt;code&gt;--tags&lt;/code&gt; flag&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git tag 0.0.1
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push --tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Its also a good idea to ignore some files in your source as it wont be really useful to your end user and they would be endup downloading the entire project. For eg, test suites, development dependencies etc. To ignore such things, you can use ignore key in bower.json&lt;/p&gt;
+&lt;p&gt;Its also a good idea to ignore some files in your source as it wont be really useful to your end user and they would endup downloading the entire project. For eg, test suites, development dependencies etc. To ignore such things, you can use ignore key in bower.json&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;ignore&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
     &lt;span class=&quot;s2&quot;&gt;&amp;quot;**/.*&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -156,8 +153,11 @@
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower version &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;newversion&amp;gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; major &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; minor &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; patch&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;from the docs,
-&amp;gt;The newversion argument should be a valid semver string, or a valid second argument to semver.inc (one of “build”, “patch”, “minor”, or “major”). In the second case, the existing version will be incremented by 1 in the specified field. If run in a git repo, it will also create a version commit and tag, and fail if the repo is not clean.&lt;/p&gt;
+&lt;p&gt;from the docs,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The newversion argument should be a valid semver string, or a valid second argument to semver.inc (one of “build”, “patch”, “minor”, or “major”). In the second case, the existing version will be incremented by 1 in the specified field. If run in a git repo, it will also create a version commit and tag, and fail if the repo is not clean.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;You can read more about semver string &lt;a href=&quot;http://developer.telerik.com/featured/mystical-magical-semver-ranges-used-npm-bower/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 

@@ -10,8 +10,6 @@ image:
 date: 2015-10-10T15:04:43+05:30
 ---
 
-Get Started with Bower
-
 We use lot of thirdy party libraries while building a project. It makes sense not to reinvent the wheel and integrate industry accepted standard solutions. Given the active community behind them, they are less prone to bugs.
 
 We use gems in ruby projects, modules in node projects and frontend libraries (jquery, bootstrap, angular, etc) in client side projects.
@@ -27,7 +25,6 @@ Bower works in a similar fashion. You can search for libraries, install them loc
 ##Installing Bower
 
 From the docs ...
-
 Bower is a command line utility. Install it with npm.
 {% highlight bash %}
 $ npm install -g bower
@@ -50,7 +47,7 @@ will create a folder called bower_components in your project and install jquery-
 
 Its ok to git ignore this folder bower_components. This practice is subjective and it has its pros and cons. Check this stackoverflow [question](http://stackoverflow.com/questions/22327758/should-bower-components-be-gitignored){:target="_blank"} to understand more about it.
 
-You will still need to reference (<script>) the file in your project to use the library.
+You will still need to reference the file in your project to use the library.
 
 {% highlight bash %}
 $ bower init
@@ -83,13 +80,13 @@ will interactively create a file called bower.json. It will collect all the info
 
 Lets just focus on dependencies for now. Other fields are only used when you wish to register your library on bower for distribution. Dependecies object contains information about currently installed libraries and their versions.
 
-Now you can install new dependencies with flag --save to update the bower file. Bower is smart enough to download the version that works with your existing dependencies. Incase of a conflict or multiple options, it will prompt you with available options.
+Now you can install new dependencies with flag `--save` to update the bower file. Bower is smart enough to download the version that works with your existing dependencies. Incase of a conflict or multiple options, it will prompt you with available options.
 
 {% highlight bash %}
 $ bower uninstall package_name
 {% endhighlight %}
 
-will uninstall package and delete required files from bower_components. Use flag --save to update the bower file.
+will uninstall package and delete required files from bower_components. Use flag `--save` to update the bower file.
 
 {% highlight bash %}
 $ bower list
@@ -109,9 +106,9 @@ Lets say that you did not find any bower package that can generates a carousel t
 
 Here is how you should do it.
 
-First thing ..you cannot distribute your package without hosting it at some git endpoint (github, bitbucker, your own gitlab). You will need to point your bower package to a remote repository where it can consume contents of your package.
+First thing .. You cannot distribute your package without hosting it at some git endpoint (github, bitbucker, your own gitlab). You will need to point your bower package to a remote repository where it can consume contents of your package.
 
-We will use Github for our reference. Push your library on Github
+We will use Github for our reference. Push your library to your Github repo.
 
 Now you need to configure your project. Its as simple as adding a bower.json file. Minimally, you need following
 
@@ -124,9 +121,9 @@ Now you need to configure your project. Its as simple as adding a bower.json fil
 
 Names of bower packages are unique and it will show conflict when you try to register your package using an existing package name.
 
-Next is version. Git tags are your package versions. While consuming your package, consumers will be able to download/update the source as per tags available. It helps you in managing your releases.
+Next is version. Git tags are your package versions. While consuming your package, consumers will be able to download/update the source as per tags available on your repo. It helps you in managing your releases.
 
-So before registering your package its important to tag your repo with a version number and push it using --tags flag
+So before registering your package its important to tag your repo with a version number and push it using `--tags` flag
 
 {% highlight bash %}
 $ git tag 0.0.1
@@ -134,7 +131,7 @@ $ git push --tags
 {% endhighlight %}
 
 
-Its also a good idea to ignore some files in your source as it wont be really useful to your end user and they would be endup downloading the entire project. For eg, test suites, development dependencies etc. To ignore such things, you can use ignore key in bower.json
+Its also a good idea to ignore some files in your source as it wont be really useful to your end user and they would endup downloading the entire project. For eg, test suites, development dependencies etc. To ignore such things, you can use ignore key in bower.json
 
 {% highlight js %}
   "ignore": [
@@ -168,6 +165,7 @@ $ bower version [<newversion> | major | minor | patch]
 
 
 from the docs,
+
 >The newversion argument should be a valid semver string, or a valid second argument to semver.inc (one of “build”, “patch”, “minor”, or “major”). In the second case, the existing version will be incremented by 1 in the specified field. If run in a git repo, it will also create a version commit and tag, and fail if the repo is not clean.
 
 You can read more about semver string [here](http://developer.telerik.com/featured/mystical-magical-semver-ranges-used-npm-bower/){:target="_blank"}
