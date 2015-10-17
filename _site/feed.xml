@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-10-17T13:04:05+05:30</updated>
+<updated>2015-10-17T13:17:11+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -27,23 +27,23 @@
     <email>niyando@gmail.com</email>
   </author>
   <content type="html">
-    &lt;p&gt;We normally intend to use our project across multiple environments. For a typical application, we plan to have a local/development environment for development, staging/test environtment for testing/review and a production environment for your end users.&lt;/p&gt;
+    &lt;p&gt;We normally intend to use our project across multiple environments. For a typical application, we need a local/development environment for development, staging/test environtment for testing/review and a production environment for our end users.&lt;/p&gt;
 
-&lt;p&gt;For all these environments, we have some sort of configuration file that pulls in relevant settings such as database config, mail server settings, 3rd part service api keys, etc. as per the environment.&lt;/p&gt;
+&lt;p&gt;For all these environments, we have some sort of configuration file that pulls in relevant settings such as database config, mail server settings, 3rd part service api keys, etc. as per the environment its deployed on.&lt;/p&gt;
 
 &lt;p&gt;Its possible to do this on a server side application using environment variables set on the server. But how do you do this on a standalone frontend app?&lt;/p&gt;
 
-&lt;p&gt;Your server needs to tell your angular app about the environment and for this your angular app needs to make a first request to the server. But the frontend app has no clue which env api (dev/staging/prod) to hit to get the info. Its a catch22 situation.&lt;/p&gt;
+&lt;p&gt;Your server needs to inform your angular app about the environment and for this your angular app needs to make a first request to the server. But the frontend app has no clue which env api (dev/staging/prod) to hit to get the info. Its a catch22 situation.&lt;/p&gt;
 
 &lt;figure&gt;
-  &lt;img src=&quot;/images/catch22.jpg&quot; /&gt;
+  &lt;img width=&quot;500px&quot; src=&quot;/images/catch22.jpg&quot; /&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Things could be different if your angular app is not a standalone entity and is being served by your backend service (eg angular app inside rails app). You could set the information in a data attr of html tag that could be later consumed by your Angular app. But, as we discussed in an earlier &lt;a href=&quot;http://www.niyando.com/web/using-angular-js-with-rails/&quot; target=&quot;_blank&quot;&gt;post&lt;/a&gt;, this architecture becomes a nightmare to maintain in the long run. So how we do let our standalone app know about the environment its being used for?&lt;/p&gt;
 
 &lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
 
-&lt;p&gt;The main idea lies in setting the config when you &lt;code&gt;build&lt;/code&gt; your app. If you have been using yeoman angular generator, you must be using grunt/gulp to build your application. It usually involves creation of a distribution folder through various tasks to concat, uglify, cdnify etc your source code. So we could introduce an additional task to pull in and set environment related configs while building this distribution folder. Say hello to grunt-ng-constant https://github.com/werk85/grunt-ng-constant&lt;/p&gt;
+&lt;p&gt;The main idea lies in setting the config when you &lt;code&gt;build&lt;/code&gt; your app. If you have been using yeoman angular generator, you must be using grunt/gulp to build your application. It usually involves creation of a distribution folder through various tasks to concat, uglify, cdnify etc your source code. So we could introduce an additional task to pull in and set environment related configs while building this distribution folder. Say hello to &lt;a href=&quot;https://github.com/werk85/grunt-ng-constant&quot; target=&quot;_blank&quot;&gt;grunt-ng-constant&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;grunt-ng-constant&quot;&gt;grunt-ng-constant&lt;/h2&gt;
 
@@ -59,7 +59,7 @@
 
 &lt;p&gt;and inject this module as dependency inside your primary app module&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// app.js -- your app module&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ToDoApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
   &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngResource&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngCookies&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -120,7 +120,7 @@
       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Refer &lt;a href=&quot;https://github.com/werk85/grunt-ng-constant#options&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt; to understand available options. For our use case, we have used module name as &lt;code&gt;Constants&lt;/code&gt; and path where it would be written as &lt;code&gt;app/scripts/configuration.js&lt;/code&gt;. You could also assign data to ENV from json files.&lt;/p&gt;
+&lt;p&gt;Refer &lt;a href=&quot;https://github.com/werk85/grunt-ng-constant#options&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt; to understand available options. For our use case, we have used module name as &lt;code&gt;Constants&lt;/code&gt; and the path where the module would be written  &lt;code&gt;app/scripts/configuration.js&lt;/code&gt;. You could also assign data to ENV from json files.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;constants&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
           &lt;span class=&quot;nx&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app/development.json&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -128,7 +128,7 @@
 
 &lt;p&gt;Lets modify some grunt tasks to run the task we wrote.&lt;/p&gt;
 
-&lt;p&gt;1) You need to call ngconstant:development when we do &lt;code&gt;grunt serve&lt;/code&gt; to serve the app locally. You just need to add this task as shown below.&lt;/p&gt;
+&lt;p&gt;1) You need to call &lt;code&gt;ngconstant:development&lt;/code&gt; when we do &lt;code&gt;grunt serve&lt;/code&gt; to serve the app locally. You just need to add this task as shown below.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;serve&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Compile then start a connect web server&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;dist&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -137,7 +137,7 @@
 
     &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
       &lt;span class=&quot;s1&quot;&gt;&amp;#39;clean:server&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngconstant:development&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngconstant:development&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//here&lt;/span&gt;
       &lt;span class=&quot;s1&quot;&gt;&amp;#39;wiredep&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
       &lt;span class=&quot;s1&quot;&gt;&amp;#39;concurrent:server&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
       &lt;span class=&quot;s1&quot;&gt;&amp;#39;autoprefixer:server&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -148,10 +148,10 @@
 
 &lt;p&gt;2) You need to modify your &lt;code&gt;grunt build&lt;/code&gt; task by adding task to generate production constants.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngconstant:production&amp;#39;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Add &amp;#39;ngconstant:production&amp;#39;&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;clean:dist&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngconstant:production&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngconstant:production&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//here&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;wiredep&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;useminPrepare&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;concurrent:dist&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -169,7 +169,7 @@
 
 &lt;p&gt;3) Till now you might be using same task to build staging and production dist. But now you would need to call ngconstant:env based on the env you wish to build. So we will just duplicate our build task and just modify our task to use staging.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Add new task&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;build-staging&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;clean:dist&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;ngconstant:staging&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -188,7 +188,7 @@
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;htmlmin&amp;#39;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Now we can build for staging using grunt &lt;code&gt;build-staging&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now we can build for staging using &lt;code&gt;grunt build-staging&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;4) You will also need to make sure that your configuration.js file is referenced in index.html  and its referenced under build:js block to consider it for other grunt tasks&lt;/p&gt;
 
@@ -200,7 +200,7 @@
 &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- endbuild --&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;That is it. Fire up your app and you could use these constants inside your app.
-For instance, you could use it in your service/factory as follows.&lt;/p&gt;
+For instance, you could use it in your ToDoCrud factory as follows.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ToDoApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;toDoCrud&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;

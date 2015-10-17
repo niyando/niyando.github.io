@@ -6,14 +6,14 @@
 <head>
 <meta charset="utf-8">
 <title>Environment Variables in Angular Js &#8211; Nirav Gandhi's Blog</title>
-<meta name="description" content="Hoe to use environment variables in an angular app.">
+<meta name="description" content="How to use environment variables in an angular app.">
 <meta name="keywords" content="angular, environment, variables, constants, env">
 
 
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Environment Variables in Angular Js">
-<meta name="twitter:description" content="Hoe to use environment variables in an angular app.">
+<meta name="twitter:description" content="How to use environment variables in an angular app.">
 <meta name="twitter:site" content="@niyando">
 <meta name="twitter:creator" content="@niyando">
 
@@ -24,7 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Environment Variables in Angular Js">
-<meta property="og:description" content="Hoe to use environment variables in an angular app.">
+<meta property="og:description" content="How to use environment variables in an angular app.">
 <meta property="og:url" content="http://www.niyando.com/web/environment-variables-in-angular-js/" >
 <meta property="og:site_name" content="Nirav Gandhi's Blog">
 
@@ -147,23 +147,23 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>We normally intend to use our project across multiple environments. For a typical application, we plan to have a local/development environment for development, staging/test environtment for testing/review and a production environment for your end users.</p>
+      <p>We normally intend to use our project across multiple environments. For a typical application, we need a local/development environment for development, staging/test environtment for testing/review and a production environment for our end users.</p>
 
-<p>For all these environments, we have some sort of configuration file that pulls in relevant settings such as database config, mail server settings, 3rd part service api keys, etc. as per the environment.</p>
+<p>For all these environments, we have some sort of configuration file that pulls in relevant settings such as database config, mail server settings, 3rd part service api keys, etc. as per the environment its deployed on.</p>
 
 <p>Its possible to do this on a server side application using environment variables set on the server. But how do you do this on a standalone frontend app?</p>
 
-<p>Your server needs to tell your angular app about the environment and for this your angular app needs to make a first request to the server. But the frontend app has no clue which env api (dev/staging/prod) to hit to get the info. Its a catch22 situation.</p>
+<p>Your server needs to inform your angular app about the environment and for this your angular app needs to make a first request to the server. But the frontend app has no clue which env api (dev/staging/prod) to hit to get the info. Its a catch22 situation.</p>
 
 <figure>
-  <img src="/images/catch22.jpg" />
+  <img width="500px" src="/images/catch22.jpg" />
 </figure>
 
 <p>Things could be different if your angular app is not a standalone entity and is being served by your backend service (eg angular app inside rails app). You could set the information in a data attr of html tag that could be later consumed by your Angular app. But, as we discussed in an earlier <a href="http://www.niyando.com/web/using-angular-js-with-rails/" target="_blank">post</a>, this architecture becomes a nightmare to maintain in the long run. So how we do let our standalone app know about the environment its being used for?</p>
 
 <h2 id="solution">Solution</h2>
 
-<p>The main idea lies in setting the config when you <code>build</code> your app. If you have been using yeoman angular generator, you must be using grunt/gulp to build your application. It usually involves creation of a distribution folder through various tasks to concat, uglify, cdnify etc your source code. So we could introduce an additional task to pull in and set environment related configs while building this distribution folder. Say hello to grunt-ng-constant https://github.com/werk85/grunt-ng-constant</p>
+<p>The main idea lies in setting the config when you <code>build</code> your app. If you have been using yeoman angular generator, you must be using grunt/gulp to build your application. It usually involves creation of a distribution folder through various tasks to concat, uglify, cdnify etc your source code. So we could introduce an additional task to pull in and set environment related configs while building this distribution folder. Say hello to <a href="https://github.com/werk85/grunt-ng-constant" target="_blank">grunt-ng-constant</a>.</p>
 
 <h2 id="grunt-ng-constant">grunt-ng-constant</h2>
 
@@ -179,7 +179,7 @@
 
 <p>and inject this module as dependency inside your primary app module</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span> <span class="nx">app</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span> <span class="nx">your</span> <span class="nx">app</span> <span class="nx">module</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// app.js -- your app module</span>
 <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ToDoApp&#39;</span><span class="p">,</span> <span class="p">[</span>
   <span class="s1">&#39;ngResource&#39;</span><span class="p">,</span>
   <span class="s1">&#39;ngCookies&#39;</span><span class="p">,</span>
@@ -240,7 +240,7 @@
       <span class="p">}</span>
     <span class="p">}</span></code></pre></div>
 
-<p>Refer <a href="https://github.com/werk85/grunt-ng-constant#options" target="_blank">documentation</a> to understand available options. For our use case, we have used module name as <code>Constants</code> and path where it would be written as <code>app/scripts/configuration.js</code>. You could also assign data to ENV from json files.</p>
+<p>Refer <a href="https://github.com/werk85/grunt-ng-constant#options" target="_blank">documentation</a> to understand available options. For our use case, we have used module name as <code>Constants</code> and the path where the module would be written  <code>app/scripts/configuration.js</code>. You could also assign data to ENV from json files.</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">constants</span><span class="o">:</span> <span class="p">{</span>
           <span class="nx">ENV</span><span class="o">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">readJSON</span><span class="p">(</span><span class="s1">&#39;app/development.json&#39;</span><span class="p">)</span>
@@ -248,7 +248,7 @@
 
 <p>Lets modify some grunt tasks to run the task we wrote.</p>
 
-<p>1) You need to call ngconstant:development when we do <code>grunt serve</code> to serve the app locally. You just need to add this task as shown below.</p>
+<p>1) You need to call <code>ngconstant:development</code> when we do <code>grunt serve</code> to serve the app locally. You just need to add this task as shown below.</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;serve&#39;</span><span class="p">,</span> <span class="s1">&#39;Compile then start a connect web server&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="o">===</span> <span class="s1">&#39;dist&#39;</span><span class="p">)</span> <span class="p">{</span>
@@ -257,7 +257,7 @@
 
     <span class="nx">grunt</span><span class="p">.</span><span class="nx">task</span><span class="p">.</span><span class="nx">run</span><span class="p">([</span>
       <span class="s1">&#39;clean:server&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;ngconstant:development&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;ngconstant:development&#39;</span><span class="p">,</span> <span class="c1">//here</span>
       <span class="s1">&#39;wiredep&#39;</span><span class="p">,</span>
       <span class="s1">&#39;concurrent:server&#39;</span><span class="p">,</span>
       <span class="s1">&#39;autoprefixer:server&#39;</span><span class="p">,</span>
@@ -268,10 +268,10 @@
 
 <p>2) You need to modify your <code>grunt build</code> task by adding task to generate production constants.</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span> <span class="nx">Add</span> <span class="s1">&#39;ngconstant:production&#39;</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Add &#39;ngconstant:production&#39;</span>
   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="p">[</span>
     <span class="s1">&#39;clean:dist&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;ngconstant:production&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ngconstant:production&#39;</span><span class="p">,</span> <span class="c1">//here</span>
     <span class="s1">&#39;wiredep&#39;</span><span class="p">,</span>
     <span class="s1">&#39;useminPrepare&#39;</span><span class="p">,</span>
     <span class="s1">&#39;concurrent:dist&#39;</span><span class="p">,</span>
@@ -289,7 +289,7 @@
 
 <p>3) Till now you might be using same task to build staging and production dist. But now you would need to call ngconstant:env based on the env you wish to build. So we will just duplicate our build task and just modify our task to use staging.</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span> <span class="nx">Add</span> <span class="k">new</span> <span class="nx">task</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Add new task</span>
   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;build-staging&#39;</span><span class="p">,</span> <span class="p">[</span>
     <span class="s1">&#39;clean:dist&#39;</span><span class="p">,</span>
     <span class="s1">&#39;ngconstant:staging&#39;</span><span class="p">,</span>
@@ -308,7 +308,7 @@
     <span class="s1">&#39;htmlmin&#39;</span>
   <span class="p">]);</span></code></pre></div>
 
-<p>Now we can build for staging using grunt <code>build-staging</code></p>
+<p>Now we can build for staging using <code>grunt build-staging</code></p>
 
 <p>4) You will also need to make sure that your configuration.js file is referenced in index.html  and its referenced under build:js block to consider it for other grunt tasks</p>
 
@@ -320,7 +320,7 @@
 <span class="c">&lt;!-- endbuild --&gt;</span></code></pre></div>
 
 <p>That is it. Fire up your app and you could use these constants inside your app.
-For instance, you could use it in your service/factory as follows.</p>
+For instance, you could use it in your ToDoCrud factory as follows.</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ToDoApp&#39;</span><span class="p">)</span>
  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;toDoCrud&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ENV</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
