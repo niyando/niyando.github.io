@@ -1,0 +1,450 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Environment Variables in Angular Js &#8211; Nirav Gandhi's Blog</title>
+<meta name="description" content="Hoe to use environment variables in an angular app.">
+<meta name="keywords" content="angular, environment, variables, constants, env">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Environment Variables in Angular Js">
+<meta name="twitter:description" content="Hoe to use environment variables in an angular app.">
+<meta name="twitter:site" content="@niyando">
+<meta name="twitter:creator" content="@niyando">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.niyando.com/images/angular.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Environment Variables in Angular Js">
+<meta property="og:description" content="Hoe to use environment variables in an angular app.">
+<meta property="og:url" content="http://www.niyando.com/web/environment-variables-in-angular-js/" >
+<meta property="og:site_name" content="Nirav Gandhi's Blog">
+
+<meta property="og:image" content="http://www.niyando.com/images/angular.jpg">
+
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="zozIVtn1UVNoswQAPQ6o-Knn7JczifrmrTLXZS3KNMk">
+
+
+
+<link rel="canonical" href="http://www.niyando.com/web/environment-variables-in-angular-js/">
+<link href="http://www.niyando.com/feed.xml" type="application/atom+xml" rel="alternate" title="Nirav Gandhi's Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://www.niyando.com/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://www.niyando.com/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://www.niyando.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://www.niyando.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://www.niyando.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://www.niyando.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://www.niyando.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.niyando.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.niyando.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.niyando.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://www.niyando.com/">Nirav Gandhi's Blog</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				        
+				    
+				    <li><a href="http://www.niyando.com/about/" >About</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://www.niyando.com/posts/" >All Posts</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://www.niyando.com/images/dp2015.jpg" class="bio-photo" alt="Nirav Gandhi bio photo">
+
+
+  <h3 itemprop="name">Nirav Gandhi</h3>
+  <p>Codes, Creates, Cleans, Cooks, Cheers & Cares.<br><br>Senior Product Developer at F22 Labs, India</p>
+  <a href="mailto:niyando@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  <a href="http://twitter.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  <a href="http://facebook.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-facebook-square"></i> Facebook</a>
+  
+  <a href="http://linkedin.com/in/ndgandhi" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a>
+  
+  <a href="http://instagram.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
+  
+  <a href="http://github.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  <a href="http://stackoverflow.com/users/1278007" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://www.niyando.com/web/environment-variables-in-angular-js/" rel="bookmark" title="Environment Variables in Angular Js">Environment Variables in Angular Js</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>We normally intend to use our project across multiple environments. For a typical application, we plan to have a local/development environment for development, staging/test environtment for testing/review and a production environment for your end users.</p>
+
+<p>For all these environments, we have some sort of configuration file that pulls in relevant settings such as database config, mail server settings, 3rd part service api keys, etc. as per the environment.</p>
+
+<p>Its possible to do this on a server side application using environment variables set on the server. But how do you do this on a standalone frontend app?</p>
+
+<p>Your server needs to tell your angular app about the environment and for this your angular app needs to make a first request to the server. But the frontend app has no clue which env api (dev/staging/prod) to hit to get the info. Its a catch22 situation.</p>
+
+<figure>
+  <img src="/images/catch22.jpg" />
+</figure>
+
+<p>Things could be different if your angular app is not a standalone entity and is being served by your backend service (eg angular app inside rails app). You could set the information in a data attr of html tag that could be later consumed by your Angular app. But, as we discussed in an earlier <a href="http://www.niyando.com/web/using-angular-js-with-rails/" target="_blank">post</a>, this architecture becomes a nightmare to maintain in the long run. So how we do let our standalone app know about the environment its being used for?</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>The main idea lies in setting the config when you <code>build</code> your app. If you have been using yeoman angular generator, you must be using grunt/gulp to build your application. It usually involves creation of a distribution folder through various tasks to concat, uglify, cdnify etc your source code. So we could introduce an additional task to pull in and set environment related configs while building this distribution folder. Say hello to grunt-ng-constant https://github.com/werk85/grunt-ng-constant</p>
+
+<h2 id="grunt-ng-constant">grunt-ng-constant</h2>
+
+<p>Its a plugin for dynamic generation of angular constant and value modules. It generates a module with dynamic constants that can be injected as dependency inside your app module. Check the snippet below.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// configuration.js generated by grunt-ng-constant</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;Constants&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="p">.</span><span class="nx">constant</span><span class="p">(</span><span class="s1">&#39;ENV&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;development&#39;</span><span class="p">,</span>
+                    <span class="nx">api</span><span class="o">:</span><span class="s1">&#39;http://localhost:3000/api/v1/&#39;</span><span class="p">,</span>
+                    <span class="nx">stripeKey</span><span class="o">:</span> <span class="s1">&#39;test1234xyz&#39;</span><span class="p">}</span>
+<span class="p">);</span></code></pre></div>
+
+<p>and inject this module as dependency inside your primary app module</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span> <span class="nx">app</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span> <span class="nx">your</span> <span class="nx">app</span> <span class="nx">module</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ToDoApp&#39;</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s1">&#39;ngResource&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;ngCookies&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;ngMessages&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Constants&#39;</span>
+<span class="p">])</span></code></pre></div>
+
+<h2 id="install-and-setup-grunt-ng-constant">Install and setup grunt-ng-constant</h2>
+
+<p>Install it using npm</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install grunt-ng-constant --save-dev</code></pre></div>
+
+<p>Once installed, open your Gruntfile.js and check if you already have this command.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;load-grunt-tasks&#39;</span><span class="p">)(</span><span class="nx">grunt</span><span class="p">);</span>
+<span class="c1">// It automatically loads all grunt tasks</span></code></pre></div>
+
+<p>If not, you can use following command as mentioned in documentation</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-ng-constant&#39;</span><span class="p">);</span></code></pre></div>
+
+<p>Now lets write a simple config task that can generate our Constants module.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">ngconstant</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">space</span><span class="o">:</span> <span class="s1">&#39;  &#39;</span><span class="p">,</span>
+        <span class="nx">wrap</span><span class="o">:</span> <span class="s1">&#39;&quot;use strict&quot;;\n\n {%= __ngModule %}&#39;</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Constants&#39;</span><span class="p">,</span>
+        <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;app/scripts/configuration.js&#39;</span>
+      <span class="p">},</span>
+      <span class="nx">development</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">constants</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">ENV</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span>
+            <span class="nx">apiEndpoint</span><span class="o">:</span> <span class="s1">&#39;http://localhost:3000/api/v1/&#39;</span><span class="p">,</span>
+            <span class="nx">stripeKey</span><span class="o">:</span> <span class="s1">&#39;testBlaBla1234Xyz&#39;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nx">staging</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">constants</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">ENV</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;staging&#39;</span><span class="p">,</span>
+            <span class="nx">apiEndpoint</span><span class="o">:</span> <span class="s1">&#39;https://ww.my-staging-app.com/api/v1/&#39;</span><span class="p">,</span>
+            <span class="nx">stripeKey</span><span class="o">:</span> <span class="s1">&#39;testBlaBla1234Xyz&#39;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nx">production</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">constants</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">ENV</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span>
+            <span class="nx">apiEndpoint</span><span class="o">:</span> <span class="s1">&#39;https://www.my-prod-app.com/api/v1/&#39;</span><span class="p">,</span>
+            <span class="nx">stripeKey</span><span class="o">:</span> <span class="s1">&#39;pk_live_12345678&#39;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span></code></pre></div>
+
+<p>Refer <a href="https://github.com/werk85/grunt-ng-constant#options" target="_blank">documentation</a> to understand available options. For our use case, we have used module name as <code>Constants</code> and path where it would be written as <code>app/scripts/configuration.js</code>. You could also assign data to ENV from json files.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">constants</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">ENV</span><span class="o">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">readJSON</span><span class="p">(</span><span class="s1">&#39;app/development.json&#39;</span><span class="p">)</span>
+        <span class="p">}</span></code></pre></div>
+
+<p>Lets modify some grunt tasks to run the task we wrote.</p>
+
+<p>1) You need to call ngconstant:development when we do <code>grunt serve</code> to serve the app locally. You just need to add this task as shown below.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;serve&#39;</span><span class="p">,</span> <span class="s1">&#39;Compile then start a connect web server&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="o">===</span> <span class="s1">&#39;dist&#39;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">task</span><span class="p">.</span><span class="nx">run</span><span class="p">([</span><span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="s1">&#39;connect:dist:keepalive&#39;</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">task</span><span class="p">.</span><span class="nx">run</span><span class="p">([</span>
+      <span class="s1">&#39;clean:server&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;ngconstant:development&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;wiredep&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;concurrent:server&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;autoprefixer:server&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;connect:livereload&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;watch&#39;</span>
+    <span class="p">]);</span>
+  <span class="p">});</span></code></pre></div>
+
+<p>2) You need to modify your <code>grunt build</code> task by adding task to generate production constants.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span> <span class="nx">Add</span> <span class="s1">&#39;ngconstant:production&#39;</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;clean:dist&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ngconstant:production&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;wiredep&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;useminPrepare&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;concurrent:dist&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;autoprefixer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;concat&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ngAnnotate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;copy:dist&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cdnify&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cssmin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uglify&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;filerev&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;usemin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;htmlmin&#39;</span>
+  <span class="p">]);</span></code></pre></div>
+
+<p>3) Till now you might be using same task to build staging and production dist. But now you would need to call ngconstant:env based on the env you wish to build. So we will just duplicate our build task and just modify our task to use staging.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span> <span class="nx">Add</span> <span class="k">new</span> <span class="nx">task</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;build-staging&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;clean:dist&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ngconstant:staging&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;wiredep&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;useminPrepare&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;concurrent:dist&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;autoprefixer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;concat&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ngAnnotate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;copy:dist&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cdnify&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cssmin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uglify&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;filerev&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;usemin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;htmlmin&#39;</span>
+  <span class="p">]);</span></code></pre></div>
+
+<p>Now we can build for staging using grunt <code>build-staging</code></p>
+
+<p>4) You will also need to make sure that your configuration.js file is referenced in index.html  and its referenced under build:js block to consider it for other grunt tasks</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- build:js scripts/scripts.js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;scripts/configuration.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;scripts/app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- all other js files --&gt;</span>
+
+<span class="c">&lt;!-- endbuild --&gt;</span></code></pre></div>
+
+<p>That is it. Fire up your app and you could use these constants inside your app.
+For instance, you could use it in your service/factory as follows.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ToDoApp&#39;</span><span class="p">)</span>
+ <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;toDoCrud&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ENV</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">public_api</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">public_api</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">ENV</span><span class="p">.</span><span class="nx">api</span> <span class="o">+</span> <span class="s1">&#39;todo&#39;</span><span class="p">;</span>
+      <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">public_api</span><span class="p">;</span>
+ <span class="p">});</span></code></pre></div>
+
+<p>And this is how you get environment vars in your angular app. Might look like some work, but once you set it up, it becomes very easy to extend and use env vars in your app as required.</p>
+
+<p>Keep building!</p>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Environment Variables in Angular Js&url=http://www.niyando.com/web/environment-variables-in-angular-js/&via=niyando" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.niyando.com/web/environment-variables-in-angular-js/" class="facebook" title="Share on Facebook" onClick="return fbs_click(600, 300)" target="_blank"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://www.niyando.com/web/environment-variables-in-angular-js/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+<script type="text/javascript">
+function fbs_click(width, height) {
+    var leftPosition, topPosition;
+    //Allow for borders.
+    leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+    //Allow for title and status bars.
+    topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+    var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+    u=location.href;
+    t=document.title;
+    window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer', windowFeatures);
+    return false;
+}
+</script>
+        <p class="byline"><strong>Environment Variables in Angular Js</strong> was published on <time datetime="2015-10-17T12:38:07+05:30">October 17, 2015</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://www.niyando.com/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://www.niyando.com/web/get-started-with-bower/" title="Get Started With Bower">Get Started With Bower</a></li>
+    
+      <li><a href="http://www.niyando.com/web/using-angular-js-with-rails/" title="Using Angular Js With Rails">Using Angular Js With Rails</a></li>
+    
+      <li><a href="http://www.niyando.com/web/all-about-ajax/" title="All About AJAX">All About AJAX</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+
+<span>&copy; 2015 Nirav Gandhi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://www.niyando.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://www.niyando.com/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-65105340-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'niyando'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+	        
+
+</body>
+</html>
