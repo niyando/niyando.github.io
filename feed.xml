@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-10-31T17:31:20+05:30</updated>
+<updated>2015-10-31T17:40:39+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -51,14 +51,14 @@
 
 &lt;p&gt;At any given time, our entity ‘order’ will be under one state and can transition to other permissible states on triggering required event.&lt;/p&gt;
 
-&lt;h3 id=&quot;so-why-should-i-use-state-machines-to-design-this-in-rails&quot;&gt;So why should I use state machines to design this in Rails?&lt;/h3&gt;
+&lt;h3 id=&quot;so-why-should-i-use-state-machine-to-design-this-in-rails&quot;&gt;So why should I use state machine to design this in Rails?&lt;/h3&gt;
 
 &lt;p&gt;I heard you. &lt;br /&gt;
-Ofcourse, you can design above model without using state machines. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.&lt;/p&gt;
+Ofcourse, you can design above model without using state machine. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.&lt;/p&gt;
 
-&lt;p&gt;The main reason for using state machines is to help the design process. It is much easier to figure out all the possible edge conditions by drawing out the state machine on paper. This will make sure that your application will have less bugs and less undefined behavior.&lt;/p&gt;
+&lt;p&gt;The main reason for using state machine is to help the design process. It is much easier to figure out all the possible edge conditions by drawing out the state machine on paper. This will make sure that your application will have less bugs and less undefined behavior.&lt;/p&gt;
 
-&lt;h2 id=&quot;using-state-machines-in-activerecord-model&quot;&gt;Using state machines in ActiveRecord model.&lt;/h2&gt;
+&lt;h2 id=&quot;using-state-machine-in-activerecord-model&quot;&gt;Using state machine in ActiveRecord model.&lt;/h2&gt;
 
 &lt;p&gt;We will be using this awesome gem called &lt;a href=&quot;https://github.com/aasm/aasm&quot; target=&quot;_blank&quot;&gt;AASM&lt;/a&gt; (Act As State Machine). Its a generic library that provides adapters to support various models. We will just be dealing with ActiveRecord model in this post.&lt;/p&gt;
 
