@@ -1,0 +1,403 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>State Machine in Rails Model &#8211; Nirav Gandhi's Blog</title>
+<meta name="description" content="Learn how to implement state machine in your Rails app.">
+<meta name="keywords" content="rails, state machine, model, machine">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="State Machine in Rails Model">
+<meta name="twitter:description" content="Learn how to implement state machine in your Rails app.">
+<meta name="twitter:site" content="@niyando">
+<meta name="twitter:creator" content="@niyando">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.niyando.com/images/aasm_flow.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="State Machine in Rails Model">
+<meta property="og:description" content="Learn how to implement state machine in your Rails app.">
+<meta property="og:url" content="http://www.niyando.com/web/state-machines-in-rails-model/" >
+<meta property="og:site_name" content="Nirav Gandhi's Blog">
+
+<meta property="og:image" content="http://www.niyando.com/images/aasm_flow.png">
+
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="zozIVtn1UVNoswQAPQ6o-Knn7JczifrmrTLXZS3KNMk">
+
+
+
+<link rel="canonical" href="http://www.niyando.com/web/state-machines-in-rails-model/">
+<link href="http://www.niyando.com/feed.xml" type="application/atom+xml" rel="alternate" title="Nirav Gandhi's Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://www.niyando.com/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://www.niyando.com/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://www.niyando.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://www.niyando.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://www.niyando.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://www.niyando.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://www.niyando.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.niyando.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.niyando.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.niyando.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://www.niyando.com/">Nirav Gandhi's Blog</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				        
+				    
+				    <li><a href="http://www.niyando.com/about/" >About</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://www.niyando.com/posts/" >All Posts</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://www.niyando.com/images/dp2015.jpg" class="bio-photo" alt="Nirav Gandhi bio photo">
+
+
+  <h3 itemprop="name">Nirav Gandhi</h3>
+  <p>Codes, Creates, Cleans, Cooks, Cheers & Cares.<br><br>Senior Product Developer at F22 Labs, India</p>
+  <a href="mailto:niyando@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  <a href="http://twitter.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  <a href="http://facebook.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-facebook-square"></i> Facebook</a>
+  
+  <a href="http://linkedin.com/in/ndgandhi" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a>
+  
+  <a href="http://instagram.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
+  
+  <a href="http://github.com/niyando" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  <a href="http://stackoverflow.com/users/1278007" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://www.niyando.com/web/state-machines-in-rails-model/" rel="bookmark" title="State Machine in Rails Model">State Machine in Rails Model</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>Last time I heard ‘state machine’ was 5 years back when I was dozing in my computer science lecture. Professor drew some flowchart with math notations on board to explain us the concept of computation around finite states.</p>
+
+<p>State machine aka finite state machine is a system consisting of finite number of states, rules to map one state to another or itself for any possible inputs. The system is in one state at a time and can transition to other allowed state by triggering an event.</p>
+
+<p>As a rails developer, you won’t easily encounter state machines until you find it being used in someone else’s code or some gem. Few weeks back, I was reading through ‘Mastering Modern Payments’ to integrate Stripe in my Rails app and I found the concept being used there. Its one of the best things we could use to design a model having multiple states. We won’t be diving into what is being abstracted away and focus more on ‘when to use them and how can we use them in our rails app’.</p>
+
+<p>Every modern application feature is built around a flow of events. For instance, if we consider ‘ordering a product’ on an ecommerce application, the most common and minimal flow of events would be as follows.</p>
+
+<ul>
+  <li>User places an order.</li>
+  <li>Warehouse team processes the order.</li>
+  <li>Packing team packs the orderered products.</li>
+  <li>Shipping team ships the order to nearest hub.</li>
+  <li>Delivery guys deliver the product to user.</li>
+  <li>At any point of time before delivery, user can cancel the order.</li>
+</ul>
+
+<p>Representing above flow in a diagram</p>
+<figure>
+  <img width="500px" src="/images/aasm_flow.png" />
+</figure>
+
+<p>At any given time, our entity ‘order’ will be under one state and can transition to other permissible states on triggering required event.</p>
+
+<h3 id="so-why-should-i-care-to-use-state-machines-to-achieve-above-in-rails">So why should I care to use state machines to achieve above in Rails?</h3>
+
+<p>I heard you.
+Ofcourse, you can design above model without using state machines. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.</p>
+
+<p>The main reason for using state machines is to help the design process. It is much easier to figure out all the possible edge conditions by drawing out the state machine on paper. This will make sure that your application will have less bugs and less undefined behavior.</p>
+
+<h2 id="using-state-machines-in-activerecord-model">Using state machines in ActiveRecord model.</h2>
+
+<p>We will be using this awesome gem called <a href="https://github.com/aasm/aasm" target="_blank">AASM</a> (Act As State Machine). Its a generic library that provides adapters to support various models. We will just be dealing with ActiveRecord model in this post.</p>
+
+<h3 id="usage">Usage</h3>
+
+<p>Install the gem as instructed under documentation.
+Lets design our Order model.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Order</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="kp">include</span> <span class="no">AASM</span>
+
+  <span class="n">aasm</span> <span class="ss">column</span><span class="p">:</span> <span class="s1">&#39;state&#39;</span> <span class="k">do</span>
+    <span class="n">state</span> <span class="ss">:placed</span><span class="p">,</span> <span class="ss">:initial</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+    <span class="n">state</span> <span class="ss">:processing</span>
+    <span class="n">state</span> <span class="ss">:packed</span>
+    <span class="n">state</span> <span class="ss">:shipped</span>
+    <span class="n">state</span> <span class="ss">:delivered</span>
+    <span class="n">state</span> <span class="ss">:cancelled</span>
+
+    <span class="n">event</span> <span class="ss">:process</span> <span class="k">do</span>
+      <span class="n">transitions</span> <span class="ss">:from</span> <span class="o">=&gt;</span> <span class="ss">:placed</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:processing</span>
+    <span class="k">end</span>
+
+    <span class="n">event</span> <span class="ss">:pack</span> <span class="k">do</span>
+      <span class="n">transitions</span> <span class="ss">:from</span> <span class="o">=&gt;</span> <span class="ss">:processing</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:packed</span>
+    <span class="k">end</span>
+
+    <span class="n">event</span> <span class="ss">:ship</span> <span class="k">do</span>
+      <span class="n">transitions</span> <span class="ss">:from</span> <span class="o">=&gt;</span> <span class="ss">:packed</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:shipped</span>
+    <span class="k">end</span>
+
+    <span class="n">event</span> <span class="ss">:deliver</span> <span class="k">do</span>
+      <span class="n">transitions</span> <span class="ss">:from</span> <span class="o">=&gt;</span> <span class="ss">:shipped</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:delivered</span>
+    <span class="k">end</span>
+
+    <span class="n">event</span> <span class="ss">:cancel</span> <span class="k">do</span>
+      <span class="n">transitions</span> <span class="ss">:from</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:placed</span><span class="p">,</span> <span class="ss">:processed</span><span class="p">,</span> <span class="ss">:packed</span><span class="p">,</span> <span class="ss">:shipped</span><span class="o">]</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:cancelled</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></div>
+
+<p>Whoa! There we go. By just looking at this code, we can picture the flow of our model. It is self explanatory. We have defined our states, events and transitions as per our design. Now lets explore the awesomeness this gem provides out of the box.</p>
+
+<p>It provides us with nifty instance methods.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">o</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">new</span>  <span class="c1"># new order obj with status as &#39;placed&#39;</span>
+<span class="n">o</span><span class="o">.</span><span class="n">placed?</span>      <span class="c1"># returns true</span>
+<span class="n">o</span><span class="o">.</span><span class="n">processing?</span>  <span class="c1"># returns false</span>
+<span class="n">o</span><span class="o">.</span><span class="n">may_process?</span> <span class="c1"># returns truthy value</span>
+<span class="n">o</span><span class="o">.</span><span class="n">may_cancel?</span>  <span class="c1"># returns truthy value</span>
+<span class="n">o</span><span class="o">.</span><span class="n">may_deliver?</span> <span class="c1"># retuns false</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">process</span>   <span class="c1"># transitions state to &#39;processing&#39; but not saved</span>
+<span class="n">o</span><span class="o">.</span><span class="n">process!</span>  <span class="c1"># transitions state to &#39;processing&#39; and save it</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">deliver</span> <span class="c1"># raises AASM::InvalidTransition: Event &#39;deliver&#39; cannot transition from &#39;processing&#39;</span></code></pre></div>
+
+<p>Ain’t you already drooling?</p>
+<figure>
+  <img width="500px" src="/images/homerdrooling.jpg" />
+</figure>
+
+<p>If you dont want to raise exceptions, you could do</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">aasm</span> <span class="ss">:whiny_transitions</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span></code></pre></div>
+
+<p>and it will return <code>false</code> instead of raising exception.</p>
+
+<p>We can also pass a block to state changing methods (events). Block will only execute if transition succeeds.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">o</span><span class="o">.</span><span class="n">ship!</span> <span class="k">do</span>
+  <span class="n">o</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">order_shipped_email</span>
+<span class="k">end</span></code></pre></div>
+
+<p>We can also define callbacks around states, events and transitions. They will be called when certain criterias are met (eg leaving/entering a state)</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">state</span> <span class="ss">:processing</span><span class="p">,</span> <span class="ss">:before_enter</span> <span class="o">=&gt;</span> <span class="ss">:do_blabla</span>
+
+<span class="n">event</span> <span class="ss">:deliver</span> <span class="k">do</span>
+  <span class="n">after</span> <span class="k">do</span>
+    <span class="c1"># called after transition &#39;shipped&#39; to &#39;delivered&#39; is finished</span>
+  <span class="k">end</span>
+  <span class="n">transitions</span> <span class="ss">:from</span> <span class="o">=&gt;</span> <span class="ss">:shipped</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:delivered</span>
+<span class="k">end</span></code></pre></div>
+
+<p>You can check the available callbacks and their order of execution documented <a href="https://github.com/aasm/aasm#callbacks" target="_blank">here</a>.</p>
+
+<p>We can also use guards (:guard, :if, :unless) to transition states conditionally.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">event</span> <span class="ss">:cancel</span> <span class="k">do</span>
+  <span class="n">transitions</span> <span class="ss">:from</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:placed</span><span class="p">,</span> <span class="ss">:processed</span><span class="p">,</span> <span class="ss">:packed</span><span class="p">,</span> <span class="ss">:shipped</span><span class="o">]</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:cancelled</span><span class="p">,</span> <span class="ss">:if</span> <span class="o">=&gt;</span> <span class="ss">:can_cancel_order?</span>
+<span class="k">end</span></code></pre></div>
+
+<p>AASM also provides us with scope methods to query required states</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Order</span><span class="o">.</span><span class="n">shipped</span> <span class="c1"># returns all records with state as shipped</span>
+<span class="no">Order</span><span class="o">.</span><span class="n">placed</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;created_at &gt;=  ?&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">ago</span><span class="p">)</span></code></pre></div>
+
+<p>If you are using Rails version 4.1+, chances are high that you are using ActiveRecord Enums.</p>
+
+<p>Good news is AASM plays well with Enums.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">enum</span> <span class="ss">state</span><span class="p">:{</span>
+  <span class="ss">placed</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="ss">processing</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="ss">packed</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="ss">shipped</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="ss">delivered</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="ss">cancelled</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span>
+
+<span class="n">aasm</span> <span class="ss">column</span><span class="p">:</span> <span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="ss">enum</span><span class="p">:</span><span class="kp">true</span> <span class="k">do</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Lets take a look back to check what all did ‘AASM’ do for us</p>
+
+<p><i class="fa fa-check-square-o"></i> Set default value for our state field
+<i class="fa fa-check-square-o"></i> Validate transitions from one state to another
+<i class="fa fa-check-square-o"></i> Callbacks to invoke function on state transition
+<i class="fa fa-check-square-o"></i> Instance methods to get/set state with other useful helpers
+<i class="fa fa-check-square-o"></i> Scope methods to query db for required states</p>
+
+<p>Imagine having to do all these without using state machines.</p>
+<figure>
+  <img width="500px" src="/images/nosmith.gif" />
+</figure>
+
+<p>There are many other things that AASM can do for us. We can customize and extend it as we need. Refer documentation for more details.</p>
+
+<p>Hope you’re taking away something good from this post.
+Cheers!</p>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=State Machine in Rails Model&url=http://www.niyando.com/web/state-machines-in-rails-model/&via=niyando" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.niyando.com/web/state-machines-in-rails-model/" class="facebook" title="Share on Facebook" onClick="return fbs_click(600, 300)" target="_blank"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://www.niyando.com/web/state-machines-in-rails-model/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+<script type="text/javascript">
+function fbs_click(width, height) {
+    var leftPosition, topPosition;
+    //Allow for borders.
+    leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+    //Allow for title and status bars.
+    topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+    var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+    u=location.href;
+    t=document.title;
+    window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer', windowFeatures);
+    return false;
+}
+</script>
+        <p class="byline"><strong>State Machine in Rails Model</strong> was published on <time datetime="2015-10-31T16:01:33+05:30">October 31, 2015</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://www.niyando.com/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://www.niyando.com/web/environment-variables-in-angular-js/" title="Environment Variables in Angular Js">Environment Variables in Angular Js</a></li>
+    
+      <li><a href="http://www.niyando.com/web/get-started-with-bower/" title="Get Started With Bower">Get Started With Bower</a></li>
+    
+      <li><a href="http://www.niyando.com/web/using-angular-js-with-rails/" title="Using Angular Js With Rails">Using Angular Js With Rails</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+
+<span>&copy; 2015 Nirav Gandhi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://www.niyando.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://www.niyando.com/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-65105340-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+	        
+
+</body>
+</html>

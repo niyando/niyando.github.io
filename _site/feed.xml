@@ -4,13 +4,200 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-10-17T13:17:11+05:30</updated>
+<updated>2015-10-31T17:06:01+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
   <uri>http://www.niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[State Machine in Rails Model]]></title>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/web/state-machines-in-rails-model/" />
+  <id>http://www.niyando.com/web/state-machines-in-rails-model</id>
+  <published>2015-10-31T16:01:33+05:30</published>
+  <updated>2015-10-31T16:01:33+05:30</updated>
+  <author>
+    <name>Nirav Gandhi</name>
+    <uri>http://www.niyando.com</uri>
+    <email>niyando@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Last time I heard ‘state machine’ was 5 years back when I was dozing in my computer science lecture. Professor drew some flowchart with math notations on board to explain us the concept of computation around finite states.&lt;/p&gt;
+
+&lt;p&gt;State machine aka finite state machine is a system consisting of finite number of states, rules to map one state to another or itself for any possible inputs. The system is in one state at a time and can transition to other allowed state by triggering an event.&lt;/p&gt;
+
+&lt;p&gt;As a rails developer, you won’t easily encounter state machines until you find it being used in someone else’s code or some gem. Few weeks back, I was reading through ‘Mastering Modern Payments’ to integrate Stripe in my Rails app and I found the concept being used there. Its one of the best things we could use to design a model having multiple states. We won’t be diving into what is being abstracted away and focus more on ‘when to use them and how can we use them in our rails app’.&lt;/p&gt;
+
+&lt;p&gt;Every modern application feature is built around a flow of events. For instance, if we consider ‘ordering a product’ on an ecommerce application, the most common and minimal flow of events would be as follows.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;User places an order.&lt;/li&gt;
+  &lt;li&gt;Warehouse team processes the order.&lt;/li&gt;
+  &lt;li&gt;Packing team packs the orderered products.&lt;/li&gt;
+  &lt;li&gt;Shipping team ships the order to nearest hub.&lt;/li&gt;
+  &lt;li&gt;Delivery guys deliver the product to user.&lt;/li&gt;
+  &lt;li&gt;At any point of time before delivery, user can cancel the order.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Representing above flow in a diagram&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img width=&quot;500px&quot; src=&quot;/images/aasm_flow.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;At any given time, our entity ‘order’ will be under one state and can transition to other permissible states on triggering required event.&lt;/p&gt;
+
+&lt;h3 id=&quot;so-why-should-i-care-to-use-state-machines-to-achieve-above-in-rails&quot;&gt;So why should I care to use state machines to achieve above in Rails?&lt;/h3&gt;
+
+&lt;p&gt;I heard you.
+Ofcourse, you can design above model without using state machines. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.&lt;/p&gt;
+
+&lt;p&gt;The main reason for using state machines is to help the design process. It is much easier to figure out all the possible edge conditions by drawing out the state machine on paper. This will make sure that your application will have less bugs and less undefined behavior.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-state-machines-in-activerecord-model&quot;&gt;Using state machines in ActiveRecord model.&lt;/h2&gt;
+
+&lt;p&gt;We will be using this awesome gem called &lt;a href=&quot;https://github.com/aasm/aasm&quot; target=&quot;_blank&quot;&gt;AASM&lt;/a&gt; (Act As State Machine). Its a generic library that provides adapters to support various models. We will just be dealing with ActiveRecord model in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;usage&quot;&gt;Usage&lt;/h3&gt;
+
+&lt;p&gt;Install the gem as instructed under documentation.
+Lets design our Order model.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Order&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;AASM&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;aasm&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;state&amp;#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:placed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:initial&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:processing&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:packed&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:shipped&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:delivered&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:cancelled&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:process&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;transitions&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:placed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:processing&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:pack&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;transitions&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:processing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:packed&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:ship&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;transitions&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:packed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:shipped&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:deliver&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;transitions&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:shipped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:delivered&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:cancel&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;transitions&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:placed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:processed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:packed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:shipped&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:cancelled&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Whoa! There we go. By just looking at this code, we can picture the flow of our model. It is self explanatory. We have defined our states, events and transitions as per our design. Now lets explore the awesomeness this gem provides out of the box.&lt;/p&gt;
+
+&lt;p&gt;It provides us with nifty instance methods.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Order&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# new order obj with status as &amp;#39;placed&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;placed?&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# returns true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;processing?&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# returns false&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;may_process?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# returns truthy value&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;may_cancel?&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# returns truthy value&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;may_deliver?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# retuns false&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# transitions state to &amp;#39;processing&amp;#39; but not saved&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process!&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# transitions state to &amp;#39;processing&amp;#39; and save it&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deliver&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# raises AASM::InvalidTransition: Event &amp;#39;deliver&amp;#39; cannot transition from &amp;#39;processing&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ain’t you already drooling?&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img width=&quot;500px&quot; src=&quot;/images/homerdrooling.jpg&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;If you dont want to raise exceptions, you could do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;aasm&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:whiny_transitions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and it will return &lt;code&gt;false&lt;/code&gt; instead of raising exception.&lt;/p&gt;
+
+&lt;p&gt;We can also pass a block to state changing methods (events). Block will only execute if transition succeeds.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ship!&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order_shipped_email&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We can also define callbacks around states, events and transitions. They will be called when certain criterias are met (eg leaving/entering a state)&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:processing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:before_enter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:do_blabla&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:deliver&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;after&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# called after transition &amp;#39;shipped&amp;#39; to &amp;#39;delivered&amp;#39; is finished&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;transitions&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:shipped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:delivered&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can check the available callbacks and their order of execution documented &lt;a href=&quot;https://github.com/aasm/aasm#callbacks&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can also use guards (:guard, :if, :unless) to transition states conditionally.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:cancel&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;transitions&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:placed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:processed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:packed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:shipped&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:cancelled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:can_cancel_order?&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;AASM also provides us with scope methods to query required states&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Order&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shipped&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# returns all records with state as shipped&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Order&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;placed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;created_at &amp;gt;=  ?&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;days&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ago&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are using Rails version 4.1+, chances are high that you are using ActiveRecord Enums.&lt;/p&gt;
+
+&lt;p&gt;Good news is AASM plays well with Enums.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;placed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;processing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;packed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;shipped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;delivered&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;cancelled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;aasm&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;state&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;enum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lets take a look back to check what all did ‘AASM’ do for us&lt;/p&gt;
+
+&lt;p&gt;&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Set default value for our state field
+&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Validate transitions from one state to another
+&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Callbacks to invoke function on state transition
+&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Instance methods to get/set state with other useful helpers
+&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Scope methods to query db for required states&lt;/p&gt;
+
+&lt;p&gt;Imagine having to do all these without using state machines.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img width=&quot;500px&quot; src=&quot;/images/nosmith.gif&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;There are many other things that AASM can do for us. We can customize and extend it as we need. Refer documentation for more details.&lt;/p&gt;
+
+&lt;p&gt;Hope you’re taking away something good from this post.
+Cheers!&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/web/state-machines-in-rails-model/&quot;&gt;State Machine in Rails Model&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on October 31, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
