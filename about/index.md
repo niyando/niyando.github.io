@@ -6,7 +6,7 @@ modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 share: false
 image:
-  feature: aboutcover.jpg
+  feature:
 ---
 
 An all round web aficionado with more than 3 years of commercial experience building and scaling apis and web applications. Full of energy, experience, hard work and enthusiasm. Works in the heart of the creative industry.
