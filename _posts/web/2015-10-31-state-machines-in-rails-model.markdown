@@ -7,7 +7,7 @@ excerpt: "Learn how to implement state machine in your Rails app."
 tags: ["rails","state machine","model","machine"]
 image:
   thumb: aasm_flow.png
-comment: true
+comments: true
 date: 2015-10-31T16:01:33+05:30
 ---
 
@@ -35,7 +35,7 @@ At any given time, our entity 'order' will be under one state and can transition
 
 ###So why should I use state machines to design this in Rails?
 
-I heard you.
+I heard you. <br>
 Ofcourse, you can design above model without using state machines. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.
 
 The main reason for using state machines is to help the design process. It is much easier to figure out all the possible edge conditions by drawing out the state machine on paper. This will make sure that your application will have less bugs and less undefined behavior.
@@ -181,8 +181,8 @@ Imagine having to do all these without using state machine.
   <img width="500px" src="/images/nosmith.gif">
 </figure>
 
-There are many other things that AASM can do for us. We can customize and extend it as we need. Refer documentation for more details.
+There are many other things under AASM that we can customize and extend it as required. Refer gem documentation for more details.
 
-So that’s a taste of state_machine. Hope you're taking away something good from this post.
+So that’s a taste of state machine. Hope you're taking away something good from this post.
 
 Cheers!
