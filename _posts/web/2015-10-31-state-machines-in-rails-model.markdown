@@ -33,14 +33,14 @@ Representing above flow in a diagram
 
 At any given time, our entity 'order' will be under one state and can transition to other permissible states on triggering required event.
 
-###So why should I use state machines to design this in Rails?
+###So why should I use state machine to design this in Rails?
 
 I heard you. <br>
-Ofcourse, you can design above model without using state machines. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.
+Ofcourse, you can design above model without using state machine. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.
 
-The main reason for using state machines is to help the design process. It is much easier to figure out all the possible edge conditions by drawing out the state machine on paper. This will make sure that your application will have less bugs and less undefined behavior.
+The main reason for using state machine is to help the design process. It is much easier to figure out all the possible edge conditions by drawing out the state machine on paper. This will make sure that your application will have less bugs and less undefined behavior.
 
-##Using state machines in ActiveRecord model.
+##Using state machine in ActiveRecord model.
 
 We will be using this awesome gem called [AASM](https://github.com/aasm/aasm){:target="_blank"} (Act As State Machine). Its a generic library that provides adapters to support various models. We will just be dealing with ActiveRecord model in this post.
 
