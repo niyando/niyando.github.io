@@ -151,7 +151,7 @@
 
 <p>State machine aka finite state machine is a system consisting of finite number of states, rules to map one state to another or itself for any possible inputs. The system is in one state at a time and can transition to other allowed state by triggering an event.</p>
 
-<p>As a rails developer, you won’t easily encounter state machines until you find it being used in someone else’s code or some gem. Few weeks back, I was reading through ‘Mastering Modern Payments’ to integrate Stripe in my Rails app and I found the concept being used there. Its one of the best things we could use to design a model having multiple states. We won’t be diving into what is being abstracted away and focus more on ‘when to use them and how can we use them in our rails app’.</p>
+<p>As a rails developer, you won’t easily encounter state machine until you find it being used in someone else’s code or some gem. Few weeks back, I was reading through ‘Mastering Modern Payments’ to integrate Stripe in my Rails app and I found the concept being used there. Its one of the best things we could use to design a model having multiple states. We won’t be diving into what is being abstracted away and focus more on ‘when to use them and how can we use them in our rails app’.</p>
 
 <p>Every modern application feature is built around a flow of events. For instance, if we consider ‘ordering a product’ on an ecommerce application, the most common and minimal flow of events would be as follows.</p>
 
@@ -160,7 +160,7 @@
   <li>Warehouse team processes the order.</li>
   <li>Packing team packs the orderered products.</li>
   <li>Shipping team ships the order to nearest hub.</li>
-  <li>Delivery guys deliver the product to user.</li>
+  <li>Delivery guys deliver the ordered products to user.</li>
   <li>At any point of time before delivery, user can cancel the order.</li>
 </ul>
 
@@ -171,7 +171,7 @@
 
 <p>At any given time, our entity ‘order’ will be under one state and can transition to other permissible states on triggering required event.</p>
 
-<h3 id="so-why-should-i-care-to-use-state-machines-to-achieve-above-in-rails">So why should I care to use state machines to achieve above in Rails?</h3>
+<h3 id="so-why-should-i-use-state-machines-to-design-this-in-rails">So why should I use state machines to design this in Rails?</h3>
 
 <p>I heard you.
 Ofcourse, you can design above model without using state machines. You could just write some validations to make it work. Its ok to do that as long as your model is limited to a couple of states. But imagine writing the same for a model that has 5-6 different states like our Order model. You would end up beefing up your model with 100 lines of validations just to check the validity of state transitions. If you need to add one more state in your model later, you would again need to go through all the code to check if adding a state could pop any issues. Ultimately, this approach becomes cumbersome to manage and is more prone to bugs.</p>
@@ -230,22 +230,22 @@ Lets design our Order model.</p>
 <span class="n">o</span><span class="o">.</span><span class="n">processing?</span>  <span class="c1"># returns false</span>
 <span class="n">o</span><span class="o">.</span><span class="n">may_process?</span> <span class="c1"># returns truthy value</span>
 <span class="n">o</span><span class="o">.</span><span class="n">may_cancel?</span>  <span class="c1"># returns truthy value</span>
-<span class="n">o</span><span class="o">.</span><span class="n">may_deliver?</span> <span class="c1"># retuns false</span>
+<span class="n">o</span><span class="o">.</span><span class="n">may_deliver?</span> <span class="c1"># returns false</span>
 
-<span class="n">o</span><span class="o">.</span><span class="n">process</span>   <span class="c1"># transitions state to &#39;processing&#39; but not saved</span>
-<span class="n">o</span><span class="o">.</span><span class="n">process!</span>  <span class="c1"># transitions state to &#39;processing&#39; and save it</span>
+<span class="n">o</span><span class="o">.</span><span class="n">process</span>   <span class="c1"># transitions state to &#39;processing&#39; but does not save it</span>
+<span class="n">o</span><span class="o">.</span><span class="n">process!</span>  <span class="c1"># transitions state to &#39;processing&#39; and saves it</span>
 
 <span class="n">o</span><span class="o">.</span><span class="n">deliver</span> <span class="c1"># raises AASM::InvalidTransition: Event &#39;deliver&#39; cannot transition from &#39;processing&#39;</span></code></pre></div>
 
 <p>Ain’t you already drooling?</p>
 <figure>
-  <img width="500px" src="/images/homerdrooling.jpg" />
+  <img width="500px" src="/images/homerdrool.gif" />
 </figure>
 
 <p>If you dont want to raise exceptions, you could do</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">aasm</span> <span class="ss">:whiny_transitions</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span>
-  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="c1">#...</span>
 <span class="k">end</span></code></pre></div>
 
 <p>and it will return <code>false</code> instead of raising exception.</p>
@@ -299,21 +299,22 @@ Lets design our Order model.</p>
 
 <p>Lets take a look back to check what all did ‘AASM’ do for us</p>
 
-<p><i class="fa fa-check-square-o"></i> Set default value for our state field
-<i class="fa fa-check-square-o"></i> Validate transitions from one state to another
-<i class="fa fa-check-square-o"></i> Callbacks to invoke function on state transition
-<i class="fa fa-check-square-o"></i> Instance methods to get/set state with other useful helpers
+<p><i class="fa fa-check-square-o"></i> Set default value for our state field<br />
+<i class="fa fa-check-square-o"></i> Validate transitions from one state to another<br />
+<i class="fa fa-check-square-o"></i> Callbacks to invoke function on state transition<br />
+<i class="fa fa-check-square-o"></i> Instance methods to get/set state with other useful helpers<br />
 <i class="fa fa-check-square-o"></i> Scope methods to query db for required states</p>
 
-<p>Imagine having to do all these without using state machines.</p>
+<p>Imagine having to do all these without using state machine.</p>
 <figure>
   <img width="500px" src="/images/nosmith.gif" />
 </figure>
 
 <p>There are many other things that AASM can do for us. We can customize and extend it as we need. Refer documentation for more details.</p>
 
-<p>Hope you’re taking away something good from this post.
-Cheers!</p>
+<p>So that’s a taste of state_machine. Hope you’re taking away something good from this post.</p>
+
+<p>Cheers!</p>
 
       <hr />
       <footer role="contentinfo">
