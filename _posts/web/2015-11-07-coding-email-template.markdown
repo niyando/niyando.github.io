@@ -16,7 +16,7 @@ Email is an important medium of communication with your customer. Right from `si
 
 Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.
 
-##Its 2015 and I still use {% raw %}<tables>{% endraw %} to build my email templates.
+##Its 2015 and I still use `<tables>` to build my email templates.
 
  Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.
 
@@ -56,12 +56,16 @@ No
 In most cases, customer's email client will block the stylesheet being loaded from the remote server. Spam filters don't like this behavior of calling the home server for additional resources. Your email won't appear as you designed. Some clients even strip the style in the head. So, you're put further behind 90's to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.
 
 
+
 ##Possible solutions to make the whole process easy.
+
 
 
 ###Get started with [Ink](http://foundation.zurb.com/emails.html){:target="_blank"} (now Foundation) framework.
 
  Seriously. You asked for responsiveness to your content and they do it right across all the mail clients. Consider it as a bootstrap alternative for emails. They provide a similar grid concept that makes it very flexible to code your html to support device specific design. It also encourages developers to write standard html code that is supported across all email clients. Explore more goodies under the [documentation](http://zurb.com/ink/docs.php){:target="_blank"}.
+
+ You could also use my boilerplate [gist](https://gist.github.com/niyando/f24e3920c8815d799609){:target="_blank"} to get started quickly.
 
 ###Use Premailer
 
