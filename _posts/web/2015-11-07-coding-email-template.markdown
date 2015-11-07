@@ -6,7 +6,7 @@ categories: web
 excerpt: "Best practices on designing and testing email templates."
 tags: ["email","template","rails","css","design"]
 image:
-  thumb: coding-emails.html
+  thumb: coding-emails.png
 date: 2015-11-07T16:15:46+05:30
 comments: true
 ---
