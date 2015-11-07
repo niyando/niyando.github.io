@@ -5,30 +5,30 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Using Angular Js With Rails &#8211; Nirav Gandhi's Blog</title>
-<meta name="description" content="Building standalone angular app with rails backend.">
-<meta name="keywords" content="rails, angularjs, yeoman">
+<title>Coding Email Template &#8211; Nirav Gandhi's Blog</title>
+<meta name="description" content="Best practices on designing and testing email templates.">
+<meta name="keywords" content="email, template, rails, css, design">
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Using Angular Js With Rails">
-<meta name="twitter:description" content="Building standalone angular app with rails backend.">
+<meta name="twitter:title" content="Coding Email Template">
+<meta name="twitter:description" content="Best practices on designing and testing email templates.">
 <meta name="twitter:site" content="@niyando">
 <meta name="twitter:creator" content="@niyando">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.niyando.com/images/rails-angular.jpg">
+<meta name="twitter:image" content="http://www.niyando.com/images/coding-emails.html">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Using Angular Js With Rails">
-<meta property="og:description" content="Building standalone angular app with rails backend.">
-<meta property="og:url" content="http://www.niyando.com/web/using-angular-js-with-rails/" >
+<meta property="og:title" content="Coding Email Template">
+<meta property="og:description" content="Best practices on designing and testing email templates.">
+<meta property="og:url" content="http://www.niyando.com/web/coding-email-template/" >
 <meta property="og:site_name" content="Nirav Gandhi's Blog">
 
-<meta property="og:image" content="http://www.niyando.com/images/rails-angular.jpg">
+<meta property="og:image" content="http://www.niyando.com/images/coding-emails.html">
 
 
 <!-- Webmaster Tools verfication -->
@@ -36,7 +36,7 @@
 
 
 
-<link rel="canonical" href="http://www.niyando.com/web/using-angular-js-with-rails/">
+<link rel="canonical" href="http://www.niyando.com/web/coding-email-template/">
 <link href="http://www.niyando.com/feed.xml" type="application/atom+xml" rel="alternate" title="Nirav Gandhi's Blog Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -143,78 +143,85 @@
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://www.niyando.com/web/using-angular-js-with-rails/" rel="bookmark" title="Using Angular Js With Rails">Using Angular Js With Rails</a></h1>
+        <h1><a href="http://www.niyando.com/web/coding-email-template/" rel="bookmark" title="Coding Email Template">Coding Email Template</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Using Angular.js with Rails</p>
+      <p>Email is an important medium of communication with your customer. Right from <code>signing up</code> to <code>placing the first order</code> to <code>sending recommended products</code>, all communications happen through email. So it is imperative to get it right.</p>
 
-<blockquote>
-  <p>AngularJS (commonly referred to as “Angular”) is an open-source web application framework maintained by Google and by a community of individual developers and corporations to address many of the challenges encountered in developing single-page applications.</p>
-</blockquote>
+<p>Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.</p>
 
-<h2 id="why-single-page-applications-spa">Why single page applications (SPA)?</h2>
+<h2 id="its-2015-and-i-still-use-tables-to-build-my-email-templates">Its 2015 and I still use <tables> to build my email templates.</tables></h2>
 
-<p>We live in an era where user experience (UX) of your application really matters. It can become your unique selling point when marketing your application to your customers. Everyone loves less page reloads and more fluid experience.</p>
+<p>Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.</p>
 
-<p>If you’ve worked with Rails 4.0 or &gt;, you should have come across Turbolinks. This awesome introduction by Rails team gives your rails app a SPA feel. When you navigate through different pages of your apps, instead of reloading the browser, it just changes the content of your page. It also updates the url of your page using HTML5 APIs to make sure that your app remains url friendly and SEO could be factored in. Using your app becomes snappier.</p>
+<p>To give an example, Gmail’s rendering engine supports <code>&lt;div&gt;</code> tag in your template but there are good chances that other clients such as outlook, lotus, etc would not. There is a long list of css attributes that are not supported across mail clients. You cannot easily ignore the possibilities of your customer viewing your emails on such clients. Here is a quick <a href="https://emailclientmarketshare.com/" target="_blank">report</a> from litmus labs that shows marketshare of major email clients.</p>
 
-<p>With introduction of Turbolinks 3 in rails 5, we will have partial replacement feature. Developers will have more control on the page elements. From the client side, we will be able to tell Turbolinks what content do we need to change/replace and what we don’t.</p>
+<p>So yes, you need to write html the way people did in 90’s.</p>
 
-<h2 id="so-why-should-i-use-anything-else-to-build-spa-when-i-have-turbolink-in-rails">So why should I use anything else to build SPA when I have turbolink in Rails?</h2>
+<p><strong>Use in-line CSS:</strong> Styles aren’t always supported.<br />
+<strong>Use table layouts:</strong> Div layouts are css dependent and many of the email clients can’t cope.<br />
+<strong>Don’t use rowspan:</strong> This causes weird spacing issues.<br />
+<strong>Don’t use background images:</strong> Support for these is limited.<br />
+<strong>Style image tags with “display:block”:</strong> Else weird spacing issues.<br />
+<strong>If using multiple tables nest them in one parent table:</strong> This stops more weird spacing issues.<br />
+<strong>Don’t use Javascript:</strong> Again not supported very well.<br />
+<strong>Make sure your email is legible with no images:</strong> The user may not load them.</p>
 
-<p>Turbolinks as well as AnguluarJS can both be used to make a web application respond faster, in the sense that in response to a user interaction something happens on the web page without reloading and rerendering the whole page.</p>
+<p>Writing code to support IE6 suddenly seems alright.</p>
 
-<p>AngularJS helps you to build a rich client-side application, where you write a lot of JavaScript code that runs on the client machine. This code makes the site interactive to the user. It communicates with the server-side backend, i.e. with the Rails app, using a JSON API.</p>
+<iframe src="//giphy.com/embed/HteV6g0QTNxp6" width="480" height="267" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
+<p><a href="http://giphy.com/gifs/HteV6g0QTNxp6">via GIPHY</a></p>
 
-<p>Turbolinks, on the other hand, helps to to make the site interactive without requiring you to code JavaScript. It allows you to stick to the Ruby/Rails conventions and code run on the server-side and still, “magically”, use AJAX to replace, and therefore rerender, only the parts/partials of the page that have changed.</p>
+<h2 id="client-wants-email-template-to-be-responsive-and-i-cannot-use-bootstrap">Client wants email template to be responsive and I cannot use bootstrap.</h2>
 
-<p>But, as your application grows, it makes more sense to have a client side js framework such as angular js. This framework would just consume raw json data using backend APIs and offload all client-side/view logic from the server. It helps to structure your js code in separate and reusable components (controllers, directives, factories, templates etc).</p>
+<p>Your customers check your emails on their desktops, phones, tablets and these days (pls god kill me) on their wrist watches. Imagine someone pinching on their watch to zoom the email content to read it.</p>
 
-<p>Also and most important, you could make the most of powerful angular’s data bindings. It saves you from writing tedious DOM manipulations and you would just need to focus on data. The views will be updated as you alter the data.</p>
+<p>Bootstrap was designed keeping web browsers in mind. If you really want to use it in your email template, you will have to restructure everything in <code>&lt;table&gt;</code>. Even after doing this, most of the bootstrap goodness is still not possible to achieve in webmail clients (gmail,yahoomail,hotmail etc).</p>
 
-<h2 id="integrating-angularjs-with-your-backend-rails">Integrating Angularjs with your backend (Rails)</h2>
+<h2 id="external-style-sheets">External style sheets</h2>
 
-<p>While you can integrate an angular app inside your existing rails app repo, it makes more sense to separate rails and angular as standalone apps.</p>
+<p>Can you use external style sheets?<br />
+Yes</p>
 
-<p>There are many advantages of separating frontend components out of your api service. As we do for ios/android apps, angular client can live on its own as a separate entity. It will be a static website that can be deployed on s3 or any static website host. It just needs to communicate with your api service. You could setup CORS (cross origin resource sharing) to make it possible.</p>
+<p>Should you use external style sheets?<br />
+No</p>
 
-<figure>
-  <img width="600px" src="/images/standalone.png" />
-</figure>
+<p>In most cases, customer’s email client will block the stylesheet being loaded from the remote server. Spam filters don’t like this behavior of calling the home server for additional resources. Your email won’t appear as you designed. Some clients even strip the style in the head. So, you’re put further behind 90’s to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.</p>
 
-<h2 id="some-advantages-of-this-workflow">Some advantages of this workflow</h2>
+<h2 id="possible-solutions-to-make-the-whole-process-easy">Possible solutions to make the whole process easy.</h2>
 
 <ul>
-  <li>
-    <p>You could use <a href="https://github.com/rails-api/rails-api" target="_blank">rails-api</a>, which is a subset of rails application. If you are just going to use rails to build apis, it doesn’t make sense to have all functionality that a complete rails app provides. Its lightweight, faster and inclined more towards building API first architecture than a MVC architecture. While its a gem right now, it will be a core part of Rails 5 release.</p>
-  </li>
-  <li>
-    <p>You could use yeoman angular-generator to generate an angular app and make the most of grunt &amp; bower ecosystem to manage project build (concat,uglify,cdnify etc) and dependencies (angular modules).</p>
-  </li>
-  <li>
-    <p>Deployments will become flexible. You won’t need to depend on one to push the other.</p>
-  </li>
-  <li>
-    <p>If you ever plan to change your backend stack (eg rails to play/revel), you would not need to worry about your client components. You would just need to maintain the API design.</p>
-  </li>
-  <li>
-    <p>By splitting the development of client and backend you could distribute the work over two development teams and keep the application as a whole very extensible.</p>
-  </li>
+  <li>Get started with <a href="http://foundation.zurb.com/emails.html" target="_blank">Ink</a> (now Foundation) framework.</li>
 </ul>
 
-<p>Personally, this approach seems ‘less dependency and more productivity’ to me.</p>
+<p>Seriously. You asked for responsiveness to your content and they do it right across all the mail clients. Consider it as a bootstrap alternative for emails. They provide a similar grid concept that makes it very flexible to code your html to support device specific design. It also encourages developers to write standard html code that is supported across all email clients. Explore more goodies under the <a href="http://zurb.com/ink/docs.php" target="_blank">documentation</a>.</p>
 
-<h2 id="scaffolding-angular-app">Scaffolding Angular App</h2>
+<ul>
+  <li>Use Premailer</li>
+</ul>
 
-<p>Yeoman is one of the most popular scaffolding tool for modern apps. It helps in kickstarting a new project with industry accepted standards and conventions. Name a client framework and chances are high that there is already a yeoman generator available for it. It has excellent documentations and includes support for linting, minification, testing etc.</p>
+<p>If your backend is based on Ruby on Rails, <a href="https://github.com/fphilipe/premailer-rails" target="_blank">premailer-rails</a> is an excellent drop in solution to style your emails. It offloads all the hard work of writing inline styles. Before you send an email, it reads all the style of external and internal stylesheet and adds them to matching html elements (inline) in your email body. This allows you to keep HTML and CSS in separate files, just as you’re used to from web development, thus keeping your sanity.</p>
 
-<p>It provides bower to manage project dependencies and grunt/gulp to build, preview &amp; test your projects.</p>
+<p>Doesn’t that sound like a huge relief?</p>
 
-<p><a href="https://github.com/yeoman/generator-angular" target="_blank">generator-angular</a> is a popular generator to scaffold angular js applications. Get quickly started with it using this <a href="http://yeoman.io/codelab/index.html" target="_blank">example</a> on the official yeoman site.</p>
+<iframe src="//giphy.com/embed/uc5KhUtOiS0zm" width="480" height="357" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
+<p><a href="http://giphy.com/gifs/pokemon-pikachu-sigh-uc5KhUtOiS0zm">via GIPHY</a></p>
 
-<p>We will learn more about this approach and angularjs in upcoming posts.
-Keep building!</p>
+<ul>
+  <li>Bonus Trick</li>
+</ul>
+
+<p>Testing emails is also not easy. If its vanilla html, you can just test it on your browser. But once you integrate it with rails, it becomes erb. The only way to test the output would be to send mail using some service (mandrill, sailthru etc) which you also use on production and then check the actual copy under email client. Of course, this is the best way to test but it doesn’t seem very sensible when you are still developing the template. You would end up sending 10 emails to test 10 changes.</p>
+
+<p>Use <a href="https://github.com/sj26/mailcatcher" target="_blank">mailcatcher</a> gem. It acts as a simple smtp server that catches all messages sent to it, stores them and displays on a web interface. It proves to be very handy during development phase.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Coding Emails: Love it or hate it. You cannot ignore it!
+I hope these tips prove helpful to you.</p>
+
+<p>Keep spamming :P !</p>
 
       <hr />
       <footer role="contentinfo">
@@ -222,13 +229,13 @@ Keep building!</p>
   <h4>Share on</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Using Angular Js With Rails&url=http://www.niyando.com/web/using-angular-js-with-rails/&via=niyando" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Coding Email Template&url=http://www.niyando.com/web/coding-email-template/&via=niyando" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.niyando.com/web/using-angular-js-with-rails/" class="facebook" title="Share on Facebook" onClick="return fbs_click(600, 300)" target="_blank"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.niyando.com/web/coding-email-template/" class="facebook" title="Share on Facebook" onClick="return fbs_click(600, 300)" target="_blank"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://www.niyando.com/web/using-angular-js-with-rails/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://www.niyando.com/web/coding-email-template/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
@@ -247,7 +254,7 @@ function fbs_click(width, height) {
     return false;
 }
 </script>
-        <p class="byline"><strong>Using Angular Js With Rails</strong> was published on <time datetime="2015-09-26T16:23:45+05:30">September 26, 2015</time>.</p>
+        <p class="byline"><strong>Coding Email Template</strong> was published on <time datetime="2015-11-07T16:15:46+05:30">November 07, 2015</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
@@ -262,11 +269,11 @@ function fbs_click(width, height) {
   <h4>You might also enjoy <small class="pull-right">(<a href="http://www.niyando.com/posts/">View all posts</a>)</small></h4>
     <ul>
     
-      <li><a href="http://www.niyando.com/web/coding-email-template/" title="Coding Email Template">Coding Email Template</a></li>
-    
       <li><a href="http://www.niyando.com/web/state-machines-in-rails-model/" title="State Machine in Rails Model">State Machine in Rails Model</a></li>
     
       <li><a href="http://www.niyando.com/web/environment-variables-in-angular-js/" title="Environment Variables in Angular Js">Environment Variables in Angular Js</a></li>
+    
+      <li><a href="http://www.niyando.com/web/get-started-with-bower/" title="Get Started With Bower">Get Started With Bower</a></li>
     
     </ul>
     <hr />

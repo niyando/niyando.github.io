@@ -4,13 +4,108 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-10-31T17:48:39+05:30</updated>
+<updated>2015-11-07T17:01:32+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
   <uri>http://www.niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Coding Email Template]]></title>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/web/coding-email-template/" />
+  <id>http://www.niyando.com/web/coding-email-template</id>
+  <published>2015-11-07T16:15:46+05:30</published>
+  <updated>2015-11-07T16:15:46+05:30</updated>
+  <author>
+    <name>Nirav Gandhi</name>
+    <uri>http://www.niyando.com</uri>
+    <email>niyando@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Email is an important medium of communication with your customer. Right from &lt;code&gt;signing up&lt;/code&gt; to &lt;code&gt;placing the first order&lt;/code&gt; to &lt;code&gt;sending recommended products&lt;/code&gt;, all communications happen through email. So it is imperative to get it right.&lt;/p&gt;
+
+&lt;p&gt;Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.&lt;/p&gt;
+
+&lt;h2 id=&quot;its-2015-and-i-still-use-tables-to-build-my-email-templates&quot;&gt;Its 2015 and I still use &lt;tables&gt; to build my email templates.&lt;/tables&gt;&lt;/h2&gt;
+
+&lt;p&gt;Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.&lt;/p&gt;
+
+&lt;p&gt;To give an example, Gmail’s rendering engine supports &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; tag in your template but there are good chances that other clients such as outlook, lotus, etc would not. There is a long list of css attributes that are not supported across mail clients. You cannot easily ignore the possibilities of your customer viewing your emails on such clients. Here is a quick &lt;a href=&quot;https://emailclientmarketshare.com/&quot; target=&quot;_blank&quot;&gt;report&lt;/a&gt; from litmus labs that shows marketshare of major email clients.&lt;/p&gt;
+
+&lt;p&gt;So yes, you need to write html the way people did in 90’s.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Use in-line CSS:&lt;/strong&gt; Styles aren’t always supported.&lt;br /&gt;
+&lt;strong&gt;Use table layouts:&lt;/strong&gt; Div layouts are css dependent and many of the email clients can’t cope.&lt;br /&gt;
+&lt;strong&gt;Don’t use rowspan:&lt;/strong&gt; This causes weird spacing issues.&lt;br /&gt;
+&lt;strong&gt;Don’t use background images:&lt;/strong&gt; Support for these is limited.&lt;br /&gt;
+&lt;strong&gt;Style image tags with “display:block”:&lt;/strong&gt; Else weird spacing issues.&lt;br /&gt;
+&lt;strong&gt;If using multiple tables nest them in one parent table:&lt;/strong&gt; This stops more weird spacing issues.&lt;br /&gt;
+&lt;strong&gt;Don’t use Javascript:&lt;/strong&gt; Again not supported very well.&lt;br /&gt;
+&lt;strong&gt;Make sure your email is legible with no images:&lt;/strong&gt; The user may not load them.&lt;/p&gt;
+
+&lt;p&gt;Writing code to support IE6 suddenly seems alright.&lt;/p&gt;
+
+&lt;iframe src=&quot;//giphy.com/embed/HteV6g0QTNxp6&quot; width=&quot;480&quot; height=&quot;267&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&quot;http://giphy.com/gifs/HteV6g0QTNxp6&quot;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;client-wants-email-template-to-be-responsive-and-i-cannot-use-bootstrap&quot;&gt;Client wants email template to be responsive and I cannot use bootstrap.&lt;/h2&gt;
+
+&lt;p&gt;Your customers check your emails on their desktops, phones, tablets and these days (pls god kill me) on their wrist watches. Imagine someone pinching on their watch to zoom the email content to read it.&lt;/p&gt;
+
+&lt;p&gt;Bootstrap was designed keeping web browsers in mind. If you really want to use it in your email template, you will have to restructure everything in &lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt;. Even after doing this, most of the bootstrap goodness is still not possible to achieve in webmail clients (gmail,yahoomail,hotmail etc).&lt;/p&gt;
+
+&lt;h2 id=&quot;external-style-sheets&quot;&gt;External style sheets&lt;/h2&gt;
+
+&lt;p&gt;Can you use external style sheets?&lt;br /&gt;
+Yes&lt;/p&gt;
+
+&lt;p&gt;Should you use external style sheets?&lt;br /&gt;
+No&lt;/p&gt;
+
+&lt;p&gt;In most cases, customer’s email client will block the stylesheet being loaded from the remote server. Spam filters don’t like this behavior of calling the home server for additional resources. Your email won’t appear as you designed. Some clients even strip the style in the head. So, you’re put further behind 90’s to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.&lt;/p&gt;
+
+&lt;h2 id=&quot;possible-solutions-to-make-the-whole-process-easy&quot;&gt;Possible solutions to make the whole process easy.&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get started with &lt;a href=&quot;http://foundation.zurb.com/emails.html&quot; target=&quot;_blank&quot;&gt;Ink&lt;/a&gt; (now Foundation) framework.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Seriously. You asked for responsiveness to your content and they do it right across all the mail clients. Consider it as a bootstrap alternative for emails. They provide a similar grid concept that makes it very flexible to code your html to support device specific design. It also encourages developers to write standard html code that is supported across all email clients. Explore more goodies under the &lt;a href=&quot;http://zurb.com/ink/docs.php&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use Premailer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If your backend is based on Ruby on Rails, &lt;a href=&quot;https://github.com/fphilipe/premailer-rails&quot; target=&quot;_blank&quot;&gt;premailer-rails&lt;/a&gt; is an excellent drop in solution to style your emails. It offloads all the hard work of writing inline styles. Before you send an email, it reads all the style of external and internal stylesheet and adds them to matching html elements (inline) in your email body. This allows you to keep HTML and CSS in separate files, just as you’re used to from web development, thus keeping your sanity.&lt;/p&gt;
+
+&lt;p&gt;Doesn’t that sound like a huge relief?&lt;/p&gt;
+
+&lt;iframe src=&quot;//giphy.com/embed/uc5KhUtOiS0zm&quot; width=&quot;480&quot; height=&quot;357&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&quot;http://giphy.com/gifs/pokemon-pikachu-sigh-uc5KhUtOiS0zm&quot;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bonus Trick&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Testing emails is also not easy. If its vanilla html, you can just test it on your browser. But once you integrate it with rails, it becomes erb. The only way to test the output would be to send mail using some service (mandrill, sailthru etc) which you also use on production and then check the actual copy under email client. Of course, this is the best way to test but it doesn’t seem very sensible when you are still developing the template. You would end up sending 10 emails to test 10 changes.&lt;/p&gt;
+
+&lt;p&gt;Use &lt;a href=&quot;https://github.com/sj26/mailcatcher&quot; target=&quot;_blank&quot;&gt;mailcatcher&lt;/a&gt; gem. It acts as a simple smtp server that catches all messages sent to it, stores them and displays on a web interface. It proves to be very handy during development phase.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Coding Emails: Love it or hate it. You cannot ignore it!
+I hope these tips prove helpful to you.&lt;/p&gt;
+
+&lt;p&gt;Keep spamming :P !&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/web/coding-email-template/&quot;&gt;Coding Email Template&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on November 07, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
