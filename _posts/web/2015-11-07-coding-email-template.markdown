@@ -16,7 +16,7 @@ Email is an important medium of communication with your customer. Right from `si
 
 Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.
 
-##Its 2015 and I still use {%raw%}<tables>{%endraw%} to build my email templates.
+##Its 2015 and I still use {% raw %}<tables>{% endraw %} to build my email templates.
 
  Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.
 
