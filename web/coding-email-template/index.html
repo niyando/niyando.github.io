@@ -187,19 +187,18 @@ Yes</p>
 <p>Should you use external style sheets?<br />
 No</p>
 
+<iframe src="//giphy.com/embed/IwmztXQO7BUzu" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
+<p><a href="http://giphy.com/gifs/cmon-come-on-IwmztXQO7BUzu">via GIPHY</a></p>
+
 <p>In most cases, customer’s email client will block the stylesheet being loaded from the remote server. Spam filters don’t like this behavior of calling the home server for additional resources. Your email won’t appear as you designed. Some clients even strip the style in the head. So, you’re put further behind 90’s to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.</p>
 
 <h2 id="possible-solutions-to-make-the-whole-process-easy">Possible solutions to make the whole process easy.</h2>
 
-<ul>
-  <li>Get started with <a href="http://foundation.zurb.com/emails.html" target="_blank">Ink</a> (now Foundation) framework.</li>
-</ul>
+<h3 id="get-started-with-inkhttpfoundationzurbcomemailshtmltargetblank-now-foundation-framework">Get started with <a href="http://foundation.zurb.com/emails.html" target="_blank">Ink</a> (now Foundation) framework.</h3>
 
 <p>Seriously. You asked for responsiveness to your content and they do it right across all the mail clients. Consider it as a bootstrap alternative for emails. They provide a similar grid concept that makes it very flexible to code your html to support device specific design. It also encourages developers to write standard html code that is supported across all email clients. Explore more goodies under the <a href="http://zurb.com/ink/docs.php" target="_blank">documentation</a>.</p>
 
-<ul>
-  <li>Use Premailer</li>
-</ul>
+<h3 id="use-premailer">Use Premailer</h3>
 
 <p>If your backend is based on Ruby on Rails, <a href="https://github.com/fphilipe/premailer-rails" target="_blank">premailer-rails</a> is an excellent drop in solution to style your emails. It offloads all the hard work of writing inline styles. Before you send an email, it reads all the style of external and internal stylesheet and adds them to matching html elements (inline) in your email body. This allows you to keep HTML and CSS in separate files, just as you’re used to from web development, thus keeping your sanity.</p>
 
@@ -208,9 +207,7 @@ No</p>
 <iframe src="//giphy.com/embed/uc5KhUtOiS0zm" width="480" height="357" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
 <p><a href="http://giphy.com/gifs/pokemon-pikachu-sigh-uc5KhUtOiS0zm">via GIPHY</a></p>
 
-<ul>
-  <li>Bonus Trick</li>
-</ul>
+<h3 id="bonus-trick">Bonus Trick</h3>
 
 <p>Testing emails is also not easy. If its vanilla html, you can just test it on your browser. But once you integrate it with rails, it becomes erb. The only way to test the output would be to send mail using some service (mandrill, sailthru etc) which you also use on production and then check the actual copy under email client. Of course, this is the best way to test but it doesn’t seem very sensible when you are still developing the template. You would end up sending 10 emails to test 10 changes.</p>
 
@@ -218,7 +215,7 @@ No</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>Coding Emails: Love it or hate it. You cannot ignore it!
+<p>Coding Emails: Love it or hate it. You cannot ignore it!<br />
 I hope these tips prove helpful to you.</p>
 
 <p>Keep spamming :P !</p>

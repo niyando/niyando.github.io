@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-11-07T17:01:32+05:30</updated>
+<updated>2015-11-07T17:13:42+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -67,19 +67,18 @@ Yes&lt;/p&gt;
 &lt;p&gt;Should you use external style sheets?&lt;br /&gt;
 No&lt;/p&gt;
 
+&lt;iframe src=&quot;//giphy.com/embed/IwmztXQO7BUzu&quot; width=&quot;480&quot; height=&quot;270&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&quot;http://giphy.com/gifs/cmon-come-on-IwmztXQO7BUzu&quot;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;In most cases, customer’s email client will block the stylesheet being loaded from the remote server. Spam filters don’t like this behavior of calling the home server for additional resources. Your email won’t appear as you designed. Some clients even strip the style in the head. So, you’re put further behind 90’s to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.&lt;/p&gt;
 
 &lt;h2 id=&quot;possible-solutions-to-make-the-whole-process-easy&quot;&gt;Possible solutions to make the whole process easy.&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Get started with &lt;a href=&quot;http://foundation.zurb.com/emails.html&quot; target=&quot;_blank&quot;&gt;Ink&lt;/a&gt; (now Foundation) framework.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;get-started-with-inkhttpfoundationzurbcomemailshtmltargetblank-now-foundation-framework&quot;&gt;Get started with &lt;a href=&quot;http://foundation.zurb.com/emails.html&quot; target=&quot;_blank&quot;&gt;Ink&lt;/a&gt; (now Foundation) framework.&lt;/h3&gt;
 
 &lt;p&gt;Seriously. You asked for responsiveness to your content and they do it right across all the mail clients. Consider it as a bootstrap alternative for emails. They provide a similar grid concept that makes it very flexible to code your html to support device specific design. It also encourages developers to write standard html code that is supported across all email clients. Explore more goodies under the &lt;a href=&quot;http://zurb.com/ink/docs.php&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Use Premailer&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;use-premailer&quot;&gt;Use Premailer&lt;/h3&gt;
 
 &lt;p&gt;If your backend is based on Ruby on Rails, &lt;a href=&quot;https://github.com/fphilipe/premailer-rails&quot; target=&quot;_blank&quot;&gt;premailer-rails&lt;/a&gt; is an excellent drop in solution to style your emails. It offloads all the hard work of writing inline styles. Before you send an email, it reads all the style of external and internal stylesheet and adds them to matching html elements (inline) in your email body. This allows you to keep HTML and CSS in separate files, just as you’re used to from web development, thus keeping your sanity.&lt;/p&gt;
 
@@ -88,9 +87,7 @@ No&lt;/p&gt;
 &lt;iframe src=&quot;//giphy.com/embed/uc5KhUtOiS0zm&quot; width=&quot;480&quot; height=&quot;357&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;p&gt;&lt;a href=&quot;http://giphy.com/gifs/pokemon-pikachu-sigh-uc5KhUtOiS0zm&quot;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Bonus Trick&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;bonus-trick&quot;&gt;Bonus Trick&lt;/h3&gt;
 
 &lt;p&gt;Testing emails is also not easy. If its vanilla html, you can just test it on your browser. But once you integrate it with rails, it becomes erb. The only way to test the output would be to send mail using some service (mandrill, sailthru etc) which you also use on production and then check the actual copy under email client. Of course, this is the best way to test but it doesn’t seem very sensible when you are still developing the template. You would end up sending 10 emails to test 10 changes.&lt;/p&gt;
 
@@ -98,7 +95,7 @@ No&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;Coding Emails: Love it or hate it. You cannot ignore it!
+&lt;p&gt;Coding Emails: Love it or hate it. You cannot ignore it!&lt;br /&gt;
 I hope these tips prove helpful to you.&lt;/p&gt;
 
 &lt;p&gt;Keep spamming :P !&lt;/p&gt;
