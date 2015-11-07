@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-11-07T17:33:54+05:30</updated>
+<updated>2015-11-07T17:41:38+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -31,7 +31,7 @@
 
 &lt;p&gt;Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.&lt;/p&gt;
 
-&lt;h2 id=&quot;its-2015-and-i-still-use-tables-to-build-my-email-templates&quot;&gt;Its 2015 and I still use &lt;code&gt;&amp;lt;tables&amp;gt;&lt;/code&gt; to build my email templates.&lt;/h2&gt;
+&lt;h3 id=&quot;its-2015-and-i-still-use-preltpretablespregtpre-to-build-my-email-templates&quot;&gt;Its 2015 and I still use &amp;lt;pre&amp;gt;&amp;lt;&amp;lt;/pre&amp;gt;tables&amp;lt;pre&amp;gt;&amp;gt;&amp;lt;/pre&amp;gt; to build my email templates.&lt;/h3&gt;
 
 &lt;p&gt;Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.&lt;/p&gt;
 
@@ -53,13 +53,13 @@
 &lt;iframe src=&quot;//giphy.com/embed/HteV6g0QTNxp6&quot; width=&quot;480&quot; height=&quot;267&quot; frameborder=&quot;0&quot; class=&quot;giphy-embed&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;p&gt;&lt;a href=&quot;http://giphy.com/gifs/HteV6g0QTNxp6&quot;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;client-wants-email-template-to-be-responsive-and-i-cannot-use-bootstrap&quot;&gt;Client wants email template to be responsive and I cannot use bootstrap.&lt;/h2&gt;
+&lt;h3 id=&quot;responsive-emails-no-bootstrap&quot;&gt;Responsive Emails. No Bootstrap.&lt;/h3&gt;
 
 &lt;p&gt;Your customers check your emails on their desktops, phones, tablets and these days (pls god kill me) on their wrist watches. Imagine someone pinching on their watch to zoom the email content to read it.&lt;/p&gt;
 
 &lt;p&gt;Bootstrap was designed keeping web browsers in mind. If you really want to use it in your email template, you will have to restructure everything in &lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt;. Even after doing this, most of the bootstrap goodness is still not possible to achieve in webmail clients (gmail,yahoomail,hotmail etc).&lt;/p&gt;
 
-&lt;h2 id=&quot;external-style-sheets&quot;&gt;External style sheets&lt;/h2&gt;
+&lt;h3 id=&quot;external-style-sheets&quot;&gt;External style sheets&lt;/h3&gt;
 
 &lt;p&gt;Can you use external style sheets?&lt;br /&gt;
 Yes&lt;/p&gt;
@@ -72,7 +72,9 @@ No&lt;/p&gt;
 
 &lt;p&gt;In most cases, customer’s email client will block the stylesheet being loaded from the remote server. Spam filters don’t like this behavior of calling the home server for additional resources. Your email won’t appear as you designed. Some clients even strip the style in the head. So, you’re put further behind 90’s to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.&lt;/p&gt;
 
-&lt;h2 id=&quot;possible-solutions-to-make-the-whole-process-easy&quot;&gt;Possible solutions to make the whole process easy.&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;few-tips-and-tricks-to-make-the-whole-process-easy&quot;&gt;Few tips and tricks to make the whole process easy.&lt;/h3&gt;
 
 &lt;h3 id=&quot;get-started-with-inkhttpfoundationzurbcomemailshtmltargetblank-now-foundation-framework&quot;&gt;Get started with &lt;a href=&quot;http://foundation.zurb.com/emails.html&quot; target=&quot;_blank&quot;&gt;Ink&lt;/a&gt; (now Foundation) framework.&lt;/h3&gt;
 
