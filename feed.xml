@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2015-11-07T17:16:08+05:30</updated>
+<updated>2015-11-07T17:33:54+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -31,7 +31,7 @@
 
 &lt;p&gt;Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.&lt;/p&gt;
 
-&lt;h2 id=&quot;its-2015-and-i-still-use-tables-to-build-my-email-templates&quot;&gt;Its 2015 and I still use &lt;tables&gt; to build my email templates.&lt;/tables&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;its-2015-and-i-still-use-tables-to-build-my-email-templates&quot;&gt;Its 2015 and I still use &lt;code&gt;&amp;lt;tables&amp;gt;&lt;/code&gt; to build my email templates.&lt;/h2&gt;
 
 &lt;p&gt;Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.&lt;/p&gt;
 
@@ -77,6 +77,8 @@ No&lt;/p&gt;
 &lt;h3 id=&quot;get-started-with-inkhttpfoundationzurbcomemailshtmltargetblank-now-foundation-framework&quot;&gt;Get started with &lt;a href=&quot;http://foundation.zurb.com/emails.html&quot; target=&quot;_blank&quot;&gt;Ink&lt;/a&gt; (now Foundation) framework.&lt;/h3&gt;
 
 &lt;p&gt;Seriously. You asked for responsiveness to your content and they do it right across all the mail clients. Consider it as a bootstrap alternative for emails. They provide a similar grid concept that makes it very flexible to code your html to support device specific design. It also encourages developers to write standard html code that is supported across all email clients. Explore more goodies under the &lt;a href=&quot;http://zurb.com/ink/docs.php&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You could also use my boilerplate &lt;a href=&quot;https://gist.github.com/niyando/f24e3920c8815d799609&quot; target=&quot;_blank&quot;&gt;gist&lt;/a&gt; to get started quickly.&lt;/p&gt;
 
 &lt;h3 id=&quot;use-premailer&quot;&gt;Use Premailer&lt;/h3&gt;
 
