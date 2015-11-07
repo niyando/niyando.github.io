@@ -151,7 +151,7 @@
 
 <p>Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.</p>
 
-<h2 id="its-2015-and-i-still-use-tables-to-build-my-email-templates">Its 2015 and I still use <code>&lt;tables&gt;</code> to build my email templates.</h2>
+<h3 id="its-2015-and-i-still-use-preltpretablespregtpre-to-build-my-email-templates">Its 2015 and I still use &lt;pre&gt;&lt;&lt;/pre&gt;tables&lt;pre&gt;&gt;&lt;/pre&gt; to build my email templates.</h3>
 
 <p>Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.</p>
 
@@ -173,13 +173,13 @@
 <iframe src="//giphy.com/embed/HteV6g0QTNxp6" width="480" height="267" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
 <p><a href="http://giphy.com/gifs/HteV6g0QTNxp6">via GIPHY</a></p>
 
-<h2 id="client-wants-email-template-to-be-responsive-and-i-cannot-use-bootstrap">Client wants email template to be responsive and I cannot use bootstrap.</h2>
+<h3 id="responsive-emails-no-bootstrap">Responsive Emails. No Bootstrap.</h3>
 
 <p>Your customers check your emails on their desktops, phones, tablets and these days (pls god kill me) on their wrist watches. Imagine someone pinching on their watch to zoom the email content to read it.</p>
 
 <p>Bootstrap was designed keeping web browsers in mind. If you really want to use it in your email template, you will have to restructure everything in <code>&lt;table&gt;</code>. Even after doing this, most of the bootstrap goodness is still not possible to achieve in webmail clients (gmail,yahoomail,hotmail etc).</p>
 
-<h2 id="external-style-sheets">External style sheets</h2>
+<h3 id="external-style-sheets">External style sheets</h3>
 
 <p>Can you use external style sheets?<br />
 Yes</p>
@@ -192,7 +192,9 @@ No</p>
 
 <p>In most cases, customer’s email client will block the stylesheet being loaded from the remote server. Spam filters don’t like this behavior of calling the home server for additional resources. Your email won’t appear as you designed. Some clients even strip the style in the head. So, you’re put further behind 90’s to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.</p>
 
-<h2 id="possible-solutions-to-make-the-whole-process-easy">Possible solutions to make the whole process easy.</h2>
+<hr />
+
+<h3 id="few-tips-and-tricks-to-make-the-whole-process-easy">Few tips and tricks to make the whole process easy.</h3>
 
 <h3 id="get-started-with-inkhttpfoundationzurbcomemailshtmltargetblank-now-foundation-framework">Get started with <a href="http://foundation.zurb.com/emails.html" target="_blank">Ink</a> (now Foundation) framework.</h3>
 

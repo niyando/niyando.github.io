@@ -16,7 +16,7 @@ Email is an important medium of communication with your customer. Right from `si
 
 Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.
 
-##Its 2015 and I still use `<tables>` to build my email templates.
+###Its 2015 and I still use <pre>&lt;</pre>tables<pre>&gt;</pre> to build my email templates.
 
  Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.
 
@@ -37,13 +37,13 @@ Writing code to support IE6 suddenly seems alright.
 
 <iframe src="//giphy.com/embed/HteV6g0QTNxp6" width="480" height="267" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/HteV6g0QTNxp6">via GIPHY</a></p>
 
-##Client wants email template to be responsive and I cannot use bootstrap.
+###Responsive Emails. No Bootstrap.
 
 Your customers check your emails on their desktops, phones, tablets and these days (pls god kill me) on their wrist watches. Imagine someone pinching on their watch to zoom the email content to read it.
 
 Bootstrap was designed keeping web browsers in mind. If you really want to use it in your email template, you will have to restructure everything in `<table>`. Even after doing this, most of the bootstrap goodness is still not possible to achieve in webmail clients (gmail,yahoomail,hotmail etc).
 
-##External style sheets
+###External style sheets
 
 Can you use external style sheets?  
 Yes
@@ -55,9 +55,9 @@ No
 
 In most cases, customer's email client will block the stylesheet being loaded from the remote server. Spam filters don't like this behavior of calling the home server for additional resources. Your email won't appear as you designed. Some clients even strip the style in the head. So, you're put further behind 90's to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.
 
+<hr>
 
-
-##Possible solutions to make the whole process easy.
+###Few tips and tricks to make the whole process easy.
 
 
 
