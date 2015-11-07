@@ -16,7 +16,7 @@ Email is an important medium of communication with your customer. Right from `si
 
 Coding an email template is a complex thing. Here are the key problems that I as a developer face writing email templates.
 
-##Its 2015 and I still use <tables> to build my email templates.
+##Its 2015 and I still use {%raw%}<tables>{%endraw%} to build my email templates.
 
  Email templates are not standard web pages that can be viewed on browsers. They are served by and under email clients. All email clients have a rendering engine that is responsible for displaying emails. There are no standard rules around such rendering engines. To some, doing x is bad and to some doing y is bad.
 
@@ -51,16 +51,19 @@ Yes
 Should you use external style sheets?  
 No
 
+<iframe src="//giphy.com/embed/IwmztXQO7BUzu" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/cmon-come-on-IwmztXQO7BUzu">via GIPHY</a></p>
+
 In most cases, customer's email client will block the stylesheet being loaded from the remote server. Spam filters don't like this behavior of calling the home server for additional resources. Your email won't appear as you designed. Some clients even strip the style in the head. So, you're put further behind 90's to write inline css. Imagine writing same style for similar elements. This is a rather tedious and hard to maintain approach.
 
 
 ##Possible solutions to make the whole process easy.
 
- - Get started with [Ink](http://foundation.zurb.com/emails.html){:target="_blank"} (now Foundation) framework.
+
+###Get started with [Ink](http://foundation.zurb.com/emails.html){:target="_blank"} (now Foundation) framework.
 
  Seriously. You asked for responsiveness to your content and they do it right across all the mail clients. Consider it as a bootstrap alternative for emails. They provide a similar grid concept that makes it very flexible to code your html to support device specific design. It also encourages developers to write standard html code that is supported across all email clients. Explore more goodies under the [documentation](http://zurb.com/ink/docs.php){:target="_blank"}.
 
-- Use Premailer
+###Use Premailer
 
 If your backend is based on Ruby on Rails, [premailer-rails](https://github.com/fphilipe/premailer-rails){:target="_blank"} is an excellent drop in solution to style your emails. It offloads all the hard work of writing inline styles. Before you send an email, it reads all the style of external and internal stylesheet and adds them to matching html elements (inline) in your email body. This allows you to keep HTML and CSS in separate files, just as you're used to from web development, thus keeping your sanity.
 
@@ -68,7 +71,7 @@ Doesn't that sound like a huge relief?
 
 <iframe src="//giphy.com/embed/uc5KhUtOiS0zm" width="480" height="357" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/pokemon-pikachu-sigh-uc5KhUtOiS0zm">via GIPHY</a></p>
 
-- Bonus Trick
+###Bonus Trick
 
 Testing emails is also not easy. If its vanilla html, you can just test it on your browser. But once you integrate it with rails, it becomes erb. The only way to test the output would be to send mail using some service (mandrill, sailthru etc) which you also use on production and then check the actual copy under email client. Of course, this is the best way to test but it doesn't seem very sensible when you are still developing the template. You would end up sending 10 emails to test 10 changes.
 
@@ -76,7 +79,7 @@ Use [mailcatcher](https://github.com/sj26/mailcatcher){:target="_blank"} gem. It
 
 ##Conclusion
 
-Coding Emails: Love it or hate it. You cannot ignore it!
+Coding Emails: Love it or hate it. You cannot ignore it!  
 I hope these tips prove helpful to you.
 
 Keep spamming :P !
