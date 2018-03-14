@@ -13,7 +13,7 @@ date: 2018-03-14T19:27:04+05:30
 
 Elastic Beanstalk is a tool created by AWS for deploying and scaling web applications in their eco-system. It's a great way to deploy your application and manage its resources the Heroku way on AWS. The eco system comprises of  services such as S3, ElastiCache, RDS, Route 53, SES etc which makes it easy and ideal to manage all resources of your application under one roof.
 
-AWS also provides a [Free Tier](https://aws.amazon.com/free/){:target="_blank"} where it provides the platform and essential services (micro instances) for no price for 12 months. This makes it an attractive option for developers and large/small enterprise to host their projects on AWS.
+AWS also provides a [Free Tier](https://aws.amazon.com/free/){:target="_blank"} where it provides the platform and essential services (micro instances) for no price for 12 months. This makes it an attractive option for developers and large/small enterprises to host their projects on AWS.
 
 This post outlines necessary steps to deploy your web application (Rails) to AWS using EBS (Elastic Beanstalk). Assuming an existing rails app using git for version control, let's get started.
 
@@ -55,9 +55,9 @@ This tell Elastic Beanstalk to use a particular profile from the credentials fil
 6) Next you will need to go through the setup by answering few questions such as ...
 
 - Name of your app
-- Region where it should be hosted (pick the one where your audience is)
-- Confirm the programming language and version of your app
-- Set up an SSH instance (will be required to ssh into your instance. Always create a new key-pair if you are working with different clients)
+- Region where it should be hosted. (pick the one where your audience is)
+- Confirm the programming language and its version.
+- Set up SSH instance (will be required to ssh into your instance. Always create a new key-pair if you are working with different clients)
 
 7) Time to create your environment.
 
@@ -94,7 +94,7 @@ We still need to add data tier to the application (no good application is good w
 1) Go to your AWS console dashboard Services --> Compute --> Elastic Beanstalk
 Select your application --> selecy configuration from the sidebar --> Add Data tier
 
-2) Select the instance type (MySQL, Postgres, etc), add username-password for your DB and let the AWS create database instance for you. This will take sometime. This auto adds DB related ENV var to your instance.
+2) Select the instance type (MySQL, Postgres, etc), add username-password for your DB and let the AWS create database instance for you. This will take sometime. This auto adds DB related ENV variables to your instance.
 
 3) Next you need to add these ENV vars in your database.yml file
 
@@ -116,6 +116,8 @@ eb deploy production
 
 And you're <b>LIVE</b>!
 
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/2WGYAGbzkemi5BMdvb" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/heavy-elon-musk-2WGYAGbzkemi5BMdvb">via GIPHY</a></p>
+
 ### Bonus Info:
 
 - Check you application logs using 'eb logs'
@@ -125,7 +127,7 @@ And you're <b>LIVE</b>!
 - To ssh into root directory of your application, do 'eb ssh' and 'cd /var/app/current'.
 - eb deploy auto runs your rails migrations.
 
-Like it? Share!
+Did it help you? Share!
 Questions? Pls Comment
 
 Cheers!
