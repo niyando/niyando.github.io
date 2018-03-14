@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.niyando.com/web/deploying-a-rails-application-to-aws-using-elastic-beanstalk/</loc>
+    <lastmod>2018-03-14T19:27:04+05:30</lastmod>
+  </url>
+  <url>
     <loc>http://www.niyando.com/web/coding-email-template/</loc>
     <lastmod>2015-11-07T16:15:46+05:30</lastmod>
   </url>
@@ -34,18 +38,18 @@
   </url>
   <url>
     <loc>http://www.niyando.com/</loc>
-    <lastmod>2017-05-27T09:48:53+05:30</lastmod>
+    <lastmod>2018-03-14T19:46:31+05:30</lastmod>
   </url>
   <url>
     <loc>http://www.niyando.com/theme-setup/</loc>
-    <lastmod>2017-05-27T09:48:53+05:30</lastmod>
+    <lastmod>2018-03-14T19:46:31+05:30</lastmod>
   </url>
   <url>
     <loc>http://www.niyando.com/posts/</loc>
-    <lastmod>2017-05-27T09:48:53+05:30</lastmod>
+    <lastmod>2018-03-14T19:46:31+05:30</lastmod>
   </url>
   <url>
     <loc>http://www.niyando.com/about/</loc>
-    <lastmod>2017-05-27T09:48:53+05:30</lastmod>
+    <lastmod>2018-03-14T19:46:31+05:30</lastmod>
   </url>
 </urlset>

@@ -97,7 +97,7 @@ Select your application --> selecy configuration from the sidebar --> Add Data t
 
 3) Next you need to add these ENV vars in your database.yml file
 
-{% highlight yml %}
+{% highlight yaml %}
 production:
     <<: *default
     database: <%= ENV['RDS_DB_NAME'] %>

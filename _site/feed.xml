@@ -4,13 +4,138 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2017-05-27T09:48:53+05:30</updated>
+<updated>2018-03-14T19:46:31+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
   <uri>http://www.niyando.com/</uri>
   <email>niyando@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Deploying a Rails Application to AWS Using Elastic Beanstalk]]></title>
+  <link rel="alternate" type="text/html" href="http://www.niyando.com/web/deploying-a-rails-application-to-aws-using-elastic-beanstalk/" />
+  <id>http://www.niyando.com/web/deploying-a-rails-application-to-aws-using-elastic-beanstalk</id>
+  <published>2018-03-14T19:27:04+05:30</published>
+  <updated>2018-03-14T19:27:04+05:30</updated>
+  <author>
+    <name>Nirav Gandhi</name>
+    <uri>http://www.niyando.com</uri>
+    <email>niyando@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Elastic Beanstalk is a tool created by AWS for deploying and scaling web applications in their eco-system. It’s a great way to deploy your application and manage its resources the Heroku way on AWS. The eco system comprises of  services such as S3, ElastiCache, RDS, Route 53, SES etc which makes it easy and ideal to manage all resources of your application under one roof.&lt;/p&gt;
+
+&lt;p&gt;AWS also provides a &lt;a href=&quot;https://aws.amazon.com/free/&quot; target=&quot;_blank&quot;&gt;Free Tier&lt;/a&gt; where it provides the platform and essential services (micro instances) for no price for 12 months. This makes it an attractive option for developers and large/small enterprise to host their projects on AWS.&lt;/p&gt;
+
+&lt;p&gt;This post outlines necessary steps to deploy your web application (Rails) to AWS using EBS (Elastic Beanstalk). Assuming an existing rails app using git for version control, let’s get started.&lt;/p&gt;
+
+&lt;p&gt;1) Download the commandline tool for AWS Elastic Beanstalk&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew update
+brew install aws-elasticbeanstalk&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;2) Create a &lt;a href=&quot;https://portal.aws.amazon.com/billing/signup&quot; target=&quot;_blank&quot;&gt;new account&lt;/a&gt; on AWS.&lt;/p&gt;
+
+&lt;p&gt;3) Create a new IAM user to get the access_id and access_key. Check for IAM option under services –&amp;gt; Security, Identity and Compliance. This pair will be used to give programetic access to your AWS account. Make sure you that grant full access to all AWS resources to this user. Download the credentials.&lt;/p&gt;
+
+&lt;p&gt;4) Create a file called credentials under .aws folder in Users folder of your machine. Create a new .aws directory if it doesn’t exist. For me the path is ‘/Users/Nirav/.aws’. Copy/paste the credentials in this file. The format should be as follows&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;profile-name-1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;aws_access_key_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; loremipsom
+&lt;span class=&quot;nv&quot;&gt;aws_secret_access_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; loremipsomblabla
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;profile-name-2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;aws_access_key_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lolololol
+&lt;span class=&quot;nv&quot;&gt;aws_secret_access_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; blablabla
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;default&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;aws_access_key_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; defaultlolol
+&lt;span class=&quot;nv&quot;&gt;aws_secret_access_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; defaultkeykey&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is a great way to manage credentials for different AWS accounts. It’s really helpful when you are working on multiple projects with multiple clients using different AWS accounts.&lt;/p&gt;
+
+&lt;p&gt;5) Go to the root of your application/project directory and do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eb init --profile&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;profilename&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This tell Elastic Beanstalk to use a particular profile from the credentials file for this project.&lt;/p&gt;
+
+&lt;p&gt;6) Next you will need to go through the setup by answering few set og questions such as …&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;name of your app&lt;/li&gt;
+  &lt;li&gt;region where it should be hosted (pick the one where your audience is)&lt;/li&gt;
+  &lt;li&gt;Confirm the programming language and version of your app&lt;/li&gt;
+  &lt;li&gt;Set up an SSH instance (this will be required to ssh into your instance. always create a new key-pair if you are working with different clients)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;7) Time to create your environment.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eb create production &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;or staging or anything you want&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This will setup everything needed for your app (load balancer, EC2, etc) and will take some time to finish the magic.&lt;/p&gt;
+
+&lt;p&gt;8) Next step is rails specific to set your environment variable SECRET_KEY_BASE&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eb setenv &lt;span class=&quot;nv&quot;&gt;SECRET_KEY_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;rake secret&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s about it!&lt;/p&gt;
+
+&lt;p&gt;To check the status of your application, do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eb status&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To open your application in web browser, do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eb open&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We still need to add data tier to the application (no good application is good without a database).&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-database-to-your-application&quot;&gt;Adding Database to your application&lt;/h3&gt;
+
+&lt;p&gt;1) Go to your AWS console dashboard Services –&amp;gt; Compute –&amp;gt; Elastic Beanstalk
+Select your application –&amp;gt; selecy configuration from the sidebar –&amp;gt; Add Data tier&lt;/p&gt;
+
+&lt;p&gt;2) Select the instance type (MySQL, Postgres, etc), add username-password for your DB and let the AWS create database instance for you. This will take sometime. This auto adds DB related ENV var to your instance.&lt;/p&gt;
+
+&lt;p&gt;3) Next you need to add these ENV vars in your database.yml file&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;*default&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;%= ENV[&amp;#39;RDS_DB_NAME&amp;#39;] %&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;%= ENV[&amp;#39;RDS_USERNAME&amp;#39;] %&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;%= ENV[&amp;#39;RDS_PASSWORD&amp;#39;] %&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;%= ENV[&amp;#39;RDS_HOSTNAME&amp;#39;] %&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;%= ENV[&amp;#39;RDS_PORT&amp;#39;] %&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Commit the changes and do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eb deploy production&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And you’re &lt;b&gt;LIVE&lt;/b&gt;!&lt;/p&gt;
+
+&lt;h3 id=&quot;bonus-info&quot;&gt;Bonus Info:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Check you application logs using ‘eb logs’&lt;/li&gt;
+  &lt;li&gt;Dont .gitignore your .elasticbeanstalk folder and commit it. Other folks in your team will also be able to use the config to deploy the app.&lt;/li&gt;
+  &lt;li&gt;Use micro instances for all services to get the free tier advantage. Scale the services when you need to.&lt;/li&gt;
+  &lt;li&gt;AWS doesn’t charge anything for Elastic Beanstalk. They just charge you for the resources you’re using.&lt;/li&gt;
+  &lt;li&gt;To ssh into root directory of your application, cd /var/app/current&lt;/li&gt;
+  &lt;li&gt;eb deploy auto runs your rails migrations.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Like it? Thanks and Share
+Questions? Pls Comment&lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;http://www.niyando.com/web/deploying-a-rails-application-to-aws-using-elastic-beanstalk/&quot;&gt;Deploying a Rails Application to AWS Using Elastic Beanstalk&lt;/a&gt; was originally published by Nirav Gandhi at &lt;a href=&quot;http://www.niyando.com&quot;&gt;Nirav Gandhi's Blog&lt;/a&gt; on March 14, 2018.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
