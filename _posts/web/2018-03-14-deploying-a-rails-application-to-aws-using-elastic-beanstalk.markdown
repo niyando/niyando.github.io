@@ -6,7 +6,8 @@ categories: web
 excerpt: "How to push a rails app to AWS using Elastic Beanstalk"
 tags: ["rails", "ruby on rails", "deploy","AWS", "Elastic Beanstalk"]
 image:
-  feature:
+  thumb: rails-ebs.png
+comments: true
 date: 2018-03-14T19:27:04+05:30
 ---
 
@@ -25,7 +26,7 @@ brew install aws-elasticbeanstalk
 
 2) Create a [new account](https://portal.aws.amazon.com/billing/signup){:target="_blank"} on AWS.
 
-3) Create a new IAM user to get the access_id and access_key. Check for IAM option under services --> Security, Identity and Compliance. This pair will be used to give programetic access to your AWS account. Make sure you that grant full access to all AWS resources to this user. Download the credentials.
+3) Create a new IAM user to get the access_id and access_key. Check for IAM option under Services --> Security, Identity and Compliance. This pair will be used to give programmetic access to your AWS account. Make sure that you grant full access to all AWS resources to this user. Download the credentials.
 
 4) Create a file called credentials under .aws folder in Users folder of your machine. Create a new .aws directory if it doesn't exist. For me the path is '/Users/Nirav/.aws'. Copy/paste the credentials in this file. The format should be as follows
 
@@ -51,12 +52,12 @@ eb init --profile=profilename
 
 This tell Elastic Beanstalk to use a particular profile from the credentials file for this project.
 
-6) Next you will need to go through the setup by answering few set og questions such as ...
+6) Next you will need to go through the setup by answering few questions such as ...
 
-- name of your app
-- region where it should be hosted (pick the one where your audience is)
+- Name of your app
+- Region where it should be hosted (pick the one where your audience is)
 - Confirm the programming language and version of your app
-- Set up an SSH instance (this will be required to ssh into your instance. always create a new key-pair if you are working with different clients)
+- Set up an SSH instance (will be required to ssh into your instance. Always create a new key-pair if you are working with different clients)
 
 7) Time to create your environment.
 
@@ -118,13 +119,13 @@ And you're <b>LIVE</b>!
 ### Bonus Info:
 
 - Check you application logs using 'eb logs'
-- Dont .gitignore your .elasticbeanstalk folder and commit it. Other folks in your team will also be able to use the config to deploy the app.
+- Dont .gitignore your .elasticbeanstalk folder. Commit it. Other folks in your team will also be able to use the config to deploy the app.
 - Use micro instances for all services to get the free tier advantage. Scale the services when you need to.
 - AWS doesn't charge anything for Elastic Beanstalk. They just charge you for the resources you're using.
-- To ssh into root directory of your application, cd /var/app/current
+- To ssh into root directory of your application, do 'eb ssh' and 'cd /var/app/current'.
 - eb deploy auto runs your rails migrations.
 
-Like it? Thanks and Share
+Like it? Share!
 Questions? Pls Comment
 
 Cheers!
