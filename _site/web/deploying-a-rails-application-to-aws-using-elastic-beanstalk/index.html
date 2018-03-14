@@ -18,7 +18,7 @@
 <meta name="twitter:creator" content="@niyando">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.niyando.com/images/default-thumb.png">
+<meta name="twitter:image" content="http://www.niyando.com/images/rails-ebs.png">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
@@ -28,7 +28,7 @@
 <meta property="og:url" content="http://www.niyando.com/web/deploying-a-rails-application-to-aws-using-elastic-beanstalk/" >
 <meta property="og:site_name" content="Nirav Gandhi's Blog">
 
-<meta property="og:image" content="http://www.niyando.com/images/default-thumb.png">
+<meta property="og:image" content="http://www.niyando.com/images/rails-ebs.png">
 
 
 <!-- Webmaster Tools verfication -->
@@ -160,7 +160,7 @@ brew install aws-elasticbeanstalk</code></pre></div>
 
 <p>2) Create a <a href="https://portal.aws.amazon.com/billing/signup" target="_blank">new account</a> on AWS.</p>
 
-<p>3) Create a new IAM user to get the access_id and access_key. Check for IAM option under services –&gt; Security, Identity and Compliance. This pair will be used to give programetic access to your AWS account. Make sure you that grant full access to all AWS resources to this user. Download the credentials.</p>
+<p>3) Create a new IAM user to get the access_id and access_key. Check for IAM option under Services –&gt; Security, Identity and Compliance. This pair will be used to give programmetic access to your AWS account. Make sure that you grant full access to all AWS resources to this user. Download the credentials.</p>
 
 <p>4) Create a file called credentials under .aws folder in Users folder of your machine. Create a new .aws directory if it doesn’t exist. For me the path is ‘/Users/Nirav/.aws’. Copy/paste the credentials in this file. The format should be as follows</p>
 
@@ -182,13 +182,13 @@ brew install aws-elasticbeanstalk</code></pre></div>
 
 <p>This tell Elastic Beanstalk to use a particular profile from the credentials file for this project.</p>
 
-<p>6) Next you will need to go through the setup by answering few set og questions such as …</p>
+<p>6) Next you will need to go through the setup by answering few questions such as …</p>
 
 <ul>
-  <li>name of your app</li>
-  <li>region where it should be hosted (pick the one where your audience is)</li>
+  <li>Name of your app</li>
+  <li>Region where it should be hosted (pick the one where your audience is)</li>
   <li>Confirm the programming language and version of your app</li>
-  <li>Set up an SSH instance (this will be required to ssh into your instance. always create a new key-pair if you are working with different clients)</li>
+  <li>Set up an SSH instance (will be required to ssh into your instance. Always create a new key-pair if you are working with different clients)</li>
 </ul>
 
 <p>7) Time to create your environment.</p>
@@ -240,14 +240,14 @@ Select your application –&gt; selecy configuration from the sidebar –&gt; Ad
 
 <ul>
   <li>Check you application logs using ‘eb logs’</li>
-  <li>Dont .gitignore your .elasticbeanstalk folder and commit it. Other folks in your team will also be able to use the config to deploy the app.</li>
+  <li>Dont .gitignore your .elasticbeanstalk folder. Commit it. Other folks in your team will also be able to use the config to deploy the app.</li>
   <li>Use micro instances for all services to get the free tier advantage. Scale the services when you need to.</li>
   <li>AWS doesn’t charge anything for Elastic Beanstalk. They just charge you for the resources you’re using.</li>
-  <li>To ssh into root directory of your application, cd /var/app/current</li>
+  <li>To ssh into root directory of your application, do ‘eb ssh’ and ‘cd /var/app/current’.</li>
   <li>eb deploy auto runs your rails migrations.</li>
 </ul>
 
-<p>Like it? Thanks and Share
+<p>Like it? Share!
 Questions? Pls Comment</p>
 
 <p>Cheers!</p>
@@ -287,6 +287,8 @@ function fbs_click(width, height) {
         <p class="byline"><strong>Deploying a Rails Application to AWS Using Elastic Beanstalk</strong> was published on <time datetime="2018-03-14T19:27:04+05:30">March 14, 2018</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
   
   </article>
 </div><!-- /#main -->
@@ -334,6 +336,30 @@ function fbs_click(width, height) {
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'niyando'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	        
 

@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://www.niyando.com/feed.xml" />
 <link rel="alternate" type="text/html" href="http://www.niyando.com" />
-<updated>2018-03-14T19:46:31+05:30</updated>
+<updated>2018-03-14T19:59:31+05:30</updated>
 <id>http://www.niyando.com/</id>
 <author>
   <name>Nirav Gandhi</name>
@@ -40,7 +40,7 @@ brew install aws-elasticbeanstalk&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;2) Create a &lt;a href=&quot;https://portal.aws.amazon.com/billing/signup&quot; target=&quot;_blank&quot;&gt;new account&lt;/a&gt; on AWS.&lt;/p&gt;
 
-&lt;p&gt;3) Create a new IAM user to get the access_id and access_key. Check for IAM option under services –&amp;gt; Security, Identity and Compliance. This pair will be used to give programetic access to your AWS account. Make sure you that grant full access to all AWS resources to this user. Download the credentials.&lt;/p&gt;
+&lt;p&gt;3) Create a new IAM user to get the access_id and access_key. Check for IAM option under Services –&amp;gt; Security, Identity and Compliance. This pair will be used to give programmetic access to your AWS account. Make sure that you grant full access to all AWS resources to this user. Download the credentials.&lt;/p&gt;
 
 &lt;p&gt;4) Create a file called credentials under .aws folder in Users folder of your machine. Create a new .aws directory if it doesn’t exist. For me the path is ‘/Users/Nirav/.aws’. Copy/paste the credentials in this file. The format should be as follows&lt;/p&gt;
 
@@ -62,13 +62,13 @@ brew install aws-elasticbeanstalk&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This tell Elastic Beanstalk to use a particular profile from the credentials file for this project.&lt;/p&gt;
 
-&lt;p&gt;6) Next you will need to go through the setup by answering few set og questions such as …&lt;/p&gt;
+&lt;p&gt;6) Next you will need to go through the setup by answering few questions such as …&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;name of your app&lt;/li&gt;
-  &lt;li&gt;region where it should be hosted (pick the one where your audience is)&lt;/li&gt;
+  &lt;li&gt;Name of your app&lt;/li&gt;
+  &lt;li&gt;Region where it should be hosted (pick the one where your audience is)&lt;/li&gt;
   &lt;li&gt;Confirm the programming language and version of your app&lt;/li&gt;
-  &lt;li&gt;Set up an SSH instance (this will be required to ssh into your instance. always create a new key-pair if you are working with different clients)&lt;/li&gt;
+  &lt;li&gt;Set up an SSH instance (will be required to ssh into your instance. Always create a new key-pair if you are working with different clients)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;7) Time to create your environment.&lt;/p&gt;
@@ -120,14 +120,14 @@ Select your application –&amp;gt; selecy configuration from the sidebar –&am
 
 &lt;ul&gt;
   &lt;li&gt;Check you application logs using ‘eb logs’&lt;/li&gt;
-  &lt;li&gt;Dont .gitignore your .elasticbeanstalk folder and commit it. Other folks in your team will also be able to use the config to deploy the app.&lt;/li&gt;
+  &lt;li&gt;Dont .gitignore your .elasticbeanstalk folder. Commit it. Other folks in your team will also be able to use the config to deploy the app.&lt;/li&gt;
   &lt;li&gt;Use micro instances for all services to get the free tier advantage. Scale the services when you need to.&lt;/li&gt;
   &lt;li&gt;AWS doesn’t charge anything for Elastic Beanstalk. They just charge you for the resources you’re using.&lt;/li&gt;
-  &lt;li&gt;To ssh into root directory of your application, cd /var/app/current&lt;/li&gt;
+  &lt;li&gt;To ssh into root directory of your application, do ‘eb ssh’ and ‘cd /var/app/current’.&lt;/li&gt;
   &lt;li&gt;eb deploy auto runs your rails migrations.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Like it? Thanks and Share
+&lt;p&gt;Like it? Share!
 Questions? Pls Comment&lt;/p&gt;
 
 &lt;p&gt;Cheers!&lt;/p&gt;
