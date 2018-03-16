@@ -3,7 +3,7 @@ layout: page
 title: Side Projects
 date: 
 modified:
-tags: [nirav, gandhi, profile, developer, side projects]
+tags: [nirav, gandhi, profile, developer, side projects, open source]
 comments: false
 share: false
 excerpt: "Side/Fun projects created by nirav gandhi"
